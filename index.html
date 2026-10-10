@@ -3,14 +3,17 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<link rel="icon" href="favicon.ico" sizes="48x48">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <title>Jaymo Civil | Excavation and Civil Contractors, Sydney NSW</title>
 <meta name="description" content="Jaymo Civil delivers bulk excavation, detail excavation, shoring, service trenches and remediation works across Sydney. Experts committed to excellence since 2012.">
 <meta name="theme-color" content="#0b0b0a">
 <meta property="og:title" content="Jaymo Civil | Excavation and Civil Contractors, Sydney">
 <meta property="og:description" content="Bulk and detail excavation, shoring, service trenches and remediation across Sydney. Experts committed to excellence.">
 <meta property="og:type" content="website">
-<link rel="preload" as="image" href="img/first-hero.webp" media="(min-width:700px)" fetchpriority="high">
-<link rel="preload" as="image" href="img/first-hero_m.webp" media="(max-width:699px)" fetchpriority="high">
+<link rel="preload" as="image" href="img/hero_d.jpg" media="(min-width:700px)" fetchpriority="high">
+<link rel="preload" as="image" href="img/hero_m.jpg" media="(max-width:699px)" fetchpriority="high">
 <link rel="preload" as="font" type="font/woff2" href="fonts/archivo.woff2" crossorigin>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"GeneralContractor","name":"Jaymo Civil","legalName":"Jaymo Civil Pty Ltd","telephone":"+61450503180","email":"info@jaymocivil.com.au","areaServed":"Sydney NSW","slogan":"Experts Committed to Excellence","sameAs":["https://www.instagram.com/jaymocivil/"]}</script>
 <style>
@@ -279,12 +282,10 @@ footer .slog{margin-top:16px;font:500 .64rem var(--m);letter-spacing:.14em;text-
 .tag{font-size:.74rem}
 nav a{font-size:.72rem;color:#fff}
 .scrub{display:block;background:#1c1c1a center/cover no-repeat}
-canvas[data-q="hero"]{background-image:url(img/first-hero.webp)}
 canvas[data-q="bulk"]{background-image:url(img/first-bulk.webp)}
 canvas[data-q="piers"]{background-image:url(img/first-piers.webp)}
 canvas[data-q="shore"]{background-image:url(img/first-shore.webp)}
 canvas[data-q="trench"]{background-image:url(img/first-trench.webp)}
-@media (max-width:699px){canvas[data-q="hero"]{background-image:url(img/first-hero_m.webp)}}
 
 .hero-film:after{background:linear-gradient(180deg,rgba(11,11,10,.5),rgba(11,11,10,0) 20%,rgba(11,11,10,0) 42%,rgba(11,11,10,.55) 66%,rgba(11,11,10,.9))}
 .hero-t .tag{color:#fff}
@@ -414,6 +415,10 @@ footer .logo2{height:30px}
 .contact select option{background:#fff;color:#000}
 .contact .btn-y{background:var(--ink);color:var(--y)}.contact .btn-y:hover{color:#000}
 .contact a:focus-visible,.contact button:focus-visible{outline-color:var(--ink)}
+.hero-pic{position:absolute;inset:0;display:block;overflow:hidden;animation:hdrift 16s ease-in-out infinite alternate}
+.hero-ph{position:absolute;inset:0;width:100%;height:100%;max-width:none;object-fit:cover;object-position:60% 30%;transform:scale(1.24);transform-origin:72% 22%;will-change:transform}
+@keyframes hdrift{to{transform:scale(1.045) translate3d(-.6%,0,0)}}
+.rm .hero-pic{animation:none}.rm .hero-ph{transform:none!important}
 </style>
 <script>(function(){var d=document.documentElement;if(window.matchMedia&&matchMedia("(prefers-reduced-motion:reduce)").matches)d.className+=" rm"})();</script>
 </head>
@@ -447,7 +452,7 @@ footer .logo2{height:30px}
 <div class="pin hero" id="hero">
   <div class="stick">
     <div class="hero-film" id="hfilm">
-      <canvas class="scrub" data-q="hero" data-still role="img" aria-label="Excavator on a cleared site"></canvas>
+      <picture class="hero-pic"><source media="(max-width:699px)" srcset="img/hero_m.jpg"><img id="hph" class="hero-ph" src="img/hero_d.jpg" alt="Basement footings cut by Jaymo Civil with excavators on site, Lane Cove" width="2400" height="1350" fetchpriority="high" decoding="async"></picture>
     </div>
     <div class="hero-iris" id="iris" aria-hidden="true"><img src="img/markk.png" alt="" width="210" height="210"></div>
     <div class="hero-t" id="herot">
@@ -696,7 +701,7 @@ footer .logo2{height:30px}
   <a class="btn btn-o" href="#contact">Get a Quote</a>
 </div>
 
-<script>var SQ={"hero":[0,120110,240196,361082,481470,601084,721560,840886,960504,1080144,1199172,1318416,1436498,1555288,1673536,1792624,1911298,2029424,2147272,2262688,2378310,2493328,2609734,2725386,2841112,2956482,3071714,3186538,3300462,3414784,3528670,3643034,3757518,3870574,3983964,4096878,4209492,4319752,4430622,4541190,4652118,4763568,4874466,4985104,5095992,5206528,5317478,5428242,5538640,5649978,5760898,5871062,5981094,6089984,6199288,6306932,6415384,6524352,6633362,6743200,6852490,6961508,7070758,7180544,7290606,7401052,7511678,7622208,7732670,7842806,7953674,8064292,8175554,8287252,8397114,8507610,8618310,8729666,8840814,8952738,9064598,9176940,9290300,9403644,9517202,9629664,9742264,9854450,9966722,10079574,10191992,10304576,10415420,10526102,10636040,10746798,10856190,10966642,11076904,11186072,11295008],"hero_m":[0,65504,131228,197448,263326,328164,393912,458680,524128,589486,654422,719262,783442,848030,912370,976862,1041222,1104952,1168788,1232054,1295056,1357588,1420792,1482968,1545800,1608390,1670738,1733170,1794482,1856240,1917618,1978990,2040688,2101898,2163310,2224836,2285424,2345166,2405264,2464990,2525428,2586068,2645990,2706354,2766338,2826312,2885950,2945952,3005566,3065726,3125452,3184902,3244398,3303028,3362116,3420010,3478554,3537812,3596670,3655744,3714412,3772806,3831558,3890686,3949920,4009500,4069214,4128780,4188180,4247194,4306398,4365470,4425218,4485162,4544456,4603866,4663310,4723140,4782472,4842698,4902558,4962546,5023562,5084154,5145038,5204996,5265622,5325080,5385310,5445574,5505558,5565726,5625030,5684194,5742108,5800800,5859180,5918370,5977702,6035302,6092972],"bulk":[0,40206,80786,121620,162232,202532,242928,283452,324506,364838,405016,444926,485032,524828,564202,603186,641992,681062,719780,757952,795728,833508,871418,908830,945536,982218,1019090,1055960,1092154,1128288,1164298,1200604,1235968,1270522,1304498,1338906,1373660,1407364,1440606,1473710,1506952,1539786,1571856,1603644,1635178,1667232,1698674,1729584,1760174,1790958,1822456,1852786,1881950,1910900,1939748,1968216,1996134,2024080,2051682,2079732,2106570,2132666,2158202,2183334,2209034,2233456,2256362,2279314,2302126,2324572,2346530,2368520,2389860],"piers":[0,40488,83044,125556,168466,212166,258856,306162,356248,407322,461590,515392,568858,621106,672738,722282,771146,818292,865150,911818,956402,1001054,1044246,1087988,1130780,1174312,1215992,1257832,1300476,1342182,1382876,1423762,1462140,1500364,1537314,1575646,1612630,1649624,1686418,1724012,1760064,1796496,1831174,1865976,1899074,1933500,1966366,1999710,2032936,2067804,2101416,2135490,2169600,2203856,2238166,2272572,2307028,2339350,2372280,2404440,2437718,2472058,2507142,2542848,2579296,2615420,2651612,2687662,2724504,2760226,2796378,2831182,2866440],"shore":[0,32350,65394,97394,128676,158846,188280,216718,244922,272360,299326,325614,352238,378914,405418,431100,456566,481454,505280,528626,551382,574388,596996,619662,642144,663922,685164,706522,727378,748240,768788,789298,809740,829688,849848,869686,889638,910054,931342,953246,978506,1005210,1033712,1063096,1095156,1128786,1164248,1201738,1241996,1283128,1323972,1365194,1405936,1447338,1488194,1527878,1567664,1606414,1645308,1683442,1720508,1757476,1793490,1829750,1865578,1901014,1936452,1971274,2006818,2042388,2077586,2112638,2146592],"trench":[0,33684,68174,101872,134224,167582,200378,233292,265780,298060,330460,361840,393234,424638,456110,487468,518632,550266,581216,611204,640764,670046,699776,728772,757998,786566,814446,843064,871298,899476,927080,954816,983044,1010984,1039742,1067796,1095846,1123444,1150954,1179676,1209370,1238524,1267492,1296522,1325950,1355412,1384966,1414064,1442858,1471510,1500298,1527952,1556842,1586456,1616114,1645906,1675432,1704926,1735572,1766266,1796930,1827816,1858298,1888962,1919850,1950498,1981300,2011838,2042440,2072850,2103090,2133628,2163774]};</script>
+<script>var SQ={"bulk":[0,40206,80786,121620,162232,202532,242928,283452,324506,364838,405016,444926,485032,524828,564202,603186,641992,681062,719780,757952,795728,833508,871418,908830,945536,982218,1019090,1055960,1092154,1128288,1164298,1200604,1235968,1270522,1304498,1338906,1373660,1407364,1440606,1473710,1506952,1539786,1571856,1603644,1635178,1667232,1698674,1729584,1760174,1790958,1822456,1852786,1881950,1910900,1939748,1968216,1996134,2024080,2051682,2079732,2106570,2132666,2158202,2183334,2209034,2233456,2256362,2279314,2302126,2324572,2346530,2368520,2389860],"piers":[0,40488,83044,125556,168466,212166,258856,306162,356248,407322,461590,515392,568858,621106,672738,722282,771146,818292,865150,911818,956402,1001054,1044246,1087988,1130780,1174312,1215992,1257832,1300476,1342182,1382876,1423762,1462140,1500364,1537314,1575646,1612630,1649624,1686418,1724012,1760064,1796496,1831174,1865976,1899074,1933500,1966366,1999710,2032936,2067804,2101416,2135490,2169600,2203856,2238166,2272572,2307028,2339350,2372280,2404440,2437718,2472058,2507142,2542848,2579296,2615420,2651612,2687662,2724504,2760226,2796378,2831182,2866440],"shore":[0,32350,65394,97394,128676,158846,188280,216718,244922,272360,299326,325614,352238,378914,405418,431100,456566,481454,505280,528626,551382,574388,596996,619662,642144,663922,685164,706522,727378,748240,768788,789298,809740,829688,849848,869686,889638,910054,931342,953246,978506,1005210,1033712,1063096,1095156,1128786,1164248,1201738,1241996,1283128,1323972,1365194,1405936,1447338,1488194,1527878,1567664,1606414,1645308,1683442,1720508,1757476,1793490,1829750,1865578,1901014,1936452,1971274,2006818,2042388,2077586,2112638,2146592],"trench":[0,33684,68174,101872,134224,167582,200378,233292,265780,298060,330460,361840,393234,424638,456110,487468,518632,550266,581216,611204,640764,670046,699776,728772,757998,786566,814446,843064,871298,899476,927080,954816,983044,1010984,1039742,1067796,1095846,1123444,1150954,1179676,1209370,1238524,1267492,1296522,1325950,1355412,1384966,1414064,1442858,1471510,1500298,1527952,1556842,1586456,1616114,1645906,1675432,1704926,1735572,1766266,1796930,1827816,1858298,1888962,1919850,1950498,1981300,2011838,2042440,2072850,2103090,2133628,2163774]};</script>
 <script>
 (function(){
   'use strict';
@@ -747,7 +752,7 @@ footer .logo2{height:30px}
       var okf=function(bmp){delete s.pend[ix];s.bm[ix]=bmp;s.draw()};
       if(HASBM)createImageBitmap(s.blob[ix]).then(okf,function(){delete s.pend[ix]});
       else{var im=new Image(),url=URL.createObjectURL(s.blob[ix]);im.onload=function(){URL.revokeObjectURL(url);okf(im)};im.src=url}})(j)};
-  Seq.prototype.size=function(){var r=this.cv.getBoundingClientRect();if(!r.width)return;var dpr=Math.min(window.devicePixelRatio||1,1.5),w=Math.round(r.width*dpr),h=Math.round(r.height*dpr);
+  Seq.prototype.size=function(){var r=this.cv.getBoundingClientRect();if(!r.width)return;var dpr=Math.min(window.devicePixelRatio||1,r.width<700?2:1.5),w=Math.round(r.width*dpr),h=Math.round(r.height*dpr);
     if(w>1600){h=Math.round(h*1600/w);w=1600}
     if(w!==this.w||h!==this.h){this.w=this.cv.width=w;this.h=this.cv.height=h;this.shown=-1;this.draw()}};
   Seq.prototype.draw=function(){if(!this.w)return;var c=Math.round(clamp(this.cur,0,this.n-1)),k=-1;
@@ -757,7 +762,7 @@ footer .logo2{height:30px}
   var seqs=$('canvas.scrub').map(function(c){return new Seq(c)}),bySeq={};seqs.forEach(function(s){bySeq[s.k]=s});
 
   /* ---------- scroll engine ---------- */
-  var hd=id('hd'),prog=id('prog'),mb=id('mb'),hero=id('hero'),hfilm=id('hfilm'),
+  var hd=id('hd'),hph=id('hph'),prog=id('prog'),mb=id('mb'),hero=id('hero'),hfilm=id('hfilm'),
       chs=$('[data-ch]').map(function(el){var cv=el.querySelector('canvas');return {el:el,film:el.querySelector('.ch-film'),inn:el.querySelector('.ch-in'),bar:el.querySelector('.ch-bar i'),seq:bySeq[cv.getAttribute('data-q')]}}),
       hs1=id('hs1'),hs2=id('hs2'),iris=id('iris'),imark=iris.querySelector('img'),herop=$('.tag,.p,.hero-cta',herot),
       say=id('say'),sayBg=$('.say-bg',say),sayIt=$('.say-item',say),sayn=id('sayn'),sayp=id('sayp'),sayI=-1,
@@ -774,8 +779,8 @@ footer .logo2{height:30px}
     hd.classList.toggle('s',y>M.hero.h-vh*1.08);prog.style.transform='scaleX('+(maxY?clamp(y/maxY,0,1):0).toFixed(4)+')';mb.classList.toggle('show',y>M.hero.h-vh*.6);
     /* hero: camera pulls back, then the film settles into a frame on white */
     if(y<M.hero.t+M.hero.h){
-      var hs=bySeq.hero,p=pr(M.hero,y);
-      hs.tg=clamp(p/.86,0,1)*(hs.n-1);
+      var p=pr(M.hero,y);
+      hph.style.transform='scale('+(1.24-.24*io2(clamp(p/.86,0,1))).toFixed(4)+')';
       /* the two headline lines slide apart, then a white circle opens on the logo mark */
       var sp2=io2(clamp((p-.5)/.24,0,1));
       hs1.style.transform='translate3d('+(-sp2*110).toFixed(2)+'vw,0,0)';hs2.style.transform='translate3d('+(sp2*110).toFixed(2)+'vw,0,0)';
@@ -828,7 +833,7 @@ footer .logo2{height:30px}
   if(RM){seqs.forEach(function(q){q.load();q.cur=q.tg=q.still;q.want()});hd.classList.add('s');
     setTimeout(function(){seqs.forEach(function(q){q.size();q.want();q.draw()})},500)}
   else{
-    bySeq.hero.load();
+
     if(FINE)addEventListener('wheel',function(e){
       if(e.ctrlKey||window.__lock)return;var t=e.target;if(t&&t.closest&&t.closest('textarea,select'))return;
       e.preventDefault();if(!gliding){wC=window.pageYOffset;wT=wC}

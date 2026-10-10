@@ -389,6 +389,34 @@ footer .logo2{height:30px}
 .rm .work-prog,.rm .wcount{display:none}
 .rm .mbar{transform:none}
 .rm *{animation:none!important;transition:none!important}
+/* more yellow */
+.hero-iris{background:var(--y)}
+#prog{position:absolute;left:0;bottom:-2px;width:100%;height:2px;background:var(--y);transform:scaleX(0);transform-origin:left;pointer-events:none}
+.yband{background:var(--y);color:var(--ink);padding:26px 0 30px}
+.yband .stats{margin-top:0}
+.yband .stat{border-top:0;padding:16px 0}
+.yband .stat span{color:#1d1a08}
+.ch-film{background:var(--y)}
+.ch-in{position:absolute;inset:0;overflow:hidden;background:#1c1c1a;will-change:clip-path}
+.rm .ch-in{clip-path:none!important}
+.ch-n b{font:600 1.5rem/1 var(--f);font-stretch:125%;letter-spacing:0}
+.ch.light .ch-n b{background:var(--y);color:var(--ink);padding:4px 9px}
+.ch:not(.light) .ch-s b,.fig b{color:var(--y)}
+.ch.light .ch-s b{display:inline;background:linear-gradient(transparent 58%,var(--y) 58%);padding:0 .12em}
+.step p i{background:var(--y);color:#000;padding:3px 7px}
+.contact{background:var(--y);color:var(--ink)}
+.contact:after,.contact .cbg{display:none}
+.contact .tag{color:var(--ink)}.contact .tag:before{background:var(--ink)}
+.contact .y{background:var(--ink);color:var(--y);padding:0 .16em}
+.contact .p,.contact .cmeta,.contact label,.contact .note,.contact .done p{color:#1d1a08}
+.contact .cmeta a:hover{color:#000;text-decoration:underline}
+.contact .bigtel{border-color:var(--ink)}.contact .bigtel:hover{color:#000;opacity:.7}
+.contact input,.contact select,.contact textarea{color:var(--ink);border-bottom-color:rgba(11,11,10,.5)}
+.contact input:focus,.contact select:focus,.contact textarea:focus{border-color:var(--ink);box-shadow:0 1px 0 var(--ink)}
+.contact select{background-image:linear-gradient(45deg,transparent 50%,#0b0b0a 50%),linear-gradient(135deg,#0b0b0a 50%,transparent 50%)}
+.contact select option{background:#fff;color:#000}
+.contact .btn-y{background:var(--ink);color:var(--y)}.contact .btn-y:hover{color:#000}
+.contact a:focus-visible,.contact button:focus-visible{outline-color:var(--ink)}
 </style>
 <script>(function(){var d=document.documentElement;if(window.matchMedia&&matchMedia("(prefers-reduced-motion:reduce)").matches)d.className+=" rm"})();</script>
 </head>
@@ -413,6 +441,7 @@ footer .logo2{height:30px}
       <a class="btn btn-y" href="#contact">Request a Quote</a>
     </div>
   </div>
+  <i id="prog" aria-hidden="true"></i>
 </header>
 
 <main id="top">
@@ -438,18 +467,24 @@ footer .logo2{height:30px}
   </div>
 </div>
 
+<!-- NUMBERS -->
+<section class="yband" aria-label="Jaymo Civil in numbers">
+  <div class="wrap">
+    <div class="stats">
+      <div class="stat rv"><b data-count="2012" data-plain="1">2012</b><span>Working in Sydney since</span></div>
+      <div class="stat rv" style="--d:80ms"><b data-count="160">160</b><span>Piers drilled in 4 days</span></div>
+      <div class="stat rv" style="--d:160ms"><b><i data-count="1600">1,600</i>m&sup3;</b><span>Single basement excavated</span></div>
+      <div class="stat rv" style="--d:240ms"><b>3.5km</b><span>Trenching on one subdivision</span></div>
+    </div>
+  </div>
+</section>
+
 <!-- ABOUT -->
 <section class="light about" id="about">
   <div class="wrap">
     <div class="about-g">
       <p class="tag rv">About</p>
       <p class="state" id="state">Jaymo Civil is a Sydney excavation and civil contractor. We take sites from the first cut through to trenches ready for steel and concrete. Set out carefully, dug to the drawings, and handed over clean.</p>
-    </div>
-    <div class="stats">
-      <div class="stat rv"><b data-count="2012" data-plain="1">2012</b><span>Working in Sydney since</span></div>
-      <div class="stat rv" style="--d:80ms"><b data-count="160">160</b><span>Piers drilled in 4 days</span></div>
-      <div class="stat rv" style="--d:160ms"><b><i data-count="1600">1,600</i>m&sup3;</b><span>Single basement excavated</span></div>
-      <div class="stat rv" style="--d:240ms"><b>3.5km</b><span>Trenching on one subdivision</span></div>
     </div>
   </div>
 </section>
@@ -478,7 +513,7 @@ footer .logo2{height:30px}
 
   <div class="pin ch flip" data-ch>
     <div class="stick">
-      <div class="ch-film"><canvas class="scrub" data-q="bulk" aria-hidden="true"></canvas><div class="ch-bar"><i></i></div></div>
+      <div class="ch-film"><div class="ch-in"><canvas class="scrub" data-q="bulk" aria-hidden="true"></canvas><div class="ch-bar"><i></i></div></div></div>
       <div class="ch-t rv-l">
         <p class="ch-n"><b>01</b>/ 05</p>
         <h2 class="h"><span class="lm"><span>Bulk</span></span><span class="lm"><span style="--d:80ms">Excavation</span></span></h2>
@@ -490,7 +525,7 @@ footer .logo2{height:30px}
 
   <div class="pin ch light" data-ch>
     <div class="stick">
-      <div class="ch-film"><canvas class="scrub" data-q="piers" aria-hidden="true"></canvas><div class="ch-bar"><i></i></div><span class="src">Marayong / Our drone</span></div>
+      <div class="ch-film"><div class="ch-in"><canvas class="scrub" data-q="piers" aria-hidden="true"></canvas><div class="ch-bar"><i></i></div><span class="src">Marayong / Our drone</span></div></div>
       <div class="ch-t rv-l">
         <p class="ch-n"><b>02</b>/ 05</p>
         <h2 class="h"><span class="lm"><span>Detail</span></span><span class="lm"><span style="--d:80ms">Excavation</span></span></h2>
@@ -502,7 +537,7 @@ footer .logo2{height:30px}
 
   <div class="pin ch flip" data-ch>
     <div class="stick">
-      <div class="ch-film"><canvas class="scrub" data-q="shore" aria-hidden="true"></canvas><div class="ch-bar"><i></i></div></div>
+      <div class="ch-film"><div class="ch-in"><canvas class="scrub" data-q="shore" aria-hidden="true"></canvas><div class="ch-bar"><i></i></div></div></div>
       <div class="ch-t rv-l">
         <p class="ch-n"><b>03</b>/ 05</p>
         <h2 class="h"><span class="lm"><span>Shoring</span></span></h2>
@@ -514,7 +549,7 @@ footer .logo2{height:30px}
 
   <div class="pin ch light" data-ch>
     <div class="stick">
-      <div class="ch-film"><canvas class="scrub" data-q="trench" aria-hidden="true"></canvas><div class="ch-bar"><i></i></div></div>
+      <div class="ch-film"><div class="ch-in"><canvas class="scrub" data-q="trench" aria-hidden="true"></canvas><div class="ch-bar"><i></i></div></div></div>
       <div class="ch-t rv-l">
         <p class="ch-n"><b>04</b>/ 05</p>
         <h2 class="h"><span class="lm"><span>Service</span></span><span class="lm"><span style="--d:80ms">Trenches</span></span></h2>
@@ -725,8 +760,8 @@ footer .logo2{height:30px}
   var seqs=$('canvas.scrub').map(function(c){return new Seq(c)}),bySeq={};seqs.forEach(function(s){bySeq[s.k]=s});
 
   /* ---------- scroll engine ---------- */
-  var hd=id('hd'),mb=id('mb'),hero=id('hero'),hfilm=id('hfilm'),
-      chs=$('[data-ch]').map(function(el){var cv=el.querySelector('canvas');return {el:el,film:el.querySelector('.ch-film'),bar:el.querySelector('.ch-bar i'),seq:bySeq[cv.getAttribute('data-q')]}}),
+  var hd=id('hd'),prog=id('prog'),mb=id('mb'),hero=id('hero'),hfilm=id('hfilm'),
+      chs=$('[data-ch]').map(function(el){var cv=el.querySelector('canvas');return {el:el,film:el.querySelector('.ch-film'),inn:el.querySelector('.ch-in'),bar:el.querySelector('.ch-bar i'),seq:bySeq[cv.getAttribute('data-q')]}}),
       hs1=id('hs1'),hs2=id('hs2'),iris=id('iris'),imark=iris.querySelector('img'),herop=$('.tag,.p,.hero-cta',herot),
       say=id('say'),sayBg=$('.say-bg',say),sayIt=$('.say-item',say),sayn=id('sayn'),sayp=id('sayp'),sayI=-1,
       work=id('work'),ring=id('ring'),rcs=$('.rc',ring),workp=id('workp'),wcount=id('wcount'),
@@ -739,7 +774,7 @@ footer .logo2{height:30px}
   function pr(b,y){var t=b.h-vh;return t>0?clamp((y-b.t)/t,0,1):0}
   var lastOn=-1;
   function update(y){
-    hd.classList.toggle('s',y>M.hero.h-vh*1.08);mb.classList.toggle('show',y>M.hero.h-vh*.6);
+    hd.classList.toggle('s',y>M.hero.h-vh*1.08);prog.style.transform='scaleX('+(maxY?clamp(y/maxY,0,1):0).toFixed(4)+')';mb.classList.toggle('show',y>M.hero.h-vh*.6);
     /* hero: camera pulls back, then the film settles into a frame on white */
     if(y<M.hero.t+M.hero.h){
       var hs=bySeq.hero,p=pr(M.hero,y);
@@ -765,7 +800,8 @@ footer .logo2{height:30px}
       var top=c.b.t-y;if(top<vh*4&&top+c.b.h>-vh*2)c.seq.load();
       if(top>vh*1.2||top+c.b.h<-vh*.2){c.live=false;return}c.live=true;
       var e=io2(clamp((vh-top)/vh,0,1)),R=e*101,q=pr(c.b,y);
-      c.film.style.clipPath=e>=1?'none':'polygon(50% '+(50-R).toFixed(2)+'%,'+(50+R).toFixed(2)+'% 50%,50% '+(50+R).toFixed(2)+'%,'+(50-R).toFixed(2)+'% 50%)';
+      var dia=function(r){return 'polygon(50% '+(50-r).toFixed(2)+'%,'+(50+r).toFixed(2)+'% 50%,50% '+(50+r).toFixed(2)+'%,'+(50-r).toFixed(2)+'% 50%)'};
+      c.film.style.clipPath=e>=1?'none':dia(R>0?R+1.3:0);c.inn.style.clipPath=e>=1?'none':dia(R);
       c.seq.tg=q*(c.seq.n-1);c.bar.style.transform='scaleX('+q.toFixed(3)+')';
     });
     /* projects ring */

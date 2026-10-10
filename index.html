@@ -436,6 +436,104 @@ footer .logo2{height:30px}
 .legal{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 28px}
 .legal a{white-space:nowrap;text-decoration:none;transition:color .3s}
 .legal a:hover{color:var(--y)}
+/* premium buttons: machined face, specular sweep on hover, press and click ripple */
+.btn{border-radius:2px;transition:color .35s,border-color .35s,background .35s,box-shadow .35s,transform .2s}
+.btn:before,.btn-y:before,.btn-o:before{inset:0;transform:translateX(-130%);opacity:0;transition:opacity .2s;background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,.45) 47%,rgba(255,255,255,.75) 50%,rgba(255,255,255,.45) 53%,transparent 65%)}
+.btn:hover:before,.btn:focus-visible:before{opacity:1;transform:translateX(-130%);animation:msweep .85s ease}
+@keyframes msweep{to{transform:translateX(130%)}}
+.btn:after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;border-radius:inherit;box-shadow:inset 0 1px 0 rgba(255,255,255,.5),inset 0 -1px 0 rgba(0,0,0,.22)}
+.btn-y{background:linear-gradient(180deg,#ffe65e 0%,#ffd60a 46%,#f0c200 100%);color:#0b0b0a;box-shadow:0 12px 26px -16px rgba(255,214,10,.8)}
+.btn-y:hover{box-shadow:0 16px 34px -14px rgba(255,214,10,.95);transform:translateY(-1px)}
+.btn-o{background:linear-gradient(180deg,rgba(255,255,255,.13),rgba(255,255,255,.03));border-color:rgba(255,255,255,.36);color:#fff}
+.btn-o:after{box-shadow:inset 0 1px 0 rgba(255,255,255,.18)}
+.btn-o:hover{color:#fff;border-color:#fff;background:linear-gradient(180deg,rgba(255,255,255,.2),rgba(255,255,255,.06))}
+.btn:active{transform:translateY(1px) scale(.985)}
+.btn .ar{width:15px;height:15px;transition:transform .4s var(--ease)}
+.btn:hover .ar{transform:translateX(4px)}
+.btn-ripple{position:absolute;z-index:-1;pointer-events:none;width:20px;height:20px;border-radius:50%;transform:translate(-50%,-50%) scale(0);background:radial-gradient(circle,rgba(255,255,255,.6) 0%,rgba(255,255,255,0) 70%);animation:bripple .6s ease forwards}
+@keyframes bripple{from{transform:translate(-50%,-50%) scale(0);opacity:.9}to{transform:translate(-50%,-50%) scale(5);opacity:0}}
+.rm .btn:before,.rm .btn-ripple{display:none}.rm .btn:active,.rm .btn-y:hover{transform:none}
+.mbar{gap:8px;padding:8px 8px calc(8px + env(safe-area-inset-bottom));background:rgba(11,11,10,.97)}
+.mbar .btn{min-height:50px}.mbar .btn-o{border:1px solid rgba(255,255,255,.3)}
+
+/* contact */
+.ct{padding:100px 0 110px}
+.ct-g{display:grid;gap:54px}
+.ct h2{margin-top:18px;font-size:clamp(1.7rem,3.2vw,3rem)}
+.ct h2 .lm>span{white-space:nowrap}
+.ct .p{margin-top:18px}
+.ct-rows{margin-top:36px;border-top:1px solid var(--ll)}
+.ct-rows a{display:grid;grid-template-columns:1fr auto;align-items:center;gap:2px 14px;padding:18px 0;border-bottom:1px solid var(--ll);text-decoration:none}
+.ct-rows span{grid-column:1;font:500 .7rem var(--m);letter-spacing:.14em;text-transform:uppercase;color:var(--inkmut)}
+.ct-rows b{grid-column:1;font-stretch:118%;font-weight:600;font-size:clamp(1rem,1.5vw,1.3rem);line-height:1.2;overflow-wrap:anywhere}
+.ct-rows a:first-child b{font-size:clamp(1.5rem,2.6vw,2.2rem);font-stretch:125%}
+.ct-rows i{grid-column:2;grid-row:1/3;width:44px;height:44px;border-radius:50%;border:1px solid rgba(11,11,10,.25);display:grid;place-items:center;transition:background .4s var(--ease),color .4s,border-color .4s,transform .4s var(--ease)}
+.ct-rows i svg{width:16px;height:16px;transform:rotate(-45deg)}
+.ct-rows a:hover i{background:var(--ink);color:var(--y);border-color:var(--ink);transform:translate(3px,-3px)}
+.ct-card{background:linear-gradient(180deg,#161615,#0b0b0a);color:#fff;padding:clamp(26px,3.4vw,48px);border-top:3px solid var(--y);box-shadow:0 44px 80px -44px rgba(11,11,10,.7)}
+.ct-card .tag{color:#fff;margin-bottom:28px}
+.ct-card form{gap:22px}
+.ct-card input,.ct-card textarea{border-bottom-color:rgba(255,255,255,.22)}
+.ct-card .btn{justify-self:stretch;min-height:56px;margin-top:4px}
+.chips{border:0;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:8px}
+.chips legend{padding:0;margin-bottom:12px;font:500 .7rem var(--m);letter-spacing:.14em;text-transform:uppercase;color:var(--mut)}
+.chip{display:inline-flex;margin:0;position:relative;cursor:pointer}
+.chip input{position:absolute;opacity:0;width:1px;height:1px;min-height:0;padding:0}
+.chip span{padding:10px 14px;border:1px solid rgba(255,255,255,.22);font:500 .68rem var(--m);letter-spacing:.1em;text-transform:uppercase;color:#e2dfd8;transition:background .3s,color .3s,border-color .3s}
+.chip:hover span{border-color:#fff}
+.chip input:checked+span{background:var(--y);border-color:var(--y);color:#0b0b0a}
+.chip input:focus-visible+span{outline:2px solid var(--y);outline-offset:3px}
+@media (min-width:940px){.ct{padding:170px 0 180px}.ct-g{grid-template-columns:1fr 1.05fr;gap:96px;align-items:start}.ct-rows a{grid-template-columns:110px 1fr auto}.ct-rows span,.ct-rows b,.ct-rows i{grid-column:auto;grid-row:auto}}
+
+/* testimonials */
+.tst{position:relative;overflow:hidden;background:var(--ink);padding:100px 0}
+.tst:before{content:"";position:absolute;inset:0;background:radial-gradient(60% 55% at 85% 0%,rgba(255,214,10,.11),transparent 70%);pointer-events:none}
+.tst-g{position:relative;display:grid;gap:40px}
+.tst h2{margin-top:18px;font-size:clamp(1.7rem,3.2vw,3rem)}
+.tst-nav{display:flex;align-items:center;gap:18px;margin-top:32px}
+.tst-nav button{width:54px;height:54px;border-radius:50%;border:1px solid rgba(255,255,255,.3);background:transparent;color:#fff;cursor:pointer;display:grid;place-items:center;transition:background .4s var(--ease),color .4s,border-color .4s}
+.tst-nav button svg{width:18px;height:18px}
+.tst-nav #tsprev svg{transform:rotate(180deg)}
+.tst-nav button:hover{background:var(--y);border-color:var(--y);color:#0b0b0a}
+.tst-nav span{font:500 .76rem var(--m);letter-spacing:.14em;color:var(--mut);min-width:64px;text-align:center}
+.tst-stage{position:relative;display:grid;overflow:hidden;background:linear-gradient(180deg,#181817,#101010);border:1px solid rgba(255,255,255,.09);padding:clamp(28px,4.2vw,64px);touch-action:pan-y;-webkit-user-select:none;user-select:none}
+.tst-q{position:absolute;right:clamp(14px,3vw,44px);top:-.12em;font:800 clamp(9rem,17vw,16rem)/1 var(--f);color:var(--y);opacity:.13;pointer-events:none}
+.tq{grid-area:1/1;margin:0;display:flex;flex-direction:column;gap:26px;opacity:0;visibility:hidden;transform:translateY(16px);transition:opacity .6s var(--ease),transform .6s var(--ease),visibility 0s .6s}
+.tq.on{opacity:1;visibility:visible;transform:none;transition:opacity .8s var(--ease) .2s,transform .8s var(--ease) .2s,visibility 0s}
+.stars{color:var(--y);letter-spacing:.32em;font-size:.95rem}
+.tq blockquote{margin:0;font-stretch:112%;font-weight:500;font-size:clamp(1.2rem,2.2vw,2rem);line-height:1.32;letter-spacing:-.01em}
+.tq figcaption{display:flex;align-items:center;gap:14px;margin-top:auto;padding-top:24px;border-top:1px solid rgba(255,255,255,.1)}
+.tq figcaption i{flex:none;font-style:normal;width:46px;height:46px;border-radius:50%;border:1px solid var(--y);display:grid;place-items:center;font:500 .72rem var(--m);color:var(--y)}
+.tq figcaption b{display:block;font-stretch:125%;font-weight:600;text-transform:uppercase;font-size:.9rem;line-height:1.3}
+.tq figcaption span{display:block;font:400 .7rem var(--m);color:var(--mut);letter-spacing:.08em;text-transform:uppercase}
+.tq figcaption em{margin-left:auto;font:500 .6rem var(--m);font-style:normal;letter-spacing:.14em;text-transform:uppercase;color:var(--y);border:1px solid rgba(255,214,10,.5);padding:4px 8px}
+.tst-bar{position:absolute;left:0;right:0;bottom:0;height:2px;background:rgba(255,255,255,.08)}
+.tst-bar i{display:block;height:100%;background:var(--y);transform:scaleX(0);transform-origin:left}
+@keyframes tsfill{to{transform:none}}
+.rm .tq{transition:none}
+@media (min-width:940px){.tst{padding:170px 0}.tst-g{grid-template-columns:.8fr 1.5fr;gap:90px;align-items:start}.tst-stage{min-height:420px}}
+
+/* trench steps on phones: one large photo that steps through the five stages by itself */
+@media (max-width:939px){
+  .steps-g{display:grid;grid-template-columns:repeat(5,1fr);gap:0 6px;overflow:visible;padding:0 var(--pad);scroll-snap-type:none}
+  .step{display:contents}
+  .step figure{grid-row:1;grid-column:1/-1;position:relative;aspect-ratio:4/5;opacity:0;transition:opacity .7s ease;cursor:pointer}
+  .step.on figure{opacity:1;z-index:1}
+  .step figure:before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,transparent 55%,rgba(11,11,10,.85))}
+  .step figure:after{content:attr(data-n) "  " attr(data-l);position:absolute;left:18px;bottom:16px;z-index:2;font-stretch:125%;font-weight:600;font-size:1.5rem;text-transform:uppercase;letter-spacing:-.01em;white-space:pre}
+  .step p{grid-row:2;display:block;position:relative;margin-top:14px;padding-top:12px;min-height:46px;font:500 .56rem var(--m);letter-spacing:.04em;color:var(--mut);cursor:pointer}
+  .step p i{display:block;margin-bottom:3px;font-size:.6rem}
+  .step p:before,.step p:after{content:"";position:absolute;left:0;right:0;top:0;height:2px;background:rgba(255,255,255,.2)}
+  .step p:after{background:var(--y);transform:scaleX(0);transform-origin:left}
+  .step.done p:after{transform:none}
+  .step.on p{color:#fff}
+  .step.on p:after{animation:tsfill 2.8s linear forwards}
+  .rm .step.on p:after{animation:none;transform:none}
+}
+
+/* footer line on phones */
+.nb{white-space:nowrap}
+@media (max-width:699px){.legal{flex-direction:column;align-items:center;text-align:center;gap:14px}.legal>span{display:flex;flex-direction:column;gap:2px}}
 </style>
 <script>(function(){var d=document.documentElement;if(window.matchMedia&&matchMedia("(prefers-reduced-motion:reduce)").matches)d.className+=" rm"})();</script>
 </head>
@@ -584,11 +682,11 @@ footer .logo2{height:30px}
       <h2 class="h rv-l"><span class="lm"><span>Dig to concrete</span></span><span class="lm"><span style="--d:80ms">in under <span class="y">3 hours.</span></span></span></h2>
     </div>
     <div class="wrap" style="padding:0"><div class="steps-g">
-      <div class="step rv"><figure><img src="img/t1.jpg" alt="Open service trench freshly dug" loading="lazy"></figure><p><i>01</i>Dig</p></div>
-      <div class="step rv" style="--d:70ms"><figure><img src="img/t2.jpg" alt="Orange conduits laid in the trench" loading="lazy"></figure><p><i>02</i>Lay</p></div>
-      <div class="step rv" style="--d:140ms"><figure><img src="img/t3.jpg" alt="Sand tipped over the conduits" loading="lazy"></figure><p><i>03</i>Sand</p></div>
-      <div class="step rv" style="--d:210ms"><figure><img src="img/t4.jpg" alt="Warning tape laid and trench backfilled" loading="lazy"></figure><p><i>04</i>Backfill</p></div>
-      <div class="step rv" style="--d:280ms"><figure><img src="img/t5.jpg" alt="Trench finished with concrete" loading="lazy"></figure><p><i>05</i>Concrete</p></div>
+      <div class="step rv"><figure data-l="Dig" data-n="01"><img src="img/t1.jpg" alt="Open service trench freshly dug" loading="lazy"></figure><p><i>01</i>Dig</p></div>
+      <div class="step rv" style="--d:70ms"><figure data-l="Lay" data-n="02"><img src="img/t2.jpg" alt="Orange conduits laid in the trench" loading="lazy"></figure><p><i>02</i>Lay</p></div>
+      <div class="step rv" style="--d:140ms"><figure data-l="Sand" data-n="03"><img src="img/t3.jpg" alt="Sand tipped over the conduits" loading="lazy"></figure><p><i>03</i>Sand</p></div>
+      <div class="step rv" style="--d:210ms"><figure data-l="Backfill" data-n="04"><img src="img/t4.jpg" alt="Warning tape laid and trench backfilled" loading="lazy"></figure><p><i>04</i>Backfill</p></div>
+      <div class="step rv" style="--d:280ms"><figure data-l="Concrete" data-n="05"><img src="img/t5.jpg" alt="Trench finished with concrete" loading="lazy"></figure><p><i>05</i>Concrete</p></div>
     </div></div>
     <div class="wrap"><div class="rem">
       <p class="ch-n rv"><b>05</b>/ 05</p>
@@ -662,30 +760,47 @@ footer .logo2{height:30px}
   <div class="wrap"><p class="more rv">And many more.</p></div>
 </section>
 
+<!-- TESTIMONIALS (placeholder copy, to be replaced with real client reviews) -->
+<section class="tst" id="reviews">
+  <div class="wrap tst-g">
+    <div>
+      <p class="tag rv">Testimonials</p>
+      <h2 class="h rv-l"><span class="lm"><span>What Our</span></span><span class="lm"><span style="--d:80ms">Clients <span class="y">Say.</span></span></span></h2>
+      <div class="tst-nav rv"><button type="button" id="tsprev" aria-label="Previous review"><svg class="ar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></button><span id="tsn">01 / 04</span><button type="button" id="tsnext" aria-label="Next review"><svg class="ar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></button></div>
+    </div>
+    <div class="tst-stage rv" id="tst" style="--d:120ms">
+      <span class="tst-q" aria-hidden="true">&ldquo;</span>
+      <figure class="tq"><div class="stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</div><blockquote>Sample review. The basement was dug to level and handed over clean, two days ahead of our programme. The crew set out carefully and nothing had to be redone.</blockquote><figcaption><i>CN</i><div><b>Client name</b><span>Site Manager, Builder name</span></div><em>Sample</em></figcaption></figure>
+      <figure class="tq"><div class="stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</div><blockquote>Sample review. Detail excavation was cut exactly to the drawings. Our concreters walked straight in and started work the same morning.</blockquote><figcaption><i>CN</i><div><b>Client name</b><span>Director, Builder name</span></div><em>Sample</em></figcaption></figure>
+      <figure class="tq"><div class="stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</div><blockquote>Sample review. Tight site, hard sandstone and a short window. They turned up when they said they would and finished on time.</blockquote><figcaption><i>CN</i><div><b>Client name</b><span>Project Manager, Builder name</span></div><em>Sample</em></figcaption></figure>
+      <figure class="tq"><div class="stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</div><blockquote>Sample review. Clear pricing up front and no surprises on the invoice. We have used them on every job since.</blockquote><figcaption><i>CN</i><div><b>Client name</b><span>Owner, Builder name</span></div><em>Sample</em></figcaption></figure>
+      <div class="tst-bar"><i id="tsp"></i></div>
+    </div>
+  </div>
+</section>
+
 <!-- CONTACT -->
-<section class="contact" id="contact">
-  <div class="cbg"><img src="img/c_bg.jpg" alt="" loading="lazy"></div>
-  <div class="wrap cgrid">
+<section class="light ct" id="contact">
+  <div class="wrap ct-g">
     <div>
       <p class="tag rv">Contact</p>
-      <h2 class="h rv-l"><span class="lm"><span>When you need</span></span><span class="lm"><span style="--d:80ms">it done <span class="y">right.</span></span></span></h2>
+      <h2 class="h rv-l"><span class="lm"><span>When you need</span></span><span class="lm"><span style="--d:80ms">it done right.</span></span></h2>
       <p class="p rv">Send your plans and the site address and we will come back with a clear price.</p>
-      <a class="bigtel rv" href="tel:0450503180">0450 503 180</a>
-      <div class="cmeta rv">
-        <a href="mailto:info@jaymocivil.com.au">info@jaymocivil.com.au</a>
-        <a href="https://www.instagram.com/jaymocivil/" target="_blank" rel="noopener">Instagram @jaymocivil</a>
+      <div class="ct-rows rv">
+        <a href="tel:0450503180"><span>Call</span><b>0450 503 180</b><i><svg class="ar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></i></a>
+        <a href="mailto:info@jaymocivil.com.au"><span>Email</span><b>info@jaymocivil.com.au</b><i><svg class="ar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></i></a>
+        <a href="https://www.instagram.com/jaymocivil/" target="_blank" rel="noopener"><span>Instagram</span><b>@jaymocivil</b><i><svg class="ar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></i></a>
       </div>
     </div>
-    <div class="rv" style="--d:150ms" id="qbox">
+    <div class="ct-card rv" style="--d:150ms" id="qbox">
+      <p class="tag">Request a quote</p>
       <form novalidate>
         <div class="f2">
           <div><label for="fn">Name</label><input id="fn" name="name" autocomplete="name" required></div>
           <div><label for="fp">Mobile</label><input id="fp" name="phone" type="tel" inputmode="tel" autocomplete="tel" required></div>
         </div>
-        <div class="f2">
-          <div><label for="fs">Site suburb</label><input id="fs" name="suburb" autocomplete="address-level2"></div>
-          <div><label for="fj">Service</label><select id="fj" name="job"><option>Bulk excavation</option><option>Detail excavation</option><option>Shoring</option><option>Service trenches</option><option>Remediation works</option><option>Not sure yet</option></select></div>
-        </div>
+        <div><label for="fs">Site suburb</label><input id="fs" name="suburb" autocomplete="address-level2"></div>
+        <fieldset class="chips"><legend>Service</legend><label class="chip"><input type="radio" name="job" value="Bulk excavation" checked><span>Bulk excavation</span></label><label class="chip"><input type="radio" name="job" value="Detail excavation"><span>Detail excavation</span></label><label class="chip"><input type="radio" name="job" value="Shoring"><span>Shoring</span></label><label class="chip"><input type="radio" name="job" value="Service trenches"><span>Service trenches</span></label><label class="chip"><input type="radio" name="job" value="Remediation works"><span>Remediation works</span></label><label class="chip"><input type="radio" name="job" value="Not sure yet"><span>Not sure yet</span></label></fieldset>
         <div><label for="fm">Project details</label><textarea id="fm" name="msg"></textarea></div>
         <button class="btn btn-y" type="submit">Send Request</button>
         <p class="note">Plans or photos can be attached to the email that opens next.</p>
@@ -709,7 +824,7 @@ footer .logo2{height:30px}
       <div class="fl"><h3>Explore</h3><a href="#about">About</a><a href="#services">Services</a><a href="#work">Projects</a><a href="#contact">Contact</a></div>
       <div class="fl"><h3>Get in touch</h3><a href="tel:0450503180">0450 503 180</a><a href="mailto:info@jaymocivil.com.au">info@jaymocivil.com.au</a><a href="https://www.instagram.com/jaymocivil/" target="_blank" rel="noopener">Instagram</a></div>
     </div>
-    <p class="legal"><span>&copy; <span id="yr">2026</span> Jaymo Civil Pty Ltd. ABN 41 663 615 594. Sydney, NSW.</span><a href="https://trades.magolabs.in/" target="_blank" rel="noopener" title="Mago Labs: website design for trades and contractors">Website design by Mago Labs</a></p>
+    <p class="legal"><span><span class="nb">&copy; <span id="yr">2026</span> Jaymo Civil Pty Ltd.</span> <span class="nb">ABN 41 663 615 594.</span> <span class="nb">Sydney, NSW.</span></span><a href="https://trades.magolabs.in/" target="_blank" rel="noopener" title="Mago Labs: website design for trades and contractors">Website design by Mago Labs</a></p>
   </div>
 </footer>
 
@@ -885,6 +1000,27 @@ footer .logo2{height:30px}
       if(FINE){wC=window.pageYOffset;wT=clamp(y,0,maxY);gliding=true;req()}else window.scrollTo({top:y,behavior:'smooth'})})});
   }
 
+  /* buttons: arrow on primary actions, ripple from the click point */
+  $('.btn-y').forEach(function(b){if(!b.querySelector('svg'))b.insertAdjacentHTML('beforeend','<svg class="ar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg>')});
+  if(!RM)d.addEventListener('pointerdown',function(e){var el=e.target.closest&&e.target.closest('.btn');if(!el)return;var r=el.getBoundingClientRect(),dot=d.createElement('span');
+    dot.className='btn-ripple';dot.style.left=(e.clientX-r.left)+'px';dot.style.top=(e.clientY-r.top)+'px';el.appendChild(dot);setTimeout(function(){dot.remove()},700)},{passive:true});
+  /* trench steps (phones): plays through the five stages, tap a stage or the photo to move */
+  (function(){var st=$('.step'),k=0,tm=0,sec=d.querySelector('.steps');if(!st.length)return;
+    function go(i){k=(i+st.length)%st.length;st.forEach(function(e,n){e.classList.toggle('on',n===k);e.classList.toggle('done',n<k)})}
+    function play(on){clearInterval(tm);if(on&&!RM&&innerWidth<940)tm=setInterval(function(){go(k+1)},2800)}
+    go(0);st.forEach(function(e,n){e.querySelector('p').addEventListener('click',function(){go(n);play(true)});e.querySelector('figure').addEventListener('click',function(){if(innerWidth<940){go(k+1);play(true)}})});
+    if('IntersectionObserver' in window)new IntersectionObserver(function(en){play(en[0].isIntersecting)},{threshold:.25}).observe(sec)})();
+  /* testimonials: fades between reviews, with arrows, swipe and a timed bar */
+  (function(){var q=$('.tq'),k=0,tm=0,vis=false,hold=false,stage=id('tst'),bar=id('tsp'),num=id('tsn'),sx=null;if(!q.length)return;
+    function arm(){clearTimeout(tm);bar.style.animation='none';if(RM||!vis||hold)return;void bar.offsetWidth;bar.style.animation='tsfill 6.5s linear forwards';tm=setTimeout(function(){go(k+1)},6500)}
+    function go(i){k=(i+q.length)%q.length;q.forEach(function(e,n){e.classList.toggle('on',n===k);e.setAttribute('aria-hidden',n===k?'false':'true')});num.textContent='0'+(k+1)+' / 0'+q.length;arm()}
+    id('tsprev').addEventListener('click',function(){go(k-1)});id('tsnext').addEventListener('click',function(){go(k+1)});
+    stage.addEventListener('mouseenter',function(){hold=true;arm()});stage.addEventListener('mouseleave',function(){hold=false;arm()});
+    stage.addEventListener('pointerdown',function(e){sx=e.clientX});
+    stage.addEventListener('pointerup',function(e){if(sx===null)return;var dx=e.clientX-sx;sx=null;if(Math.abs(dx)>40)go(k+(dx<0?1:-1))});
+    stage.addEventListener('pointercancel',function(){sx=null});
+    if('IntersectionObserver' in window)new IntersectionObserver(function(en){vis=en[0].isIntersecting;arm()},{threshold:.3}).observe(stage);else vis=true;
+    go(0)})();
   /* quote form opens a pre-filled email */
   var box=id('qbox'),form=box.querySelector('form');
   form.addEventListener('submit',function(e){

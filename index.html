@@ -534,6 +534,10 @@ footer .logo2{height:30px}
 /* footer line on phones */
 .nb{white-space:nowrap}
 @media (max-width:699px){.legal{flex-direction:column;align-items:center;text-align:center;gap:14px}.legal>span{display:flex;flex-direction:column;gap:2px}}
+.ct-card select{border-bottom-color:rgba(255,255,255,.22);cursor:pointer}
+.ct-card textarea{min-height:72px}
+.ct-card form{gap:20px}
+.ct-card .f2:first-of-type{grid-template-columns:1fr 1fr}
 </style>
 <script>(function(){var d=document.documentElement;if(window.matchMedia&&matchMedia("(prefers-reduced-motion:reduce)").matches)d.className+=" rm"})();</script>
 </head>
@@ -799,11 +803,12 @@ footer .logo2{height:30px}
           <div><label for="fn">Name</label><input id="fn" name="name" autocomplete="name" required></div>
           <div><label for="fp">Mobile</label><input id="fp" name="phone" type="tel" inputmode="tel" autocomplete="tel" required></div>
         </div>
-        <div><label for="fs">Site suburb</label><input id="fs" name="suburb" autocomplete="address-level2"></div>
-        <fieldset class="chips"><legend>Service</legend><label class="chip"><input type="radio" name="job" value="Bulk excavation" checked><span>Bulk excavation</span></label><label class="chip"><input type="radio" name="job" value="Detail excavation"><span>Detail excavation</span></label><label class="chip"><input type="radio" name="job" value="Shoring"><span>Shoring</span></label><label class="chip"><input type="radio" name="job" value="Service trenches"><span>Service trenches</span></label><label class="chip"><input type="radio" name="job" value="Remediation works"><span>Remediation works</span></label><label class="chip"><input type="radio" name="job" value="Not sure yet"><span>Not sure yet</span></label></fieldset>
+        <div class="f2">
+          <div><label for="fs">Site suburb</label><input id="fs" name="suburb" autocomplete="address-level2"></div>
+          <div><label for="fj">Service</label><select id="fj" name="job"><option>Bulk excavation</option><option>Detail excavation</option><option>Shoring</option><option>Service trenches</option><option>Remediation works</option><option>Not sure yet</option></select></div>
+        </div>
         <div><label for="fm">Project details</label><textarea id="fm" name="msg"></textarea></div>
         <button class="btn btn-y" type="submit">Send Request</button>
-        <p class="note">Plans or photos can be attached to the email that opens next.</p>
       </form>
       <div class="done" role="status">
         <h3 class="h">Thank you.</h3>

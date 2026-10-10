@@ -220,7 +220,7 @@ footer{background:var(--ink);border-top:1px solid var(--ld);padding:54px 0 calc(
 .fg{display:grid;gap:30px}
 footer .logo2{height:26px;width:auto}
 footer .slog{margin-top:16px;font:500 .64rem var(--m);letter-spacing:.14em;text-transform:uppercase}
-.fl h4{font:500 .62rem var(--m);letter-spacing:.14em;text-transform:uppercase;color:#7b7872;margin-bottom:8px}
+.fl h3{font:500 .62rem var(--m);letter-spacing:.14em;text-transform:uppercase;color:#7b7872;margin-bottom:8px}
 .fl a{display:block;padding:6px 0;text-decoration:none;color:#dedbd4}.fl a:hover{color:var(--y)}
 .legal{margin-top:44px;padding-top:20px;border-top:1px solid var(--ld);font:400 .7rem var(--m);color:#7b7872;line-height:1.8}
 .legal a{text-underline-offset:3px}
@@ -425,6 +425,14 @@ footer .logo2{height:30px}
 .ringwrap.drag{cursor:grabbing}
 .ringwrap img{-webkit-user-drag:none;pointer-events:none}
 .rm .ringwrap{touch-action:auto;cursor:auto}
+/* hero copy is painted from the first frame (under the intro), then animates in when the intro lifts */
+#herot .rv{opacity:1;transform:none;transition:none}
+#herot .lm>span{transform:none;transition:none}
+#herot.in .rv{animation:hin 1.1s var(--ease) backwards;animation-delay:var(--d,0ms)}
+#herot.in .lm>span{animation:hln 1.15s var(--ease) backwards;animation-delay:var(--d,0ms)}
+@keyframes hin{from{opacity:0;transform:translateY(18px)}}
+@keyframes hln{from{transform:translateY(108%)}}
+.rm #herot .rv,.rm #herot .lm>span{animation:none}
 </style>
 <script>(function(){var d=document.documentElement;if(window.matchMedia&&matchMedia("(prefers-reduced-motion:reduce)").matches)d.className+=" rm"})();</script>
 </head>
@@ -500,7 +508,7 @@ footer .logo2{height:30px}
 <!-- STATEMENTS: pinned, full screen -->
 <div class="pin say" id="say">
   <div class="stick">
-    <div class="say-bg on"><img src="img/q1.jpg" alt="Duplex basement with detailed footings, Roseville"></div>
+    <div class="say-bg on"><img src="img/q1.jpg" loading="lazy" alt="Duplex basement with detailed footings, Roseville"></div>
     <div class="say-bg"><img src="img/q2.jpg" alt="Basement footings cut into sandstone, Lane Cove" loading="lazy"></div>
     <div class="say-bg"><img src="img/q3.jpg" alt="Basement with detailed trenches, Belmore" loading="lazy"></div>
     <div class="say-t">
@@ -594,15 +602,15 @@ footer .logo2{height:30px}
       <h2 class="h">Built across Sydney.</h2>
     </div>
     <div class="ringwrap" id="ringwrap"><div class="ring" id="ring">
-      <figure class="rc"><img src="img/p_belmore.jpg" alt="Basement with detailed footing trenches, Belmore" fetchpriority="low"><figcaption><b>Belmore</b><span>Bulk / Detail / Stormwater</span><i>For Imperium Build</i></figcaption></figure>
-      <figure class="rc"><img src="img/p_marayong.jpg" alt="Aerial view of a footing grid, Marayong" fetchpriority="low"><figcaption><b>Marayong</b><span>160 piers / 600m of footings / 4 days</span><i>For Stanford Constructions</i></figcaption></figure>
-      <figure class="rc"><img src="img/p_roseville.jpg" alt="Duplex basement with footings, Roseville" fetchpriority="low"><figcaption><b>Roseville</b><span>Shoring / Bulk / Detail / Stormwater</span><i>Duplex basement</i></figcaption></figure>
-      <figure class="rc"><img src="img/p_willoughby.jpg" alt="Aerial view of detailed excavation, Willoughby" fetchpriority="low"><figcaption><b>Willoughby</b><span>102 piers / 13 RLs / 350m of footings</span><i>For DC Projects</i></figcaption></figure>
-      <figure class="rc"><img src="img/p_lanecove.jpg" alt="Completed basement, Lane Cove" fetchpriority="low"><figcaption><b>Lane Cove</b><span>Bulk / Detail / Stormwater</span><i>For Primrose Projects</i></figcaption></figure>
-      <figure class="rc"><img src="img/p_panania.jpg" alt="Aerial view of footings with steel placed, Panania" fetchpriority="low"><figcaption><b>Panania</b><span>97 piers / 250m of footings</span><i>For Estero Building Group</i></figcaption></figure>
-      <figure class="rc"><img src="img/p_kogarah.jpg" alt="Basement excavation, Kogarah Bay" fetchpriority="low"><figcaption><b>Kogarah Bay</b><span>Shoring / Bulk / Detail</span><i>For Buildline Projects</i></figcaption></figure>
-      <figure class="rc"><img src="img/p_castlehill.jpg" alt="Crew working in a basement, Castle Hill" fetchpriority="low"><figcaption><b>Castle Hill</b><span>Basement detail excavation</span></figcaption></figure>
-      <figure class="rc"><img src="img/p_concord.jpg" alt="Bulk excavated basement, Concord West" fetchpriority="low"><figcaption><b>Concord West</b><span>1,600m&sup3; bulk excavation</span></figcaption></figure>
+      <figure class="rc"><img src="img/p_belmore.jpg" alt="Basement with detailed footing trenches, Belmore" loading="lazy"><figcaption><b>Belmore</b><span>Bulk / Detail / Stormwater</span><i>For Imperium Build</i></figcaption></figure>
+      <figure class="rc"><img src="img/p_marayong.jpg" alt="Aerial view of a footing grid, Marayong" loading="lazy"><figcaption><b>Marayong</b><span>160 piers / 600m of footings / 4 days</span><i>For Stanford Constructions</i></figcaption></figure>
+      <figure class="rc"><img src="img/p_roseville.jpg" alt="Duplex basement with footings, Roseville" loading="lazy"><figcaption><b>Roseville</b><span>Shoring / Bulk / Detail / Stormwater</span><i>Duplex basement</i></figcaption></figure>
+      <figure class="rc"><img src="img/p_willoughby.jpg" alt="Aerial view of detailed excavation, Willoughby" loading="lazy"><figcaption><b>Willoughby</b><span>102 piers / 13 RLs / 350m of footings</span><i>For DC Projects</i></figcaption></figure>
+      <figure class="rc"><img src="img/p_lanecove.jpg" alt="Completed basement, Lane Cove" loading="lazy"><figcaption><b>Lane Cove</b><span>Bulk / Detail / Stormwater</span><i>For Primrose Projects</i></figcaption></figure>
+      <figure class="rc"><img src="img/p_panania.jpg" alt="Aerial view of footings with steel placed, Panania" loading="lazy"><figcaption><b>Panania</b><span>97 piers / 250m of footings</span><i>For Estero Building Group</i></figcaption></figure>
+      <figure class="rc"><img src="img/p_kogarah.jpg" alt="Basement excavation, Kogarah Bay" loading="lazy"><figcaption><b>Kogarah Bay</b><span>Shoring / Bulk / Detail</span><i>For Buildline Projects</i></figcaption></figure>
+      <figure class="rc"><img src="img/p_castlehill.jpg" alt="Crew working in a basement, Castle Hill" loading="lazy"><figcaption><b>Castle Hill</b><span>Basement detail excavation</span></figcaption></figure>
+      <figure class="rc"><img src="img/p_concord.jpg" alt="Bulk excavated basement, Concord West" loading="lazy"><figcaption><b>Concord West</b><span>1,600m&sup3; bulk excavation</span></figcaption></figure>
     </div></div>
     <div class="work-foot"><a href="https://www.instagram.com/jaymocivil/" target="_blank" rel="noopener">More on Instagram</a><span class="wcount" id="wcount">01 / 09</span><div class="work-prog"><i id="workp"></i></div></div>
   </div>
@@ -645,8 +653,8 @@ footer .logo2{height:30px}
     <p class="p rv">The Sydney builders and developers who bring us back, job after job.</p>
   </div>
   <div class="mq rv">
-    <div class="mq-r"><div class="lg"><img src="img/b_buildline.png" alt="Buildline Projects" fetchpriority="low" decoding="async"></div><div class="lg"><img src="img/b_cna.png" alt="CNA Building Services Group" fetchpriority="low" decoding="async"></div><div class="lg"><img src="img/b_icon.png" alt="Icon Living" fetchpriority="low" decoding="async"></div><div class="lg"><img src="img/b_individual.png" alt="Individual Builders" fetchpriority="low" decoding="async"></div><div class="lg"><img src="img/b_jema.png" alt="Jema Projects" fetchpriority="low" decoding="async"></div><div class="lg"><img src="img/b_m.png" alt="Builder" fetchpriority="low" decoding="async"></div><div class="lg"><img src="img/b_orison.png" alt="Orison Homes" fetchpriority="low" decoding="async"></div><div class="lg"><img src="img/b_sec.png" alt="SEC Structured Engineering and Construction" fetchpriority="low" decoding="async"></div><div class="lg dup" aria-hidden="true"><img src="img/b_buildline.png" alt="" fetchpriority="low" decoding="async"></div><div class="lg dup" aria-hidden="true"><img src="img/b_cna.png" alt="" fetchpriority="low" decoding="async"></div><div class="lg dup" aria-hidden="true"><img src="img/b_icon.png" alt="" fetchpriority="low" decoding="async"></div><div class="lg dup" aria-hidden="true"><img src="img/b_individual.png" alt="" fetchpriority="low" decoding="async"></div><div class="lg dup" aria-hidden="true"><img src="img/b_jema.png" alt="" fetchpriority="low" decoding="async"></div><div class="lg dup" aria-hidden="true"><img src="img/b_m.png" alt="" fetchpriority="low" decoding="async"></div><div class="lg dup" aria-hidden="true"><img src="img/b_orison.png" alt="" fetchpriority="low" decoding="async"></div><div class="lg dup" aria-hidden="true"><img src="img/b_sec.png" alt="" fetchpriority="low" decoding="async"></div></div>
-    <div class="mq-r b"><div class="lg"><img src="img/b_cja.png" alt="CJA Construction" fetchpriority="low" decoding="async"></div><div class="lg"><img src="img/b_estero.png" alt="Estero Building Group" fetchpriority="low" decoding="async"></div><div class="lg"><img src="img/b_imperium.png" alt="Imperium Build" fetchpriority="low" decoding="async"></div><div class="lg"><img src="img/b_jcd.png" alt="JCD Building" fetchpriority="low" decoding="async"></div><div class="lg"><img src="img/b_justbuilt.png" alt="Just Built Projects" fetchpriority="low" decoding="async"></div><div class="lg"><img src="img/b_nsw.png" alt="NSW Design and Construction" fetchpriority="low" decoding="async"></div><div class="lg"><img src="img/b_primrose.png" alt="Primrose Projects" fetchpriority="low" decoding="async"></div><div class="lg"><img src="img/b_trd.png" alt="Tension Reinforced Developments" fetchpriority="low" decoding="async"></div><div class="lg dup" aria-hidden="true"><img src="img/b_cja.png" alt="" fetchpriority="low" decoding="async"></div><div class="lg dup" aria-hidden="true"><img src="img/b_estero.png" alt="" fetchpriority="low" decoding="async"></div><div class="lg dup" aria-hidden="true"><img src="img/b_imperium.png" alt="" fetchpriority="low" decoding="async"></div><div class="lg dup" aria-hidden="true"><img src="img/b_jcd.png" alt="" fetchpriority="low" decoding="async"></div><div class="lg dup" aria-hidden="true"><img src="img/b_justbuilt.png" alt="" fetchpriority="low" decoding="async"></div><div class="lg dup" aria-hidden="true"><img src="img/b_nsw.png" alt="" fetchpriority="low" decoding="async"></div><div class="lg dup" aria-hidden="true"><img src="img/b_primrose.png" alt="" fetchpriority="low" decoding="async"></div><div class="lg dup" aria-hidden="true"><img src="img/b_trd.png" alt="" fetchpriority="low" decoding="async"></div></div>
+    <div class="mq-r"><div class="lg"><img src="img/b_buildline.png" alt="Buildline Projects" loading="lazy" decoding="async"></div><div class="lg"><img src="img/b_cna.png" alt="CNA Building Services Group" loading="lazy" decoding="async"></div><div class="lg"><img src="img/b_icon.png" alt="Icon Living" loading="lazy" decoding="async"></div><div class="lg"><img src="img/b_individual.png" alt="Individual Builders" loading="lazy" decoding="async"></div><div class="lg"><img src="img/b_jema.png" alt="Jema Projects" loading="lazy" decoding="async"></div><div class="lg"><img src="img/b_m.png" alt="Builder" loading="lazy" decoding="async"></div><div class="lg"><img src="img/b_orison.png" alt="Orison Homes" loading="lazy" decoding="async"></div><div class="lg"><img src="img/b_sec.png" alt="SEC Structured Engineering and Construction" loading="lazy" decoding="async"></div><div class="lg dup" aria-hidden="true"><img src="img/b_buildline.png" alt="" loading="lazy" decoding="async"></div><div class="lg dup" aria-hidden="true"><img src="img/b_cna.png" alt="" loading="lazy" decoding="async"></div><div class="lg dup" aria-hidden="true"><img src="img/b_icon.png" alt="" loading="lazy" decoding="async"></div><div class="lg dup" aria-hidden="true"><img src="img/b_individual.png" alt="" loading="lazy" decoding="async"></div><div class="lg dup" aria-hidden="true"><img src="img/b_jema.png" alt="" loading="lazy" decoding="async"></div><div class="lg dup" aria-hidden="true"><img src="img/b_m.png" alt="" loading="lazy" decoding="async"></div><div class="lg dup" aria-hidden="true"><img src="img/b_orison.png" alt="" loading="lazy" decoding="async"></div><div class="lg dup" aria-hidden="true"><img src="img/b_sec.png" alt="" loading="lazy" decoding="async"></div></div>
+    <div class="mq-r b"><div class="lg"><img src="img/b_cja.png" alt="CJA Construction" loading="lazy" decoding="async"></div><div class="lg"><img src="img/b_estero.png" alt="Estero Building Group" loading="lazy" decoding="async"></div><div class="lg"><img src="img/b_imperium.png" alt="Imperium Build" loading="lazy" decoding="async"></div><div class="lg"><img src="img/b_jcd.png" alt="JCD Building" loading="lazy" decoding="async"></div><div class="lg"><img src="img/b_justbuilt.png" alt="Just Built Projects" loading="lazy" decoding="async"></div><div class="lg"><img src="img/b_nsw.png" alt="NSW Design and Construction" loading="lazy" decoding="async"></div><div class="lg"><img src="img/b_primrose.png" alt="Primrose Projects" loading="lazy" decoding="async"></div><div class="lg"><img src="img/b_trd.png" alt="Tension Reinforced Developments" loading="lazy" decoding="async"></div><div class="lg dup" aria-hidden="true"><img src="img/b_cja.png" alt="" loading="lazy" decoding="async"></div><div class="lg dup" aria-hidden="true"><img src="img/b_estero.png" alt="" loading="lazy" decoding="async"></div><div class="lg dup" aria-hidden="true"><img src="img/b_imperium.png" alt="" loading="lazy" decoding="async"></div><div class="lg dup" aria-hidden="true"><img src="img/b_jcd.png" alt="" loading="lazy" decoding="async"></div><div class="lg dup" aria-hidden="true"><img src="img/b_justbuilt.png" alt="" loading="lazy" decoding="async"></div><div class="lg dup" aria-hidden="true"><img src="img/b_nsw.png" alt="" loading="lazy" decoding="async"></div><div class="lg dup" aria-hidden="true"><img src="img/b_primrose.png" alt="" loading="lazy" decoding="async"></div><div class="lg dup" aria-hidden="true"><img src="img/b_trd.png" alt="" loading="lazy" decoding="async"></div></div>
   </div>
   <div class="wrap"><p class="more rv">And many more.</p></div>
 </section>
@@ -691,12 +699,12 @@ footer .logo2{height:30px}
 
 <footer>
   <div class="fcard">
-    <div class="fmark" aria-hidden="true"><img src="img/marky.png" alt=""></div>
+    <div class="fmark" aria-hidden="true"><img src="img/marky.png" alt="" width="210" height="210" loading="lazy"></div>
     <p class="fbig">Committed to <em>excellence.</em></p>
     <div class="fg">
       <div><img class="logo2" src="img/logo.png" alt="Jaymo Civil" width="150" height="30"><p class="fdesc">Excavation and civil contractors working across Sydney, NSW.</p></div>
-      <div class="fl"><h4>Explore</h4><a href="#about">About</a><a href="#services">Services</a><a href="#work">Projects</a><a href="#contact">Contact</a></div>
-      <div class="fl"><h4>Get in touch</h4><a href="tel:0450503180">0450 503 180</a><a href="mailto:info@jaymocivil.com.au">info@jaymocivil.com.au</a><a href="https://www.instagram.com/jaymocivil/" target="_blank" rel="noopener">Instagram</a></div>
+      <div class="fl"><h3>Explore</h3><a href="#about">About</a><a href="#services">Services</a><a href="#work">Projects</a><a href="#contact">Contact</a></div>
+      <div class="fl"><h3>Get in touch</h3><a href="tel:0450503180">0450 503 180</a><a href="mailto:info@jaymocivil.com.au">info@jaymocivil.com.au</a><a href="https://www.instagram.com/jaymocivil/" target="_blank" rel="noopener">Instagram</a></div>
     </div>
     <p class="legal">&copy; <span id="yr">2026</span> Jaymo Civil Pty Ltd. ABN 41 663 615 594. Sydney, NSW. Website by <a href="https://magolabs.in" target="_blank" rel="noopener">Mago Labs</a>.</p>
   </div>
@@ -839,7 +847,9 @@ footer .logo2{height:30px}
   if(RM){seqs.forEach(function(q){q.load();q.cur=q.tg=q.still;q.want()});hd.classList.add('s');
     setTimeout(function(){seqs.forEach(function(q){q.size();q.want();q.draw()})},500)}
   else{
-    bySeq.hero.load();
+    /* the hero footage is fetched on the first sign of a visitor, so it never competes with first paint */
+    var hgo=function(){if(hgo.d)return;hgo.d=1;bySeq.hero.load();req()};
+    ['pointerdown','pointermove','touchstart','wheel','keydown','scroll'].forEach(function(t){addEventListener(t,hgo,{passive:true,once:true})});
     if(FINE)addEventListener('wheel',function(e){
       if(e.ctrlKey||window.__lock)return;var t=e.target;if(t&&t.closest&&t.closest('textarea,select'))return;
       e.preventDefault();if(!gliding){wC=window.pageYOffset;wT=wC}
@@ -848,7 +858,7 @@ footer .logo2{height:30px}
     addEventListener('resize',function(){measure();req()});
     update(window.pageYOffset);req();
     if(d.fonts&&d.fonts.ready)d.fonts.ready.then(function(){measure();req()});
-    addEventListener('load',function(){measure();req();setTimeout(function(){chs[0].seq.load()},1500)});
+    addEventListener('load',function(){measure();req()});
     /* projects ring: drag with the mouse or swipe sideways to turn it, then settle on the nearest job */
     var rw=id('ringwrap'),dg=null;
     function rstep(){return (M.work.h-vh)/(rcs.length-1)}
@@ -861,6 +871,10 @@ footer .logo2{height:30px}
       if(FINE){wC=window.pageYOffset;wT=y;gliding=true;req()}else window.scrollTo({top:y,behavior:'smooth'})}
     addEventListener('pointerup',rend);addEventListener('pointercancel',rend);
     rw.addEventListener('dragstart',function(e){e.preventDefault()});
+    /* photos further down the page are only fetched as their section comes near */
+    if('IntersectionObserver' in window)[['#say','.say-bg img'],['#work','.rc img'],['#builders','.lg img']].forEach(function(p){var el=d.querySelector(p[0]);
+      var o=new IntersectionObserver(function(en){if(en[0].isIntersecting){o.disconnect();$(p[1],el).forEach(function(i){i.loading='eager'})}},{rootMargin:'1600px 0px'});o.observe(el)});
+    else $('img[loading=lazy]').forEach(function(i){i.loading='eager'});
     /* keyboard, scrollbar and menu links cancel any glide in progress */
     addEventListener('keydown',function(){gliding=false});addEventListener('mousedown',function(){gliding=false});
     $('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(e){var el=d.querySelector(a.getAttribute('href'));if(!el)return;e.preventDefault();

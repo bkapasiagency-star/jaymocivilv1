@@ -582,6 +582,11 @@ form.busy #fbt:after{content:"";display:inline-block;width:1.2em;text-align:left
 @keyframes dnline{to{transform:none}}
 @keyframes dnup{to{opacity:1;transform:none}}
 .rm .sent .done,.rm .sent .dn-ok{animation:none}.rm .dn-ok svg{stroke-dashoffset:0}.rm .dn-steps li{opacity:1;transform:none;animation:none}.rm .dn-steps:after{transform:none;animation:none}
+/* footer mark: whole, round and beside the slogan, never cut by the card edge */
+.fmark{display:none}
+.fmark img{width:100%;height:auto;display:block}
+@media (min-width:940px){.fmark{display:block;right:84px;top:96px;width:clamp(150px,13vw,230px);opacity:.2}}
+.rm .fmark{animation:none}
 </style>
 <script>(function(){var d=document.documentElement;if(window.matchMedia&&matchMedia("(prefers-reduced-motion:reduce)").matches)d.className+=" rm"})();</script>
 </head>

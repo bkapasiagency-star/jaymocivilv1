@@ -95,6 +95,23 @@
    "img": "img/t5.jpg"
   }
  ],
+ "trench": {
+  "label": "On site",
+  "heading": "Dig to concrete\nin under 3 hours.",
+  "accent": "3 hours."
+ },
+ "civilSection": {
+  "heading": "25 acres.\nOne subdivision.",
+  "text": "Services trenching and road crossings across a full subdivision, delivered by the Jaymo Civil crew.",
+  "photos": [
+   "img/s1.jpg",
+   "img/s2.jpg",
+   "img/s3.jpg",
+   "img/s4.jpg",
+   "img/s5.jpg",
+   "img/s6.jpg"
+  ]
+ },
  "projects": [
   {
    "img": "img/p_belmore.jpg",

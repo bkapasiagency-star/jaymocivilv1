@@ -81,7 +81,7 @@ nav a:hover:after{transform:scaleX(1)}
 .scrub{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;max-width:none}
 
 /* HERO */
-.hero{height:340vh}
+.hero{height:400vh}
 .hero .stick{background:var(--bone)}
 .hero-film{position:absolute;inset:0;background:#000;will-change:clip-path}
 .hero-film:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,11,10,.5),transparent 28%,transparent 45%,rgba(11,11,10,.82))}
@@ -538,6 +538,11 @@ footer .logo2{height:30px}
 .ct-card textarea{min-height:72px}
 .ct-card form{gap:20px}
 .ct-card .f2:first-of-type{grid-template-columns:1fr 1fr}
+.iris-l{position:absolute;left:0;right:0;top:calc(50% - 9vh + min(13vw,75px) + 30px);margin:0 auto;padding:0 16px;text-align:center;color:var(--ink);font-size:clamp(1.15rem,5vw,3.6rem);opacity:0}
+.iris-l .lm>span{transition:none;white-space:nowrap}
+.yband-l{display:none}
+.rm .yband-l{display:block;font-size:clamp(1.3rem,3vw,2.4rem);padding:20px 0 26px}
+.rm .yband-l[aria-hidden]{speak:auto}
 </style>
 <script>(function(){var d=document.documentElement;if(window.matchMedia&&matchMedia("(prefers-reduced-motion:reduce)").matches)d.className+=" rm"})();</script>
 </head>
@@ -573,7 +578,7 @@ footer .logo2{height:30px}
     <div class="hero-film" id="hfilm">
       <canvas class="scrub" data-q="hero" data-still role="img" aria-label="Excavator working on a cleared site, seen from above"></canvas>
     </div>
-    <div class="hero-iris" id="iris" aria-hidden="true"><img decoding="async" src="img/markk.png" alt="" width="210" height="210"></div>
+    <div class="hero-iris" id="iris"><img decoding="async" src="img/markk.png" alt="" aria-hidden="true" width="210" height="210"><p class="h iris-l" id="irl"><span class="lm"><span>Groundwork that keeps</span></span><span class="lm"><span>your project moving.</span></span></p></div>
     <div class="hero-t" id="herot">
       <div>
         <p class="tag rv">Excavation and Civil / Sydney NSW</p>
@@ -591,6 +596,7 @@ footer .logo2{height:30px}
 <!-- NUMBERS -->
 <section class="yband" aria-label="Jaymo Civil in numbers">
   <div class="wrap">
+    <p class="h yband-l" aria-hidden="true">Groundwork that keeps your project moving.</p>
     <div class="stats">
       <div class="stat rv"><b data-count="2012" data-plain="1">2012</b><span>Working in Sydney since</span></div>
       <div class="stat rv" style="--d:80ms"><b data-count="160">160</b><span>Piers drilled in 4 days</span></div>
@@ -901,7 +907,7 @@ footer .logo2{height:30px}
   /* ---------- scroll engine ---------- */
   var hd=id('hd'),prog=id('prog'),mb=id('mb'),hero=id('hero'),hfilm=id('hfilm'),
       chs=$('[data-ch]').map(function(el){var cv=el.querySelector('canvas');return {el:el,film:el.querySelector('.ch-film'),inn:el.querySelector('.ch-in'),bar:el.querySelector('.ch-bar i'),seq:bySeq[cv.getAttribute('data-q')]}}),
-      hs1=id('hs1'),hs2=id('hs2'),iris=id('iris'),imark=iris.querySelector('img'),herop=$('.tag,.p,.hero-cta',herot),
+      hs1=id('hs1'),hs2=id('hs2'),iris=id('iris'),imark=iris.querySelector('img'),irl=id('irl'),irls=$('.lm>span',irl),herop=$('.tag,.p,.hero-cta',herot),
       say=id('say'),sayBg=$('.say-bg',say),sayIt=$('.say-item',say),sayn=id('sayn'),sayp=id('sayp'),sayI=-1,
       work=id('work'),ring=id('ring'),rcs=$('.rc',ring),workp=id('workp'),wcount=id('wcount'),
       vh=innerHeight,vw=innerWidth,wI=-1,RADIUS=600,STEP=360/rcs.length,raf=0,M={},maxY=0,stT=0,stH=1;
@@ -917,14 +923,16 @@ footer .logo2{height:30px}
     /* hero: camera pulls back, then the film settles into a frame on white */
     if(y<M.hero.t+M.hero.h){
       var hs=bySeq.hero,p=pr(M.hero,y);
-      hs.tg=clamp(p/.86,0,1)*(hs.n-1);
+      hs.tg=clamp(p/.74,0,1)*(hs.n-1);
       /* the two headline lines slide apart, then a white circle opens on the logo mark */
-      var sp2=io2(clamp((p-.5)/.24,0,1));
+      var sp2=io2(clamp((p-.43)/.2,0,1));
       hs1.style.transform='translate3d('+(-sp2*110).toFixed(2)+'vw,0,0)';hs2.style.transform='translate3d('+(sp2*110).toFixed(2)+'vw,0,0)';
-      var f=clamp((p-.5)/.16,0,1);herop.forEach(function(e){e.style.opacity=(1-f).toFixed(3)});herot.style.pointerEvents=f>.5?'none':'';
-      var w=io2(clamp((p-.72)/.28,0,1));
+      var f=clamp((p-.43)/.14,0,1);herop.forEach(function(e){e.style.opacity=(1-f).toFixed(3)});herot.style.pointerEvents=f>.5?'none':'';
+      var w=io2(clamp((p-.62)/.22,0,1)),lr=io2(clamp((p-.82)/.12,0,1));
       iris.style.clipPath='circle('+(w*75).toFixed(2)+'% at 50% 50%)';
-      imark.style.transform='scale('+(.4+w*.6).toFixed(3)+') rotate('+((1-w)*-90).toFixed(1)+'deg)';
+      imark.style.transform='translate3d(0,'+(-lr*9).toFixed(2)+'vh,0) scale('+(.4+w*.6).toFixed(3)+') rotate('+((1-w)*-90).toFixed(1)+'deg)';
+      /* once the circle is fully open, the second line rises in under the mark */
+      irl.style.opacity=lr.toFixed(3);irls[0].style.transform='translate3d(0,'+((1-lr)*108).toFixed(1)+'%,0)';irls[1].style.transform='translate3d(0,'+((1-io2(clamp((p-.85)/.12,0,1)))*108).toFixed(1)+'%,0)';
     }
     /* about */
     var sp=clamp((y+vh*.82-stT)/(stH+vh*.32),0,1),on=Math.round(sp*words.length);

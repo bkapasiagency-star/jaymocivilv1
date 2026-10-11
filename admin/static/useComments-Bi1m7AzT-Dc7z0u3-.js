@@ -1,0 +1,1 @@
+import{r as e}from"./rolldown-runtime-hePW80VL.js";import{Lf as t}from"./PerspectiveProvider-DdyhoQYz-9tK3L217.js";import{n}from"./jsx-runtime-BNakU3Ej.js";var r=e(n(),1);function i(){let e=(0,r.useContext)(t);if(!e)throw Error(`useComments must be used within a CommentsProvider`);return e}export{i as t};

@@ -1,0 +1,220 @@
+{
+ "contact": {
+  "phone": "0450 503 180",
+  "email": "info@jaymocivil.com.au",
+  "instagram": "jaymocivil"
+ },
+ "band": [
+  {
+   "value": "2012",
+   "label": "Working in Sydney since"
+  },
+  {
+   "value": "160",
+   "label": "Piers drilled in 4 days"
+  },
+  {
+   "value": "1,600m\u00b3",
+   "label": "Single basement excavated"
+  },
+  {
+   "value": "3.5km",
+   "label": "Trenching on one subdivision"
+  }
+ ],
+ "civil": [
+  {
+   "value": "3.5km",
+   "label": "3 step trenching"
+  },
+  {
+   "value": "15",
+   "label": "Main services road crossings"
+  },
+  {
+   "value": "07",
+   "label": "Electrical substations"
+  },
+  {
+   "value": "600t",
+   "label": "Clean sand backfill"
+  },
+  {
+   "value": "32",
+   "label": "Light towers"
+  },
+  {
+   "value": "25",
+   "label": "Acres"
+  }
+ ],
+ "services": {
+  "bulk": {
+   "description": "Site cuts and basement digs through soil, clay and Sydney sandstone, taken down to design level.",
+   "highlight": "1,600m\u00b3 basement",
+   "highlightCaption": "Concord West"
+  },
+  "detail": {
+   "description": "Piers, footings, beams and pads, cut clean and exactly where the engineer drew them.",
+   "highlight": "160 piers. 600m of footings.",
+   "highlightCaption": "Completed in 4 days, Marayong"
+  },
+  "shoring": {
+   "description": "Temporary shoring systems that hold the cut, protect the neighbours and keep the site safe.",
+   "highlight": "Temporary shoring",
+   "highlightCaption": "Installed at Roseville and Kogarah Bay"
+  },
+  "trenches": {
+   "description": "Stormwater, sewer and electrical trenching, dug to fall and depth.",
+   "highlight": "3.5km of 3 step trenching",
+   "highlightCaption": "One 25 acre subdivision"
+  },
+  "remediation": {
+   "description": "Unsuitable and contaminated material removed and managed, so the site is ready to build on."
+  }
+ },
+ "steps": [
+  {
+   "label": "Dig",
+   "img": "img/t1.jpg"
+  },
+  {
+   "label": "Lay",
+   "img": "img/t2.jpg"
+  },
+  {
+   "label": "Sand",
+   "img": "img/t3.jpg"
+  },
+  {
+   "label": "Backfill",
+   "img": "img/t4.jpg"
+  },
+  {
+   "label": "Concrete",
+   "img": "img/t5.jpg"
+  }
+ ],
+ "projects": [
+  {
+   "img": "img/p_belmore.jpg",
+   "suburb": "Belmore",
+   "summary": "Bulk / Detail / Stormwater",
+   "builder": "For Imperium Build"
+  },
+  {
+   "img": "img/p_marayong.jpg",
+   "suburb": "Marayong",
+   "summary": "160 piers / 600m of footings / 4 days",
+   "builder": "For Stanford Constructions"
+  },
+  {
+   "img": "img/p_roseville.jpg",
+   "suburb": "Roseville",
+   "summary": "Shoring / Bulk / Detail / Stormwater",
+   "builder": "Duplex basement"
+  },
+  {
+   "img": "img/p_willoughby.jpg",
+   "suburb": "Willoughby",
+   "summary": "102 piers / 13 RLs / 350m of footings",
+   "builder": "For DC Projects"
+  },
+  {
+   "img": "img/p_lanecove.jpg",
+   "suburb": "Lane Cove",
+   "summary": "Bulk / Detail / Stormwater",
+   "builder": "For Primrose Projects"
+  },
+  {
+   "img": "img/p_panania.jpg",
+   "suburb": "Panania",
+   "summary": "97 piers / 250m of footings",
+   "builder": "For Estero Building Group"
+  },
+  {
+   "img": "img/p_kogarah.jpg",
+   "suburb": "Kogarah Bay",
+   "summary": "Shoring / Bulk / Detail",
+   "builder": "For Buildline Projects"
+  },
+  {
+   "img": "img/p_castlehill.jpg",
+   "suburb": "Castle Hill",
+   "summary": "Basement detail excavation",
+   "builder": ""
+  },
+  {
+   "img": "img/p_concord.jpg",
+   "suburb": "Concord West",
+   "summary": "1,600m\u00b3 bulk excavation",
+   "builder": ""
+  }
+ ],
+ "clients": [
+  {
+   "name": "Buildline Projects",
+   "img": "img/b_buildline.png"
+  },
+  {
+   "name": "CJA Construction",
+   "img": "img/b_cja.png"
+  },
+  {
+   "name": "CNA Building Services Group",
+   "img": "img/b_cna.png"
+  },
+  {
+   "name": "Estero Building Group",
+   "img": "img/b_estero.png"
+  },
+  {
+   "name": "Icon Living",
+   "img": "img/b_icon.png"
+  },
+  {
+   "name": "Imperium Build",
+   "img": "img/b_imperium.png"
+  },
+  {
+   "name": "Individual Builders",
+   "img": "img/b_individual.png"
+  },
+  {
+   "name": "JCD Building",
+   "img": "img/b_jcd.png"
+  },
+  {
+   "name": "Jema Projects",
+   "img": "img/b_jema.png"
+  },
+  {
+   "name": "Just Built Projects",
+   "img": "img/b_justbuilt.png"
+  },
+  {
+   "name": "Builder",
+   "img": "img/b_m.png"
+  },
+  {
+   "name": "NSW Design and Construction",
+   "img": "img/b_nsw.png"
+  },
+  {
+   "name": "Orison Homes",
+   "img": "img/b_orison.png"
+  },
+  {
+   "name": "Primrose Projects",
+   "img": "img/b_primrose.png"
+  },
+  {
+   "name": "SEC Structured Engineering and Construction",
+   "img": "img/b_sec.png"
+  },
+  {
+   "name": "Tension Reinforced Developments",
+   "img": "img/b_trd.png"
+  }
+ ]
+}

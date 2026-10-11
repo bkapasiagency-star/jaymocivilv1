@@ -543,6 +543,44 @@ footer .logo2{height:30px}
 .yband-l{display:none}
 .rm .yband-l{display:block;font-size:clamp(1.3rem,3vw,2.4rem);padding:20px 0 26px}
 .rm .yband-l[aria-hidden]{speak:auto}
+/* quote form: sending state and the "what happens next" panel */
+.hp{position:absolute!important;left:-9999px;width:1px!important;height:1px;min-height:0!important;opacity:0}
+form.busy{pointer-events:none}form.busy .btn{opacity:.75}
+form.busy #fbt:after{content:"";display:inline-block;width:1.2em;text-align:left;animation:dots 1s steps(4,end) infinite}
+@keyframes dots{0%{content:""}25%{content:"."}50%{content:".."}75%{content:"..."}}
+.ferr{font:400 .82rem var(--m);color:#ff8a7e;line-height:1.6}.ferr a{color:#fff}
+.done{outline:0}
+.dn-top{display:flex;align-items:center;gap:12px;margin-bottom:22px}
+.dn-ok{width:40px;height:40px;border-radius:50%;background:var(--y);color:#0b0b0a;display:grid;place-items:center;flex:none}
+.dn-ok svg{width:20px;height:20px;stroke-dasharray:24;stroke-dashoffset:24}
+.dn-k{font:500 .7rem var(--m);letter-spacing:.14em;text-transform:uppercase;color:var(--y);margin:0!important}
+.done h3.h{font-size:clamp(1.4rem,2.4vw,2rem);line-height:1.1}
+.done .dn-s{color:#c9c6bf;margin:12px 0 0}
+.dn-steps{list-style:none;margin:28px 0 0;padding:0;position:relative}
+.dn-steps:before{content:"";position:absolute;left:17px;top:18px;bottom:18px;width:1px;background:rgba(255,255,255,.16)}
+.dn-steps:after{content:"";position:absolute;left:17px;top:18px;bottom:18px;width:1px;background:var(--y);transform:scaleY(0);transform-origin:top}
+.dn-steps li{position:relative;z-index:1;display:grid;grid-template-columns:36px 1fr;gap:16px;padding:0 0 22px;opacity:0;transform:translateY(12px)}
+.dn-steps li:last-child{padding-bottom:0}
+.dn-steps i{position:relative;z-index:1;width:36px;height:36px;border-radius:50%;background:#161615;border:1px solid rgba(255,255,255,.28);display:grid;place-items:center;font:500 .66rem var(--m);font-style:normal;color:#fff}
+.dn-steps li:first-child i{background:var(--y);border-color:var(--y);color:#0b0b0a}
+.dn-steps b{display:block;font-stretch:118%;font-weight:600;font-size:1rem;line-height:1.3;padding-top:6px}
+.dn-steps span{display:block;margin-top:4px;color:#b9b6af;font-size:.9rem;line-height:1.5}
+.dn-steps em{font-style:normal;color:#fff;white-space:nowrap}
+.dn-cta{display:flex;flex-wrap:wrap;align-items:center;gap:14px 22px;margin-top:30px;padding-top:24px;border-top:1px solid rgba(255,255,255,.1)}
+.dn-mail{font:500 .72rem var(--m);letter-spacing:.12em;text-transform:uppercase;color:#e2dfd8;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.35);padding-bottom:3px;transition:color .3s,border-color .3s}
+.dn-mail:hover{color:var(--y);border-color:var(--y)}
+.sent .done{animation:dnin .6s var(--ease) both}
+.sent .dn-ok{animation:dnpop .6s var(--ease) .1s both}
+.sent .dn-ok svg{animation:dndraw .5s ease .45s forwards}
+.sent .dn-steps:after{animation:dnline 1.6s var(--ease) .7s forwards}
+.sent .dn-steps li{animation:dnup .7s var(--ease) forwards}
+.sent .dn-steps li:nth-child(1){animation-delay:.5s}.sent .dn-steps li:nth-child(2){animation-delay:.8s}.sent .dn-steps li:nth-child(3){animation-delay:1.1s}.sent .dn-steps li:nth-child(4){animation-delay:1.4s}
+@keyframes dnin{from{opacity:0;transform:translateY(14px)}}
+@keyframes dnpop{from{transform:scale(.4);opacity:0}}
+@keyframes dndraw{to{stroke-dashoffset:0}}
+@keyframes dnline{to{transform:none}}
+@keyframes dnup{to{opacity:1;transform:none}}
+.rm .sent .done,.rm .sent .dn-ok{animation:none}.rm .dn-ok svg{stroke-dashoffset:0}.rm .dn-steps li{opacity:1;transform:none;animation:none}.rm .dn-steps:after{transform:none;animation:none}
 </style>
 <script>(function(){var d=document.documentElement;if(window.matchMedia&&matchMedia("(prefers-reduced-motion:reduce)").matches)d.className+=" rm"})();</script>
 </head>
@@ -814,12 +852,21 @@ footer .logo2{height:30px}
           <div><label for="fj">Service</label><select id="fj" name="job"><option>Bulk excavation</option><option>Detail excavation</option><option>Shoring</option><option>Service trenches</option><option>Remediation works</option><option>Not sure yet</option></select></div>
         </div>
         <div><label for="fm">Project details</label><textarea id="fm" name="msg"></textarea></div>
-        <button class="btn btn-y" type="submit">Send Request</button>
+        <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" class="hp">
+        <button class="btn btn-y" type="submit"><span id="fbt">Send Request</span></button>
+        <p class="ferr" id="ferr" role="alert" hidden>That did not send. Please try again, or call <a href="tel:0450503180">0450 503 180</a>.</p>
       </form>
-      <div class="done" role="status">
-        <h3 class="h">Thank you.</h3>
-        <p>Your email app should have opened with your details filled in. Attach your plans and press send, or call us directly.</p>
-        <a class="btn btn-y" href="tel:0450503180">Call 0450 503 180</a>
+      <div class="done" role="status" aria-live="polite" tabindex="-1">
+        <div class="dn-top"><span class="dn-ok" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><p class="dn-k">Sent to Jaymo Civil</p></div>
+        <h3 class="h">Request received<span id="dnn"></span>.</h3>
+        <p class="dn-s" id="dns">It is with our team now. Here is what happens next.</p>
+        <ol class="dn-steps">
+          <li><i>01</i><div><b>We read it today</b><span>Your request goes straight to the team that prices the work.</span></div></li>
+          <li><i>02</i><div><b>We call you back</b><span>A quick call on <em id="dnp">your mobile</em> to confirm the scope and ask for your plans.</span></div></li>
+          <li><i>03</i><div><b>Site visit or plan review</b><span>We look at the site or work from your drawings, whichever is faster for you.</span></div></li>
+          <li><i>04</i><div><b>A clear price in writing</b><span>You get a written quote with the scope spelled out, so there are no surprises.</span></div></li>
+        </ol>
+        <div class="dn-cta"><a class="btn btn-y" href="tel:0450503180"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25c1.1.37 2.3.57 3.6.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg>Call 0450 503 180</a><a class="dn-mail" href="mailto:info@jaymocivil.com.au?subject=Plans%20for%20my%20quote%20request">Email your plans or photos</a></div>
       </div>
     </div>
   </div>
@@ -1038,15 +1085,28 @@ footer .logo2{height:30px}
     stage.addEventListener('pointercancel',function(){sx=null});
     if('IntersectionObserver' in window)new IntersectionObserver(function(en){vis=en[0].isIntersecting;arm()},{threshold:.3}).observe(stage);else vis=true;
     go(0)})();
-  /* quote form opens a pre-filled email */
-  var box=id('qbox'),form=box.querySelector('form');
+  /* quote form: sent straight to the Jaymo Civil inbox, then the card shows what happens next */
+  var box=id('qbox'),form=box.querySelector('form'),fbt=id('fbt'),ferr=id('ferr'),busyF=false;
   form.addEventListener('submit',function(e){
-    e.preventDefault();var f=new FormData(form),bad=false;
+    e.preventDefault();if(busyF)return;var f=new FormData(form),bad=false;
     ['name','phone'].forEach(function(nm){var el=form.elements[nm];if(!el.value.trim()){el.style.borderColor='#ff6a5c';el.setAttribute('aria-invalid','true');if(!bad)el.focus();bad=true}else{el.style.borderColor='';el.removeAttribute('aria-invalid')}});
     if(bad)return;
-    var body='Name: '+f.get('name')+'\nMobile: '+f.get('phone')+'\nSite suburb: '+(f.get('suburb')||'')+'\nService: '+f.get('job')+'\n\nProject details:\n'+(f.get('msg')||'');
-    box.classList.add('sent');
-    window.location.href='mailto:info@jaymocivil.com.au?subject='+encodeURIComponent('Quote request: '+f.get('job')+(f.get('suburb')?', '+f.get('suburb'):''))+'&body='+encodeURIComponent(body);
+    if(f.get('_honey')){box.classList.add('sent');return}
+    var nm=String(f.get('name')).trim(),sub=String(f.get('suburb')||'').trim(),job=f.get('job');
+    busyF=true;ferr.hidden=true;fbt.textContent='Sending';form.classList.add('busy');
+    /* DEMO MODE: nothing is sent yet. Set SEND_LIVE to true once the client approves and the inbox is activated. */
+    var SEND_LIVE=false;
+    (!SEND_LIVE?new Promise(function(ok){setTimeout(function(){ok({ok:true,json:function(){return Promise.resolve({success:'true'})}})},900)}):fetch('https://formsubmit.co/ajax/info@jaymocivil.com.au',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body:JSON.stringify({_subject:'Quote request: '+job+(sub?', '+sub:''),_template:'table',Name:nm,Mobile:f.get('phone'),'Site suburb':sub||'Not given',Service:job,'Project details':f.get('msg')||'Not given',Source:'jaymocivil.com.au quote form'})}))
+    .then(function(r){return r.json().then(function(j){if(!r.ok||String(j.success)!=='true')throw 0})})
+    .then(function(){
+      id('dnn').textContent=nm?', '+nm.split(/\s+/)[0]:'';
+      id('dns').textContent=job+(sub?' in '+sub:'')+'. It is with our team now. Here is what happens next.';
+      id('dnp').textContent=String(f.get('phone')).trim();
+      box.classList.add('sent');var dn=box.querySelector('.done');dn.focus({preventScroll:true});
+      var top=box.getBoundingClientRect().top;if(top<70||top>innerHeight*.5)window.scrollTo({top:window.pageYOffset+top-90,behavior:RM?'auto':'smooth'})})
+    .catch(function(){ferr.hidden=false})
+    .then(function(){busyF=false;fbt.textContent='Send Request';form.classList.remove('busy')});
   });
 })();
 </script>

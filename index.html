@@ -545,6 +545,7 @@ footer .logo2{height:30px}
 .rm .yband-l{display:block;font-size:clamp(1.3rem,3vw,2.4rem);padding:20px 0 26px}
 .rm .yband-l[aria-hidden]{speak:auto}
 /* quote form: sending state and the "what happens next" panel */
+.opt{text-transform:none;letter-spacing:0;font-weight:400;opacity:.7}
 .hp{position:absolute!important;left:-9999px;width:1px!important;height:1px;min-height:0!important;opacity:0}
 form.busy{pointer-events:none}form.busy .btn{opacity:.75}
 form.busy #fbt:after{content:"";display:inline-block;width:1.2em;text-align:left;animation:dots 1s steps(4,end) infinite}
@@ -861,7 +862,10 @@ form.busy #fbt:after{content:"";display:inline-block;width:1.2em;text-align:left
           <div><label for="fp">Mobile</label><input id="fp" name="phone" type="tel" inputmode="tel" autocomplete="tel" required></div>
         </div>
         <div class="f2">
+          <div><label for="fe">Email <span class="opt">(for a copy)</span></label><input id="fe" name="email" type="email" inputmode="email" autocomplete="email"></div>
           <div><label for="fs">Site suburb</label><input id="fs" name="suburb" autocomplete="address-level2"></div>
+        </div>
+        <div>
           <div><label for="fj">Service</label><select id="fj" name="job"><option>Bulk excavation</option><option>Detail excavation</option><option>Shoring</option><option>Service trenches</option><option>Remediation works</option><option>Not sure yet</option></select></div>
         </div>
         <div><label for="fm">Project details</label><textarea id="fm" name="msg"></textarea></div>
@@ -1151,18 +1155,18 @@ form.busy #fbt:after{content:"";display:inline-block;width:1.2em;text-align:left
   form.addEventListener('submit',function(e){
     e.preventDefault();if(busyF)return;var f=new FormData(form),bad=false;
     ['name','phone'].forEach(function(nm){var el=form.elements[nm];if(!el.value.trim()){el.style.borderColor='#ff6a5c';el.setAttribute('aria-invalid','true');if(!bad)el.focus();bad=true}else{el.style.borderColor='';el.removeAttribute('aria-invalid')}});
+    var em=form.elements.email,ev=em.value.trim();
+    if(ev&&!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(ev)){em.style.borderColor='#ff6a5c';em.setAttribute('aria-invalid','true');if(!bad)em.focus();bad=true}else{em.style.borderColor='';em.removeAttribute('aria-invalid')}
     if(bad)return;
     if(f.get('_honey')){box.classList.add('sent');return}
     var nm=String(f.get('name')).trim(),sub=String(f.get('suburb')||'').trim(),job=f.get('job');
     busyF=true;ferr.hidden=true;fbt.textContent='Sending';form.classList.add('busy');
-    /* DEMO MODE: nothing is sent yet. Set SEND_LIVE to true once the client approves and the inbox is activated. */
-    var SEND_LIVE=false;
-    (!SEND_LIVE?new Promise(function(ok){setTimeout(function(){ok({ok:true,json:function(){return Promise.resolve({success:'true'})}})},900)}):fetch('https://formsubmit.co/ajax/info@jaymocivil.com.au',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},
-      body:JSON.stringify({_subject:'Quote request: '+job+(sub?', '+sub:''),_template:'table',Name:nm,Mobile:f.get('phone'),'Site suburb':sub||'Not given',Service:job,'Project details':f.get('msg')||'Not given',Source:'jaymocivil.com.au quote form'})}))
+    fetch('/api/quote',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body:JSON.stringify({name:nm,phone:String(f.get('phone')).trim(),email:ev,suburb:sub,job:job,msg:f.get('msg')||'',_honey:f.get('_honey')||''})})
     .then(function(r){return r.json().then(function(j){if(!r.ok||String(j.success)!=='true')throw 0})})
     .then(function(){
       id('dnn').textContent=nm?', '+nm.split(/\s+/)[0]:'';
-      id('dns').textContent=job+(sub?' in '+sub:'')+'. It is with our team now. Here is what happens next.';
+      id('dns').textContent=job+(sub?' in '+sub:'')+'. It is with our team now'+(ev?', and a copy is on its way to '+ev:'')+'. Here is what happens next.';
       id('dnp').textContent=String(f.get('phone')).trim();
       box.classList.add('sent');var dn=box.querySelector('.done');dn.focus({preventScroll:true});
       var top=box.getBoundingClientRect().top;if(top<70||top>innerHeight*.5)window.scrollTo({top:window.pageYOffset+top-90,behavior:RM?'auto':'smooth'})})

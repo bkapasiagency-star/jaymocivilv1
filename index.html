@@ -770,6 +770,26 @@ form.busy #fbt:after{content:"";display:inline-block;width:1.2em;text-align:left
 .bld-cta:hover:before,.bld-cta:focus-visible:before{transform:none}
 .bld-cta svg{width:16px;height:16px;transition:transform .4s var(--ease)}
 .bld-cta:hover svg{transform:translateX(4px)}
+
+/* rotating pull quotes: words rise in one by one, the ticks show which review is up */
+.bld-side{max-width:440px}
+.bq-s{display:grid}
+.bq-i{grid-area:1/1;margin:0;visibility:hidden}
+.bq-i.on,.bq-i.out{visibility:visible}
+.bq-i blockquote{margin:0;font:600 clamp(1.25rem,2vw,1.7rem)/1.18 var(--f);font-stretch:118%;letter-spacing:-.01em;color:var(--ink)}
+.bw{display:inline-block;overflow:hidden;vertical-align:bottom;padding-bottom:.08em;margin-bottom:-.08em}
+.bw>span{display:inline-block;transform:translateY(110%);transition:transform .7s var(--ease);transition-delay:calc(var(--k)*45ms)}
+.bq-i.on .bw>span{transform:none}
+.bq-i.out .bw>span{transform:translateY(-110%);transition-duration:.45s;transition-delay:calc(var(--k)*20ms)}
+.bq-i figcaption{margin-top:10px;font:500 .62rem var(--m);letter-spacing:.16em;text-transform:uppercase;color:var(--inkmut);opacity:0;transform:translateY(6px);transition:opacity .5s ease,transform .6s var(--ease)}
+.bq-i.on figcaption{opacity:1;transform:none;transition-delay:.35s}
+.bq-t{display:flex;gap:6px;margin-top:14px}
+.bq-t i{width:22px;height:2px;background:rgba(11,11,10,.15);overflow:hidden}
+.bq-t b{display:block;height:100%;background:var(--y);transform:scaleX(0);transform-origin:left}
+.bq-t i.bq-ok b{transform:none}
+.bq-t i.bq-run b{animation:bqfill var(--bqd,5s) linear forwards}
+@keyframes bqfill{to{transform:none}}
+.rm .bw>span{transition:none}.rm .bq-i figcaption{transition:none}
 </style>
 <script>(function(){var d=document.documentElement;if(window.matchMedia&&matchMedia("(prefers-reduced-motion:reduce)").matches)d.className+=" rm"})();</script>
 </head>
@@ -994,7 +1014,7 @@ form.busy #fbt:after{content:"";display:inline-block;width:1.2em;text-align:left
       <p class="p rv">The Sydney builders and developers who bring us back, job after job.</p>
     </div>
     <div class="bld-side rv">
-      <figure class="bld-q"><blockquote>&ldquo;In a league of its own.&rdquo;</blockquote><figcaption>Encorp Group</figcaption></figure>
+      <div class="bld-q" id="bq" aria-live="polite"><div class="bq-s"><figure class="bq-i on" aria-hidden="false"><blockquote><span class="bw"><span style="--k:0">&ldquo;In</span></span> <span class="bw"><span style="--k:1">a</span></span> <span class="bw"><span style="--k:2">league</span></span> <span class="bw"><span style="--k:3">of</span></span> <span class="bw"><span style="--k:4">its</span></span> <span class="bw"><span style="--k:5">own.&rdquo;</span></span></blockquote><figcaption>Encorp Group</figcaption></figure><figure class="bq-i" aria-hidden="true"><blockquote><span class="bw"><span style="--k:0">&ldquo;He</span></span> <span class="bw"><span style="--k:1">cares</span></span> <span class="bw"><span style="--k:2">about</span></span> <span class="bw"><span style="--k:3">the</span></span> <span class="bw"><span style="--k:4">site</span></span> <span class="bw"><span style="--k:5">like</span></span> <span class="bw"><span style="--k:6">it’s</span></span> <span class="bw"><span style="--k:7">one</span></span> <span class="bw"><span style="--k:8">of</span></span> <span class="bw"><span style="--k:9">his</span></span> <span class="bw"><span style="--k:10">own.&rdquo;</span></span></blockquote><figcaption>Jordan, Imperium Build</figcaption></figure><figure class="bq-i" aria-hidden="true"><blockquote><span class="bw"><span style="--k:0">&ldquo;Great</span></span> <span class="bw"><span style="--k:1">company,</span></span> <span class="bw"><span style="--k:2">great</span></span> <span class="bw"><span style="--k:3">team</span></span> <span class="bw"><span style="--k:4">and</span></span> <span class="bw"><span style="--k:5">a</span></span> <span class="bw"><span style="--k:6">pleasure</span></span> <span class="bw"><span style="--k:7">to</span></span> <span class="bw"><span style="--k:8">deal</span></span> <span class="bw"><span style="--k:9">with.&rdquo;</span></span></blockquote><figcaption>John-Paul, Jaypec</figcaption></figure><figure class="bq-i" aria-hidden="true"><blockquote><span class="bw"><span style="--k:0">&ldquo;Consistently</span></span> <span class="bw"><span style="--k:1">delivered</span></span> <span class="bw"><span style="--k:2">a</span></span> <span class="bw"><span style="--k:3">high</span></span> <span class="bw"><span style="--k:4">standard</span></span> <span class="bw"><span style="--k:5">of</span></span> <span class="bw"><span style="--k:6">work.&rdquo;</span></span></blockquote><figcaption>Jermaine, Skyjaid Constructions</figcaption></figure><figure class="bq-i" aria-hidden="true"><blockquote><span class="bw"><span style="--k:0">&ldquo;I</span></span> <span class="bw"><span style="--k:1">will</span></span> <span class="bw"><span style="--k:2">definitely</span></span> <span class="bw"><span style="--k:3">use</span></span> <span class="bw"><span style="--k:4">John</span></span> <span class="bw"><span style="--k:5">again.&rdquo;</span></span></blockquote><figcaption>Fadi Safar, DC Projects Group</figcaption></figure></div><div class="bq-t" aria-hidden="true"><i><b></b></i><i><b></b></i><i><b></b></i><i><b></b></i><i><b></b></i></div></div>
       <a class="bld-cta" href="#contact"><span>Work with Jaymo Civil</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     </div>
   </div>
@@ -1407,6 +1427,15 @@ form.busy #fbt:after{content:"";display:inline-block;width:1.2em;text-align:left
     function go(){if(done)return;done=true;rg.classList.add('on')}
     if(RM||!('IntersectionObserver' in window)){go();return}
     var o=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){o.disconnect();go()}})},{threshold:.25});o.observe(rg)})();
+
+  /* ---------- builders pull quotes: one line from each review, rotating ---------- */
+  (function(){var bq=id('bq');if(!bq)return;var it=$('.bq-i',bq),tk=$('.bq-t i',bq),k=0,tm=0,vis=false,hold=false,D=5000;
+    function mark(){tk.forEach(function(t,n){t.classList.toggle('bq-ok',n<k);t.classList.remove('bq-run')});if(!RM&&vis&&!hold){void tk[k].offsetWidth;tk[k].style.setProperty('--bqd',D+'ms');tk[k].classList.add('bq-run')}else tk[k].classList.add('bq-ok')}
+    function arm(){clearTimeout(tm);mark();if(RM||!vis||hold)return;tm=setTimeout(next,D)}
+    function next(){var o=it[k];k=(k+1)%it.length;o.classList.remove('on');o.classList.add('out');o.setAttribute('aria-hidden','true');
+      setTimeout(function(){o.classList.remove('out')},700);var n=it[k];n.classList.add('on');n.setAttribute('aria-hidden','false');arm()}
+    bq.addEventListener('mouseenter',function(){hold=true;arm()});bq.addEventListener('mouseleave',function(){hold=false;arm()});
+    if('IntersectionObserver' in window)new IntersectionObserver(function(en){vis=en[0].isIntersecting;arm()},{threshold:.4}).observe(bq);else{vis=true;arm()}})();
 
   /* ---------- view all projects: filterable archive of every job photo ---------- */
   (function(){var g=id('gal'),grid=id('galG'),bar=id('galF'),end=id('galEnd'),btn=id('galOpen'),P=null,cur='all',back=null,tm=0;

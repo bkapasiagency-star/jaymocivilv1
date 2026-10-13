@@ -854,7 +854,7 @@ form.busy #fbt:after{content:"";display:inline-block;width:1.2em;text-align:left
 .rv-nav button svg{width:18px;height:18px}
 .rv-nav button:hover:not(:disabled){background:var(--y);border-color:var(--y);color:var(--ink)}
 .rv-nav button:disabled{opacity:.3;cursor:default}
-.rv-vp{margin-top:44px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-ms-overflow-style:none;outline:0;cursor:grab;scroll-padding-left:max(var(--pad),calc((100vw - 1360px)/2 + var(--pad)))}
+.rv-vp{margin-top:44px;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;outline:0;cursor:grab;scroll-padding-left:max(var(--pad),calc((100vw - 1360px)/2 + var(--pad)))}
 .rv-vp::-webkit-scrollbar{display:none}
 .rv-vp.drag{cursor:grabbing;scroll-snap-type:none;user-select:none}
 .rv-vp.drag *{pointer-events:none}
@@ -897,6 +897,7 @@ form.busy #fbt:after{content:"";display:inline-block;width:1.2em;text-align:left
 .rvd-x:hover,.rvd-x:focus-visible{background:var(--y);border-color:var(--y);outline:0}
 .rvd-x svg{width:16px;height:16px}
 .rm .rv-c{opacity:1;transform:none;transition:none}
+.rv-vp{-webkit-mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent);mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent)}
 </style>
 <script>(function(){var d=document.documentElement;if(window.matchMedia&&matchMedia("(prefers-reduced-motion:reduce)").matches)d.className+=" rm"})();</script>
 </head>
@@ -1430,31 +1431,49 @@ form.busy #fbt:after{content:"";display:inline-block;width:1.2em;text-align:left
     bind();window.__steps=bind;
     if('IntersectionObserver' in window)new IntersectionObserver(function(en){play(en[0].isIntersecting)},{threshold:.25}).observe(sec)})();
   /* testimonials: fades between reviews, with arrows, swipe and a timed bar */
-  /* ---------- reviews: logo-led cards that swipe sideways; long reviews open in full ---------- */
-  (function(){var vp=id('rvv');if(!vp)return;(function(){var sec=id('reviews');if(RM||!('IntersectionObserver' in window)){sec.classList.add('in-v');return}var o=new IntersectionObserver(function(en){if(en[0].isIntersecting){o.disconnect();sec.classList.add('in-v')}},{threshold:.2});o.observe(sec)})();var cards=$('.rv-c',vp),bar=id('rvbar'),dlg=id('rvd'),dc=id('rvdc'),back=null;
-    function step(){var c=cards[0],g=parseFloat(getComputedStyle(vp.firstElementChild).columnGap)||0;return c.offsetWidth+g}
-    id('rvp').addEventListener('click',function(){vp.scrollBy({left:-step(),behavior:RM?'auto':'smooth'})});
-    id('rvn').addEventListener('click',function(){vp.scrollBy({left:step(),behavior:RM?'auto':'smooth'})});
-    function prog(){var m=vp.scrollWidth-vp.clientWidth,f=m>0?vp.scrollLeft/m:1,vis=vp.clientWidth/vp.scrollWidth;
-      bar.style.width=(Math.max(vis,.08)*100).toFixed(2)+'%';bar.style.transform='translateX('+(f*(1/Math.max(vis,.08)-1)*100).toFixed(2)+'%)';
-      id('rvp').disabled=vp.scrollLeft<4;id('rvn').disabled=vp.scrollLeft>m-4}
-    vp.addEventListener('scroll',prog,{passive:true});addEventListener('resize',function(){prog();clamp2()});
+  /* ---------- reviews: logo-led cards that glide on their own like a marquee; swipe or drag to move them,
+     and long reviews open in full. The cards are repeated once so the row loops with no end. ---------- */
+  (function(){var vp=id('rvv');if(!vp)return;(function(){var sec=id('reviews');if(RM||!('IntersectionObserver' in window)){sec.classList.add('in-v');return}var o=new IntersectionObserver(function(en){if(en[0].isIntersecting){o.disconnect();sec.classList.add('in-v')}},{threshold:.2});o.observe(sec)})();
+    var tr=vp.firstElementChild,cards=$('.rv-c',vp),bar=id('rvbar'),dlg=id('rvd'),dc=id('rvdc'),back=null;
+    function clamp2(){$('.rv-c',vp).forEach(function(c){var b=c.querySelector('.rv-b'),btn=c.querySelector('.rv-more');btn.hidden=!(b.scrollHeight>b.clientHeight+4)})}
+    cards.forEach(function(c){var k=c.cloneNode(true);k.classList.add('rv-dup');k.setAttribute('aria-hidden','true');$('button',k).forEach(function(b){b.tabIndex=-1});k.querySelector('.rv-logo').alt='';tr.appendChild(k)});
+    var all=$('.rv-c',vp),setW=0,pos=0,lastSet=-1,pauseUntil=0,hover=false,touching=false,vis=false,isOpen=false,t0=0,SPEED=38;
+    function measure(){setW=all[cards.length].offsetLeft-all[0].offsetLeft}
+    function step(){var g=parseFloat(getComputedStyle(tr).columnGap)||0;return cards[0].offsetWidth+g}
+    /* keep the scroll position inside the first copy, so the row never runs out either way */
+    function wrap(){if(!setW)return;if(vp.scrollLeft>=setW)vp.scrollLeft-=setW;else if(vp.scrollLeft<1)vp.scrollLeft+=setW;pos=vp.scrollLeft;lastSet=vp.scrollLeft}
+    function hold(ms){pauseUntil=performance.now()+ms}
+    function prog(){if(!setW)return;var f=(((vp.scrollLeft%setW)+setW)%setW)/setW,w=Math.min(1,Math.max(.12,vp.clientWidth/setW));
+      bar.style.width=(w*100).toFixed(2)+'%';bar.style.transform='translateX('+(f*(1/w-1)*100).toFixed(2)+'%)'}
+    vp.addEventListener('scroll',function(){if(Math.abs(vp.scrollLeft-lastSet)>2){hold(2600);if(!touching&&!dg)wrap();pos=lastSet=vp.scrollLeft}prog()},{passive:true});
+    function tick(t){var dt=Math.min(64,t-(t0||t));t0=t;if(touching&&t-lastTouch>5000)untouch();
+      if(vis&&!hover&&!touching&&!dg&&!isOpen&&!RM&&t>pauseUntil&&setW){pos+=SPEED*dt/1000;if(pos>=setW)pos-=setW;vp.scrollLeft=pos;lastSet=vp.scrollLeft;prog()}
+      requestAnimationFrame(tick)}
+    function nudge(dir){hold(3200);wrap();vp.scrollBy({left:dir*step(),behavior:RM?'auto':'smooth'})}
+    id('rvp').addEventListener('click',function(){nudge(-1)});id('rvn').addEventListener('click',function(){nudge(1)});
+    vp.addEventListener('mouseenter',function(){hover=true});vp.addEventListener('mouseleave',function(){hover=false;hold(500);pos=vp.scrollLeft});
+    var lastTouch=0;vp.addEventListener('touchstart',function(){touching=true;lastTouch=performance.now()},{passive:true});
+    vp.addEventListener('touchmove',function(){lastTouch=performance.now()},{passive:true});
+    function untouch(){if(touching){touching=false;hold(2600);wrap()}}
+    addEventListener('touchend',untouch,{passive:true});addEventListener('touchcancel',untouch,{passive:true});
     /* desktop: drag the row with the mouse */
     var dg=null;vp.addEventListener('pointerdown',function(e){if(e.pointerType!=='mouse'||e.button||e.target.closest('button'))return;dg={x:e.clientX,s:vp.scrollLeft,m:false}});
-    addEventListener('pointermove',function(e){if(!dg)return;var dx=e.clientX-dg.x;if(!dg.m&&Math.abs(dx)>6){dg.m=true;vp.classList.add('drag')}if(dg.m)vp.scrollLeft=dg.s-dx});
-    addEventListener('pointerup',function(){if(!dg)return;var m=dg.m;dg=null;vp.classList.remove('drag');if(m){var st=step(),k=Math.round(vp.scrollLeft/st);vp.scrollTo({left:k*st,behavior:'smooth'})}});
-    /* only long reviews get the full-review link */
-    function clamp2(){cards.forEach(function(c){var b=c.querySelector('.rv-b'),btn=c.querySelector('.rv-more');btn.hidden=!(b.scrollHeight>b.clientHeight+4)})}
-    clamp2();if(d.fonts&&d.fonts.ready)d.fonts.ready.then(clamp2);
-    function open(c){back=d.activeElement;var logo=c.querySelector('.rv-logo').cloneNode(true);logo.removeAttribute('loading');
+    addEventListener('pointermove',function(e){if(!dg)return;var dx=e.clientX-dg.x;if(!dg.m&&Math.abs(dx)>6){dg.m=true;vp.classList.add('drag')}
+      if(dg.m){vp.scrollLeft=dg.s-dx;var b=vp.scrollLeft;if(b>=setW||b<1){wrap();dg.s+=vp.scrollLeft-b}}});
+    addEventListener('pointerup',function(){if(!dg)return;dg=null;vp.classList.remove('drag');hold(1800);wrap()});
+    vp.addEventListener('keydown',function(e){if(e.key==='ArrowRight'){e.preventDefault();nudge(1)}else if(e.key==='ArrowLeft'){e.preventDefault();nudge(-1)}});
+    vp.addEventListener('focusin',function(){hover=true});vp.addEventListener('focusout',function(){hover=false});
+    function open(c){back=d.activeElement;isOpen=true;var logo=c.querySelector('.rv-logo').cloneNode(true);logo.removeAttribute('loading');
       dc.innerHTML='';dc.appendChild(logo);dc.insertAdjacentHTML('beforeend','<p class="rv-st">&#9733;&#9733;&#9733;&#9733;&#9733;</p><div class="rvd-b">'+c.querySelector('.rv-b').innerHTML+'</div><p class="rv-w" id="rvdt">'+c.querySelector('.rv-w').innerHTML+'</p>');
       dlg.classList.add('open');dlg.setAttribute('aria-hidden','false');window.__lock=true;gliding=false;d.body.style.overflow='hidden';setTimeout(function(){id('rvdx').focus({preventScroll:true})},60)}
-    function close(){if(!dlg.classList.contains('open'))return;dlg.classList.remove('open');dlg.setAttribute('aria-hidden','true');window.__lock=false;d.body.style.overflow='';if(back&&back.focus)back.focus({preventScroll:true})}
-    cards.forEach(function(c){c.querySelector('.rv-more').addEventListener('click',function(){open(c)})});
+    function close(){if(!dlg.classList.contains('open'))return;isOpen=false;hold(1200);dlg.classList.remove('open');dlg.setAttribute('aria-hidden','true');window.__lock=false;d.body.style.overflow='';if(back&&back.focus)back.focus({preventScroll:true})}
+    all.forEach(function(c){c.querySelector('.rv-more').addEventListener('click',function(){open(c)})});
     id('rvdx').addEventListener('click',close);dlg.addEventListener('click',function(e){if(e.target===dlg)close()});
     addEventListener('keydown',function(e){if(!dlg.classList.contains('open'))return;if(e.key==='Escape')close();else if(e.key==='Tab'){e.preventDefault();id('rvdx').focus()}});
-    vp.addEventListener('keydown',function(e){if(e.key==='ArrowRight'){e.preventDefault();id('rvn').click()}else if(e.key==='ArrowLeft'){e.preventDefault();id('rvp').click()}});
-    prog()})();
+    function re(){measure();clamp2();wrap();prog()}
+    re();if(d.fonts&&d.fonts.ready)d.fonts.ready.then(re);addEventListener('resize',re);addEventListener('load',re);
+    if('IntersectionObserver' in window)new IntersectionObserver(function(en){vis=en[0].isIntersecting},{threshold:.1}).observe(vp);else vis=true;
+    requestAnimationFrame(tick)})();
   /* content editor: the page shows its built-in content first, then swaps in whatever has been published in the editor.
      Anything missing or unreachable simply leaves the built-in content in place. */
   (function(){if(!window.fetch)return;

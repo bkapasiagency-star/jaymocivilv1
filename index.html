@@ -140,7 +140,7 @@ nav a:hover:after{transform:scaleX(1)}
 .rem h3{font-size:clamp(1.3rem,2.4vw,2rem)}
 
 /* WORK ring (locked design) */
-.work{height:520vh;background:var(--bone);color:var(--ink)}
+.work{height:660vh;background:var(--bone);color:var(--ink)}
 .work .stick{display:flex;flex-direction:column;justify-content:center;background:var(--bone);padding-top:64px}
 .work-head{display:grid;gap:14px;padding:0 var(--pad);max-width:1360px;width:100%;margin:0 auto 10px}
 .ringwrap{position:relative;height:min(56vh,480px);perspective:1500px;--cw:min(62vw,300px);--ch:min(46vh,400px)}
@@ -649,6 +649,58 @@ form.busy #fbt:after{content:"";display:inline-block;width:1.2em;text-align:left
 .lbx-cap i{font:500 .66rem var(--m);letter-spacing:.14em;text-transform:uppercase;color:#a9a6a0;font-style:normal}
 @media (min-width:940px){.lbx-top{padding:20px 34px}.lbx-stage{padding:0 96px}.lbx-prev{left:28px}.lbx-next{right:28px}}
 @media (max-width:699px){.lbx-nav{display:none}}
+
+/* ---------- view all projects ---------- */
+.work-foot{align-items:center}
+.gal-open{position:relative;display:inline-flex;align-items:center;gap:14px;min-height:52px;padding:0 22px;border:1px solid var(--ink);background:var(--ink);color:#fff;cursor:pointer;overflow:hidden;isolation:isolate;transition:color .4s var(--ease)}
+.gal-open:before{content:"";position:absolute;inset:0;z-index:-1;background:var(--y);transform:translateY(101%);transition:transform .5s var(--ease)}
+.gal-open:hover,.gal-open:focus-visible{color:var(--ink);outline:0}
+.gal-open:hover:before,.gal-open:focus-visible:before{transform:none}
+.go-k{font:500 .7rem var(--m);letter-spacing:.16em;text-transform:uppercase}
+.go-n{font:500 .62rem var(--m);letter-spacing:.12em;text-transform:uppercase;padding-left:14px;border-left:1px solid rgba(255,255,255,.3);color:var(--y);transition:color .4s,border-color .4s}
+.gal-open:hover .go-n,.gal-open:focus-visible .go-n{color:var(--ink);border-color:rgba(11,11,10,.3)}
+.gal-open svg{width:16px;height:16px;transition:transform .4s var(--ease)}
+.gal-open:hover svg{transform:translateX(4px)}
+@media (max-width:699px){.gal-open{padding:0 16px;gap:10px}.go-n{display:none}}
+
+.gal{position:fixed;inset:0;z-index:190;background:var(--ink);color:#fff;overflow-y:auto;overscroll-behavior:contain;clip-path:inset(100% 0 0 0);visibility:hidden;transition:clip-path .9s var(--ease),visibility 0s linear .9s}
+.gal.open{clip-path:inset(0 0 0 0);visibility:visible;transition:clip-path .9s var(--ease)}
+.gal-hd{position:sticky;top:0;z-index:3;background:rgba(11,11,10,.9);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.08)}
+.gal-in{max-width:1500px;margin:0 auto;padding:0 var(--pad)}
+.gal-top{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;padding:22px 0 16px}
+.gal-top .tag{color:#a9a6a0}
+.gal-top h2{margin-top:10px;font-size:clamp(1.6rem,4.4vw,3.6rem)}
+.gal-top h2 .y{color:var(--y)}
+.gal-x{flex:none;width:52px;height:52px;display:grid;place-items:center;border:1px solid rgba(255,255,255,.25);background:transparent;color:#fff;cursor:pointer;transition:background .3s,color .3s,border-color .3s,transform .5s var(--ease)}
+.gal-x:hover,.gal-x:focus-visible{background:var(--y);color:var(--ink);border-color:var(--y);outline:0;transform:rotate(90deg)}
+.gal-x svg{width:18px;height:18px}
+.gal-f{display:flex;gap:8px;overflow-x:auto;padding:0 0 16px;scrollbar-width:none;-ms-overflow-style:none}
+.gal-f::-webkit-scrollbar{display:none}
+.gf{flex:none;display:inline-flex;align-items:center;gap:10px;min-height:42px;padding:0 16px;border:1px solid rgba(255,255,255,.2);background:transparent;color:#e2dfd8;cursor:pointer;font:500 .66rem var(--m);letter-spacing:.14em;text-transform:uppercase;transition:background .35s,color .35s,border-color .35s}
+.gf i{font-style:normal;color:#8d8a84;transition:color .35s}
+.gf:hover{border-color:rgba(255,255,255,.55);color:#fff}
+.gf[aria-pressed="true"]{background:var(--y);border-color:var(--y);color:var(--ink)}
+.gf[aria-pressed="true"] i{color:rgba(11,11,10,.6)}
+.gf:focus-visible{outline:2px solid var(--y);outline-offset:2px}
+.gal-g{columns:2;column-gap:10px;padding:18px 0 80px}
+@media (min-width:700px){.gal-g{columns:3;column-gap:14px}}
+@media (min-width:1200px){.gal-g{columns:4;column-gap:16px}.gal-top{padding:30px 0 20px}}
+.gt{position:relative;display:block;width:100%;margin:0 0 10px;padding:0;border:0;background:#1c1c1a;cursor:zoom-in;overflow:hidden;break-inside:avoid;opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .9s var(--ease);transition-delay:var(--d,0ms)}
+@media (min-width:700px){.gt{margin-bottom:14px}}
+@media (min-width:1200px){.gt{margin-bottom:16px}}
+.gt.in{opacity:1;transform:none}
+.gt img{display:block;width:100%;height:auto;transition:transform 1.1s var(--ease),filter .6s ease;filter:saturate(.92)}
+.gt:hover img,.gt:focus-visible img{transform:scale(1.045);filter:none}
+.gt:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(11,11,10,.85));opacity:.7;transition:opacity .5s ease}
+.gt:hover:after,.gt:focus-visible:after{opacity:1}
+.gt-c{position:absolute;left:12px;right:12px;bottom:11px;z-index:2;display:flex;justify-content:space-between;align-items:flex-end;gap:10px;text-align:left;pointer-events:none}
+.gt-c b{display:block;font:600 .9rem/1.15 var(--f);font-stretch:125%;text-transform:uppercase;color:#fff}
+.gt-c span{display:block;margin-top:4px;font:500 .56rem var(--m);letter-spacing:.14em;text-transform:uppercase;color:var(--y)}
+.gt-c em{font:500 .56rem var(--m);font-style:normal;letter-spacing:.1em;color:#a9a6a0}
+.gt:focus-visible{outline:2px solid var(--y);outline-offset:3px}
+@media (min-width:700px){.gt-c{left:16px;right:16px;bottom:14px}.gt-c b{font-size:1rem}.gt-c span,.gt-c em{font-size:.6rem}}
+.gal-end{padding:0 0 60px;text-align:center;font:500 .66rem var(--m);letter-spacing:.16em;text-transform:uppercase;color:#7b7872}
+.rm .gal,.rm .gt{transition:none}.rm .gt{opacity:1;transform:none}
 </style>
 <script>(function(){var d=document.documentElement;if(window.matchMedia&&matchMedia("(prefers-reduced-motion:reduce)").matches)d.className+=" rm"})();</script>
 </head>
@@ -818,17 +870,20 @@ form.busy #fbt:after{content:"";display:inline-block;width:1.2em;text-align:left
       <h2 class="h">Built across Sydney.</h2>
     </div>
     <div class="ringwrap" id="ringwrap"><div class="ring" id="ring">
-      <figure class="rc"><img decoding="async" src="img/p_belmore.webp" alt="Basement with detailed footing trenches, Belmore" loading="lazy"><figcaption><b>Belmore</b><span>Bulk / Detail / Stormwater</span><i>For Imperium Build</i></figcaption></figure>
-      <figure class="rc"><img decoding="async" src="img/p_marayong.webp" alt="Aerial view of a footing grid, Marayong" loading="lazy"><figcaption><b>Marayong</b><span>160 piers / 600m of footings / 4 days</span><i>For Stanford Constructions</i></figcaption></figure>
-      <figure class="rc"><img decoding="async" src="img/p_roseville.webp" alt="Duplex basement with footings, Roseville" loading="lazy"><figcaption><b>Roseville</b><span>Shoring / Bulk / Detail / Stormwater</span><i>Duplex basement</i></figcaption></figure>
-      <figure class="rc"><img decoding="async" src="img/p_willoughby.webp" alt="Aerial view of detailed excavation, Willoughby" loading="lazy"><figcaption><b>Willoughby</b><span>102 piers / 13 RLs / 350m of footings</span><i>For DC Projects</i></figcaption></figure>
-      <figure class="rc"><img decoding="async" src="img/p_lanecove.webp" alt="Completed basement, Lane Cove" loading="lazy"><figcaption><b>Lane Cove</b><span>Bulk / Detail / Stormwater</span><i>For Primrose Projects</i></figcaption></figure>
-      <figure class="rc"><img decoding="async" src="img/p_panania.webp" alt="Aerial view of footings with steel placed, Panania" loading="lazy"><figcaption><b>Panania</b><span>97 piers / 250m of footings</span><i>For Estero Building Group</i></figcaption></figure>
-      <figure class="rc"><img decoding="async" src="img/p_kogarah.webp" alt="Basement excavation, Kogarah Bay" loading="lazy"><figcaption><b>Kogarah Bay</b><span>Shoring / Bulk / Detail</span><i>For Buildline Projects</i></figcaption></figure>
-      <figure class="rc"><img decoding="async" src="img/p_castlehill.webp" alt="Crew working in a basement, Castle Hill" loading="lazy"><figcaption><b>Castle Hill</b><span>Basement detail excavation</span></figcaption></figure>
-      <figure class="rc"><img decoding="async" src="img/p_concord.webp" alt="Bulk excavated basement, Concord West" loading="lazy"><figcaption><b>Concord West</b><span>1,600m&sup3; bulk excavation</span></figcaption></figure>
+      <figure class="rc" data-full="img/g/bulk_03.webp"><img decoding="async" src="img/r_belmore.webp" alt="Basement with detailed footing trenches, Belmore" loading="lazy"><figcaption><b>Belmore</b><span>Bulk / Detail / Stormwater</span><i>For Imperium Build</i></figcaption></figure>
+      <figure class="rc" data-full="img/g/detail_11.webp"><img decoding="async" src="img/r_marayong.webp" alt="Aerial view of a footing grid, Marayong" loading="lazy"><figcaption><b>Marayong</b><span>160 piers / 600m of footings / 4 days</span><i>For Stanford Constructions</i></figcaption></figure>
+      <figure class="rc" data-full="img/g/bulk_09.webp"><img decoding="async" src="img/r_roseville.webp" alt="Duplex basement with footings, Roseville" loading="lazy"><figcaption><b>Roseville</b><span>Shoring / Bulk / Detail / Stormwater</span><i>Duplex basement</i></figcaption></figure>
+      <figure class="rc" data-full="img/g/remed_12.webp"><img decoding="async" src="img/r_glebe.webp" alt="Underpinning works beneath a terrace, Glebe" loading="lazy"><figcaption><b>Glebe</b><span>Remediation / Underpinning</span></figcaption></figure>
+      <figure class="rc" data-full="img/p_willoughby.webp"><img decoding="async" src="img/p_willoughby.webp" alt="Aerial view of detailed excavation, Willoughby" loading="lazy"><figcaption><b>Willoughby</b><span>102 piers / 13 RLs / 350m of footings</span><i>For DC Projects</i></figcaption></figure>
+      <figure class="rc" data-full="img/g/bulk_08.webp"><img decoding="async" src="img/r_oatlands.webp" alt="Bulk and detail excavation, Oatlands" loading="lazy"><figcaption><b>Oatlands</b><span>Bulk / Detail</span></figcaption></figure>
+      <figure class="rc" data-full="img/g/detail_13.webp"><img decoding="async" src="img/r_panania.webp" alt="Aerial view of footings, Panania" loading="lazy"><figcaption><b>Panania</b><span>97 piers / 250m of footings</span><i>For Estero Building Group</i></figcaption></figure>
+      <figure class="rc" data-full="img/g/bulk_14.webp"><img decoding="async" src="img/r_kogarah.webp" alt="Basement excavation, Kogarah Bay" loading="lazy"><figcaption><b>Kogarah Bay</b><span>Shoring / Bulk / Detail</span><i>For Buildline Projects</i></figcaption></figure>
+      <figure class="rc" data-full="img/g/detail_05.webp"><img decoding="async" src="img/r_greenacre.webp" alt="Aerial view of detailed footings, Greenacre" loading="lazy"><figcaption><b>Greenacre</b><span>Detail excavation</span></figcaption></figure>
+      <figure class="rc" data-full="img/p_lanecove.webp"><img decoding="async" src="img/p_lanecove.webp" alt="Completed basement, Lane Cove" loading="lazy"><figcaption><b>Lane Cove</b><span>Bulk / Detail / Stormwater</span><i>For Primrose Projects</i></figcaption></figure>
+      <figure class="rc" data-full="img/p_castlehill.webp"><img decoding="async" src="img/p_castlehill.webp" alt="Crew working in a basement, Castle Hill" loading="lazy"><figcaption><b>Castle Hill</b><span>Basement detail excavation</span></figcaption></figure>
+      <figure class="rc" data-full="img/p_concord.webp"><img decoding="async" src="img/p_concord.webp" alt="Bulk excavated basement, Concord West" loading="lazy"><figcaption><b>Concord West</b><span>1,600m&sup3; bulk excavation</span></figcaption></figure>
     </div></div>
-    <div class="work-foot"><a href="https://www.instagram.com/jaymocivil/" target="_blank" rel="noopener">More on Instagram</a><span class="wcount" id="wcount">01 / 09</span><div class="work-prog"><i id="workp"></i></div></div>
+    <div class="work-foot"><button class="gal-open" id="galOpen" type="button"><span class="go-k">View all projects</span><span class="go-n">69 photos</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button><span class="wcount" id="wcount">01 / 12</span><div class="work-prog"><i id="workp"></i></div></div>
   </div>
 </section>
 
@@ -955,6 +1010,13 @@ form.busy #fbt:after{content:"";display:inline-block;width:1.2em;text-align:left
     <p class="legal"><span><span class="nb">&copy; <span id="yr">2026</span> Jaymo Civil Pty Ltd.</span> <span class="nb">ABN 41 663 615 594.</span></span><a href="https://trades.magolabs.in/" target="_blank" rel="noopener" title="Mago Labs: website design for trades and contractors">Website design by Mago Labs</a></p>
   </div>
 </footer>
+<div class="gal" id="gal" role="dialog" aria-modal="true" aria-label="All projects" aria-hidden="true">
+  <div class="gal-hd"><div class="gal-in">
+    <div class="gal-top"><div><p class="tag">Project archive</p><h2 class="h">Every job. <span class="y">Every suburb.</span></h2></div><button class="gal-x" id="galX" type="button" aria-label="Close all projects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 5l14 14M19 5L5 19"/></svg></button></div>
+    <div class="gal-f" id="galF" role="group" aria-label="Filter by service"></div>
+  </div></div>
+  <div class="gal-in"><div class="gal-g" id="galG"></div><p class="gal-end" id="galEnd"></p></div>
+</div>
 <div class="lbx" id="lbx" role="dialog" aria-modal="true" aria-label="Photo viewer" aria-hidden="true">
   <div class="lbx-top"><p><b id="lbxn">01</b>/ <span id="lbxt">09</span></p><button class="lbx-btn" id="lbxc" type="button" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 5l14 14M19 5L5 19"/></svg></button></div>
   <div class="lbx-stage" id="lbxs"><button class="lbx-btn lbx-nav lbx-prev" id="lbxp" type="button" aria-label="Previous photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M15 5l-7 7 7 7"/></svg></button><img id="lbxi" alt=""><button class="lbx-btn lbx-nav lbx-next" id="lbxx" type="button" aria-label="Next photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 5l7 7-7 7"/></svg></button></div>
@@ -1222,7 +1284,10 @@ form.busy #fbt:after{content:"";display:inline-block;width:1.2em;text-align:left
         function fill(row,list){while(list.length&&list.length<6)list=list.concat(list);function tiles(dup){return list.map(function(x){return '<div class="lg'+(dup?' dup" aria-hidden="true':'')+'"><img decoding="async" src="'+esc(x.img)+'?h=180&auto=format&q=80" loading="lazy" alt="'+(dup?'':esc(x.name||''))+'"></div>'}).join('')}row.innerHTML=tiles(0)+tiles(1)}
         fill(rows[0],a);fill(rows[1],b);if(window.__warm)window.__warm()});
     }
-    setTimeout(function(){fetch('https://tfn7p5rx.apicdn.sanity.io/v2024-01-01/data/query/production?query='+encodeURIComponent(Q)).then(function(r){return r.ok?r.json():null}).then(function(j){if(j&&j.result)apply(j.result)}).catch(function(){})},1200);
+    /* ADMIN PANEL PAUSED: the live site uses the content in this file until the admin panel is handed over.
+       Set CMS_ON to true at handover; the admin content must be brought in line with this page first. */
+    var CMS_ON=false;
+    if(CMS_ON)setTimeout(function(){fetch('https://tfn7p5rx.apicdn.sanity.io/v2024-01-01/data/query/production?query='+encodeURIComponent(Q)).then(function(r){return r.ok?r.json():null}).then(function(j){if(j&&j.result)apply(j.result)}).catch(function(){})},1200);
     window.__cms=apply})();
   /* ---------- lightbox: project ring and service photos open full size ---------- */
   (function(){var lb=id('lbx'),im=id('lbxi'),cap=id('lbxcap'),nEl=id('lbxn'),tEl=id('lbxt'),stage=id('lbxs'),L=[],I=0,back=null,sx=null;
@@ -1233,12 +1298,12 @@ form.busy #fbt:after{content:"";display:inline-block;width:1.2em;text-align:left
       nEl.textContent=(I<9?'0':'')+(I+1);tEl.textContent=(L.length<10?'0':'')+L.length;
       cap.innerHTML=(x.t?'<b>'+esc(x.t)+'</b>':'')+(x.sub?'<span>'+esc(x.sub)+'</span>':'')+(x.by?'<i>'+esc(x.by)+'</i>':'');
       [I+1,I-1].forEach(function(k){var y=L[(k+L.length)%L.length];if(y){var p=new Image();p.src=big(y.src)}})}
-    function open(list,i){L=list;back=d.activeElement;lb.classList.add('open');lb.setAttribute('aria-hidden','false');window.__lock=true;gliding=false;d.body.style.overflow='hidden';show(i||0);setTimeout(function(){id('lbxc').focus({preventScroll:true})},60)}
-    function close(){if(!lb.classList.contains('open'))return;lb.classList.remove('open');lb.setAttribute('aria-hidden','true');window.__lock=false;d.body.style.overflow='';if(back&&back.focus)back.focus({preventScroll:true})}
+    var prevLock=false,prevOv='';function open(list,i){L=list;back=d.activeElement;prevLock=!!window.__lock;prevOv=d.body.style.overflow;lb.classList.add('open');lb.setAttribute('aria-hidden','false');window.__lock=true;gliding=false;d.body.style.overflow='hidden';show(i||0);setTimeout(function(){id('lbxc').focus({preventScroll:true})},60)}
+    function close(){if(!lb.classList.contains('open'))return;lb.classList.remove('open');lb.setAttribute('aria-hidden','true');window.__lock=prevLock;d.body.style.overflow=prevOv;if(back&&back.focus)back.focus({preventScroll:true})}
     window.__lbx=open;
     id('lbxc').addEventListener('click',close);id('lbxp').addEventListener('click',function(){show(I-1)});id('lbxx').addEventListener('click',function(){show(I+1)});
     stage.addEventListener('click',function(e){if(e.target===stage)close()});
-    addEventListener('keydown',function(e){if(!lb.classList.contains('open'))return;if(e.key==='Escape')close();else if(e.key==='ArrowRight')show(I+1);else if(e.key==='ArrowLeft')show(I-1);
+    addEventListener('keydown',function(e){if(!lb.classList.contains('open'))return;if(e.key==='Escape'){e.preventDefault();close()}else if(e.key==='ArrowRight')show(I+1);else if(e.key==='ArrowLeft')show(I-1);
       else if(e.key==='Tab'){var f=$('button',lb),a=f[0],z=f[f.length-1];if(e.shiftKey&&d.activeElement===a){e.preventDefault();z.focus()}else if(!e.shiftKey&&d.activeElement===z){e.preventDefault();a.focus()}}});
     stage.addEventListener('pointerdown',function(e){sx=e.clientX});
     stage.addEventListener('pointerup',function(e){if(sx===null)return;var dx=e.clientX-sx;sx=null;if(Math.abs(dx)>50)show(I+(dx<0?1:-1))});
@@ -1246,7 +1311,38 @@ form.busy #fbt:after{content:"";display:inline-block;width:1.2em;text-align:left
     var rg=id('ring'),rwp=id('ringwrap');
     rg.addEventListener('click',function(e){var fig=e.target.closest&&e.target.closest('.rc');if(!fig||(rwp._dt&&Date.now()-rwp._dt<400))return;
       var cards=$('.rc',rg);open(cards.map(function(c){var i=c.querySelector('img'),fc=c.querySelector('figcaption');
-        return {src:i.currentSrc||i.src,alt:i.alt,t:fc&&fc.querySelector('b')?fc.querySelector('b').textContent:'',sub:fc&&fc.querySelector('span')?fc.querySelector('span').textContent:'',by:fc&&fc.querySelector('i')?fc.querySelector('i').textContent:''}}),cards.indexOf(fig))});
+        return {src:c.getAttribute('data-full')||i.currentSrc||i.src,alt:i.alt,t:fc&&fc.querySelector('b')?fc.querySelector('b').textContent:'',sub:fc&&fc.querySelector('span')?fc.querySelector('span').textContent:'',by:fc&&fc.querySelector('i')?fc.querySelector('i').textContent:''}}),cards.indexOf(fig))});
+  })();
+
+  /* ---------- view all projects: filterable archive of every job photo ---------- */
+  (function(){var g=id('gal'),grid=id('galG'),bar=id('galF'),end=id('galEnd'),btn=id('galOpen'),P=null,cur='all',back=null,tm=0;
+    var CATS=[['all','All work'],['bulk','Bulk excavation'],['detail','Detail excavation'],['remed','Remediation'],['trench','Service trenches']],NAME={};CATS.forEach(function(c){NAME[c[0]]=c[1]});
+    function esc(v){return String(v==null?'':v).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+    var MIX=null;
+    /* "All work" deals the services out in turn, so the grid reads as a mix of jobs rather than blocks of one kind */
+    function mix(){if(MIX)return MIX;var by={},keys=[];P.forEach(function(x){if(!by[x.c]){by[x.c]=[];keys.push(x.c)}by[x.c].push(x)});MIX=[];
+      for(var r=0,more=true;more;r++){more=false;keys.forEach(function(k){if(by[k][r]){MIX.push(by[k][r]);more=true}})}return MIX}
+    function list(){return cur==='all'?mix():P.filter(function(x){return x.c===cur})}
+    function chips(){bar.innerHTML=CATS.map(function(c){var n=c[0]==='all'?P.length:P.filter(function(x){return x.c===c[0]}).length;
+      return '<button class="gf" type="button" data-c="'+c[0]+'" aria-pressed="'+(c[0]===cur)+'">'+c[1]+'<i>'+(n<10?'0':'')+n+'</i></button>'}).join('')}
+    function render(){var L=list();
+      grid.innerHTML=L.map(function(x,i){return '<button class="gt" type="button" data-i="'+i+'" style="--d:'+Math.min(i*45,700)+'ms" aria-label="Open photo: '+esc(NAME[x.c]+(x.s?', '+x.s:''))+'"><img src="'+x.t+'" alt="'+esc(NAME[x.c]+(x.s?', '+x.s:''))+'" width="'+x.w+'" height="'+x.h+'" loading="'+(i<12?'eager':'lazy')+'" decoding="async"><span class="gt-c"><span><b>'+esc(x.s||NAME[x.c])+'</b><span>'+esc(NAME[x.c])+'</span></span><em>'+(i<9?'0':'')+(i+1)+'</em></span></button>'}).join('');
+      end.textContent=L.length+' photos from real Jaymo Civil jobs across Sydney';
+      requestAnimationFrame(function(){requestAnimationFrame(function(){$('.gt',grid).forEach(function(t){t.classList.add('in')})})})}
+    function filter(c){if(c===cur)return;cur=c;$('.gf',bar).forEach(function(b){b.setAttribute('aria-pressed',String(b.getAttribute('data-c')===c))});
+      $('.gt',grid).forEach(function(t){t.style.setProperty('--d','0ms');t.classList.remove('in')});clearTimeout(tm);tm=setTimeout(function(){g.scrollTo({top:0,behavior:'auto'});render()},RM?0:320)}
+    function show(){chips();render();g.classList.add('open');g.setAttribute('aria-hidden','false');window.__lock=true;gliding=false;d.body.style.overflow='hidden';setTimeout(function(){id('galX').focus({preventScroll:true})},80)}
+    function open(){back=d.activeElement;if(P)return show();
+      btn.classList.add('busy');fetch('img/g/projects.json').then(function(r){return r.json()}).then(function(j){P=j;btn.classList.remove('busy');show()}).catch(function(){btn.classList.remove('busy')})}
+    function close(){if(!g.classList.contains('open'))return;g.classList.remove('open');g.setAttribute('aria-hidden','true');window.__lock=false;d.body.style.overflow='';if(back&&back.focus)back.focus({preventScroll:true})}
+    btn.addEventListener('click',open);id('galX').addEventListener('click',close);
+    bar.addEventListener('click',function(e){var b=e.target.closest('.gf');if(b)filter(b.getAttribute('data-c'))});
+    grid.addEventListener('click',function(e){var t=e.target.closest('.gt');if(!t||!window.__lbx)return;var L=list();
+      window.__lbx(L.map(function(x){return {src:x.f,alt:NAME[x.c]+(x.s?', '+x.s:''),t:x.s||NAME[x.c],sub:x.s?NAME[x.c]:''}}),+t.getAttribute('data-i'))});
+    addEventListener('keydown',function(e){if(e.defaultPrevented||!g.classList.contains('open')||id('lbx').classList.contains('open'))return;
+      if(e.key==='Escape')close();else if(e.key==='Tab'){var f=$('button',g),a=f[0],z=f[f.length-1];if(e.shiftKey&&d.activeElement===a){e.preventDefault();z.focus()}else if(!e.shiftKey&&d.activeElement===z){e.preventDefault();a.focus()}}});
+    /* warm the list in the background once the projects section is near */
+    var w=id('work');if('IntersectionObserver' in window){var o=new IntersectionObserver(function(en){if(en[0].isIntersecting){o.disconnect();if(!P)fetch('img/g/projects.json').then(function(r){return r.json()}).then(function(j){P=j}).catch(function(){})}},{rootMargin:'800px 0px'});o.observe(w)}
   })();
 
   /* quote form: sent straight to the Jaymo Civil inbox, then the card shows what happens next */

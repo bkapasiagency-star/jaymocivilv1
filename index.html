@@ -898,6 +898,47 @@ form.busy #fbt:after{content:"";display:inline-block;width:1.2em;text-align:left
 .rvd-x svg{width:16px;height:16px}
 .rm .rv-c{opacity:1;transform:none;transition:none}
 .rv-vp{-webkit-mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent);mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent)}
+
+/* ---------- on site: three real clips that play while on screen ---------- */
+.os{background:var(--ink);color:#fff;padding:100px 0 96px;overflow:hidden}
+.os-h{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px 40px}
+.os-h .tag{color:#a9a6a0}
+.os h2{margin-top:16px;font-size:clamp(2rem,4.6vw,4rem)}
+.os-h .p{max-width:26em;color:#a9a6a0}
+.os-vp{margin-top:44px;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;scroll-snap-type:x mandatory;scroll-padding-left:var(--pad)}
+.os-vp::-webkit-scrollbar{display:none}
+.os-g{list-style:none;margin:0;display:flex;gap:12px;width:max-content;padding:0 var(--pad)}
+.os-t{flex:none;width:min(82vw,420px);scroll-snap-align:start;opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .9s var(--ease);transition-delay:calc(var(--n)*110ms)}
+.os.in-v .os-t{opacity:1;transform:none}
+.os-b{position:relative;display:block;width:100%;aspect-ratio:4/3;padding:0;border:0;background:#1c1c1a;overflow:hidden;cursor:zoom-in;color:#fff}
+.os-b video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.02);transition:transform 1.2s var(--ease)}
+.os-b:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,11,10,.0) 45%,rgba(11,11,10,.85));pointer-events:none}
+.os-b:before{content:"";position:absolute;left:0;top:0;right:0;height:3px;background:var(--y);z-index:2;transform:scaleX(0);transform-origin:left;transition:transform .7s var(--ease)}
+.os-b:hover:before,.os-b:focus-visible:before{transform:none}
+.os-b:hover video{transform:scale(1.08)}
+.os-b:focus-visible{outline:2px solid var(--y);outline-offset:3px}
+.os-c{position:absolute;left:16px;right:60px;bottom:14px;z-index:2;display:flex;align-items:flex-end;gap:12px;text-align:left}
+.os-c em{font:600 1.3rem/1 var(--f);font-style:normal;font-stretch:125%;color:var(--y)}
+.os-c b{display:block;font:600 .92rem/1.25 var(--f);font-stretch:118%;text-transform:uppercase}
+.os-c i{display:block;margin-top:4px;font:500 .58rem var(--m);font-style:normal;letter-spacing:.14em;text-transform:uppercase;color:#c9c6bf}
+.os-x{position:absolute;right:14px;bottom:14px;z-index:2;width:38px;height:38px;display:grid;place-items:center;border:1px solid rgba(255,255,255,.4);background:rgba(11,11,10,.35);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);transition:background .3s,color .3s,border-color .3s}
+.os-x svg{width:15px;height:15px}
+.os-b:hover .os-x,.os-b:focus-visible .os-x{background:var(--y);color:var(--ink);border-color:var(--y)}
+@media (min-width:940px){
+  .os{padding:140px 0 130px}
+  .os-vp{overflow:visible;max-width:1360px;margin:56px auto 0;padding:0 var(--pad)}
+  .os-g{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;width:auto;padding:0}
+  .os-t{width:auto}
+  .os-b{aspect-ratio:4/3.4}
+}
+/* full-size player */
+.osv{position:fixed;inset:0;z-index:205;display:grid;place-items:center;padding:60px 16px 30px;background:#0a0a09;opacity:0;visibility:hidden;transition:opacity .4s ease,visibility 0s linear .4s}
+.osv.open{opacity:1;visibility:visible;transition:opacity .4s ease}
+.osv video{width:min(1100px,100%);height:auto;max-height:calc(100vh - 90px);object-fit:contain;background:#000;box-shadow:0 40px 90px -40px #000;border-top:3px solid var(--y)}
+.osv-x{position:absolute;right:16px;top:14px;width:46px;height:46px;display:grid;place-items:center;border:1px solid rgba(255,255,255,.25);background:transparent;color:#fff;cursor:pointer;transition:background .3s,color .3s,border-color .3s}
+.osv-x:hover,.osv-x:focus-visible{background:var(--y);color:var(--ink);border-color:var(--y);outline:0}
+.osv-x svg{width:18px;height:18px}
+.rm .os-t{opacity:1;transform:none;transition:none}
 </style>
 <script>(function(){var d=document.documentElement;if(window.matchMedia&&matchMedia("(prefers-reduced-motion:reduce)").matches)d.className+=" rm"})();</script>
 </head>
@@ -1060,6 +1101,14 @@ form.busy #fbt:after{content:"";display:inline-block;width:1.2em;text-align:left
 </section>
 
 <!-- PROJECTS: ring that turns with the scroll -->
+<section class="os" id="onsite" aria-labelledby="osh">
+  <div class="wrap os-h">
+    <div><p class="tag rv">Real footage</p><h2 class="h rv-l" id="osh"><span class="lm"><span>On <span class="y">site.</span></span></span></h2></div>
+    <p class="p rv">No stock footage. These are Jaymo Civil crews on real Sydney jobs.</p>
+  </div>
+  <div class="os-vp"><ul class="os-g"><li class="os-t" style="--n:0"><button class="os-b" type="button" data-src="img/v/v_piers.mp4" aria-label="Play video: Pier holes drilled to the drawings"><video poster="img/v/v_piers.jpg" muted loop playsinline preload="none" aria-hidden="true"><source src="img/v/v_piers.mp4" type="video/mp4"><source src="img/v/v_piers.webm" type="video/webm"></video><span class="os-c"><em>01</em><span><b>Pier holes drilled to the drawings</b><i>Detail excavation</i></span></span><span class="os-x" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 4h6v6M10 20H4v-6M20 4l-7 7M4 20l7-7"/></svg></span></button></li><li class="os-t" style="--n:1"><button class="os-b" type="button" data-src="img/v/v_aerial.mp4" aria-label="Play video: From pier holes to a full footing grid"><video poster="img/v/v_aerial.jpg" muted loop playsinline preload="none" aria-hidden="true"><source src="img/v/v_aerial.mp4" type="video/mp4"><source src="img/v/v_aerial.webm" type="video/webm"></video><span class="os-c"><em>02</em><span><b>From pier holes to a full footing grid</b><i>Detail excavation</i></span></span><span class="os-x" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 4h6v6M10 20H4v-6M20 4l-7 7M4 20l7-7"/></svg></span></button></li><li class="os-t" style="--n:2"><button class="os-b" type="button" data-src="img/v/v_grid.mp4" aria-label="Play video: A finished footing grid from above"><video poster="img/v/v_grid.jpg" muted loop playsinline preload="none" aria-hidden="true"><source src="img/v/v_grid.mp4" type="video/mp4"><source src="img/v/v_grid.webm" type="video/webm"></video><span class="os-c"><em>03</em><span><b>A finished footing grid from above</b><i>Detail excavation</i></span></span><span class="os-x" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 4h6v6M10 20H4v-6M20 4l-7 7M4 20l7-7"/></svg></span></button></li></ul></div>
+</section>
+<div class="osv" id="osv" role="dialog" aria-modal="true" aria-label="Video player" aria-hidden="true"><button class="osv-x" id="osvx" type="button" aria-label="Close video"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 5l14 14M19 5L5 19"/></svg></button><video id="osvv" muted loop playsinline controls></video></div>
 <section class="work pin" id="work">
   <div class="stick">
     <div class="work-head">
@@ -1559,6 +1608,21 @@ form.busy #fbt:after{content:"";display:inline-block;width:1.2em;text-align:left
     function loop(t){raf=0;if(!vis)return;if(t-last>2500){var s=(t-t0)/1000;tx=.5+.42*Math.sin(s*.42);ty=.5+.4*Math.sin(s*.66+1)}
       x+=(tx-x)*.08;y+=(ty-y)*.08;w.style.setProperty('--mx',(x*100).toFixed(2)+'%');w.style.setProperty('--my',(y*100).toFixed(2)+'%');raf=requestAnimationFrame(loop)}
     if('IntersectionObserver' in window)new IntersectionObserver(function(en){vis=en[0].isIntersecting;if(vis&&!raf)raf=requestAnimationFrame(loop)}).observe(w);else{vis=true;raf=requestAnimationFrame(loop)}})();
+
+  /* ---------- on site: clips load as the section nears, play only while on screen, open full size ---------- */
+  (function(){var sec=id('onsite');if(!sec)return;var vids=$('video',sec),dlg=id('osv'),pv=id('osvv'),back=null,loaded=false;
+    var onScreen=false;function load(){if(loaded)return;loaded=true;vids.forEach(function(v){v.preload='auto';v.load()});if(onScreen)play(true)}
+    function play(on){onScreen=on;if(on&&!loaded){load();return}vids.forEach(function(v){if(on&&!RM){var p=v.play();if(p&&p.catch)p.catch(function(){})}else v.pause()})}
+    if('IntersectionObserver' in window){
+      new IntersectionObserver(function(en){if(en[0].isIntersecting){load();sec.classList.add('in-v')}},{rootMargin:'600px 0px'}).observe(sec);
+      new IntersectionObserver(function(en){play(en[0].isIntersecting)},{threshold:.2}).observe(sec)}
+    else{load();sec.classList.add('in-v');play(true)}
+    function open(src){back=d.activeElement;play(false);if(!pv.canPlayType('video/mp4; codecs="avc1.64001F"'))src=src.replace(/\.mp4$/,'.webm');pv.src=src;dlg.classList.add('open');dlg.setAttribute('aria-hidden','false');window.__lock=true;gliding=false;d.body.style.overflow='hidden';
+      var p=pv.play();if(p&&p.catch)p.catch(function(){});setTimeout(function(){id('osvx').focus({preventScroll:true})},60)}
+    function close(){if(!dlg.classList.contains('open'))return;pv.pause();pv.removeAttribute('src');pv.load();dlg.classList.remove('open');dlg.setAttribute('aria-hidden','true');window.__lock=false;d.body.style.overflow='';play(true);if(back&&back.focus)back.focus({preventScroll:true})}
+    $('.os-b',sec).forEach(function(b){b.addEventListener('click',function(){open(b.getAttribute('data-src'))})});
+    id('osvx').addEventListener('click',close);dlg.addEventListener('click',function(e){if(e.target===dlg)close()});
+    addEventListener('keydown',function(e){if(dlg.classList.contains('open')&&e.key==='Escape')close()})})();
 
   /* ---------- builders pull quotes: one line from each review, rotating ---------- */
   (function(){var bq=id('bq');if(!bq)return;var it=$('.bq-i',bq),tk=$('.bq-t i',bq),k=0,tm=0,vis=false,hold=false,D=5000;

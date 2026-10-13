@@ -1,0 +1,13 @@
+{
+  "name": "Jaymo Civil",
+  "short_name": "Jaymo Civil",
+  "description": "Excavation and civil contractors across Sydney and suburbs.",
+  "start_url": "/",
+  "display": "minimal-ui",
+  "background_color": "#0b0b0a",
+  "theme_color": "#0b0b0a",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}

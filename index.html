@@ -939,6 +939,22 @@ form.busy #fbt:after{content:"";display:inline-block;width:1.2em;text-align:left
 .osv-x:hover,.osv-x:focus-visible{background:var(--y);color:var(--ink);border-color:var(--y);outline:0}
 .osv-x svg{width:18px;height:18px}
 .rm .os-t{opacity:1;transform:none;transition:none}
+
+/* phones: service chapters give the photo all the spare height and sit the text above the call bar,
+   so no empty band shows; the project ring is sized to fit between the heading and the footer */
+@media (max-width:939px){
+  .ch .stick{grid-template-rows:minmax(0,1fr) auto}
+  .ch-t{padding:22px var(--pad) calc(92px + env(safe-area-inset-bottom))}
+}
+@media (max-width:699px){
+  .work .stick{justify-content:center;padding-top:70px}
+  .work-head{margin-bottom:0}
+  .ringwrap{--cw:min(60vw,250px);--ch:min(38svh,320px);height:calc(var(--ch) + 56px);margin-top:4px}
+  .rc figcaption{padding:40px 12px 10px}
+  .rc figcaption b{font-size:.82rem}
+  .rc figcaption span,.rc figcaption i{font-size:.56rem}
+}
+@media (max-width:939px){.os{padding-top:28px}}
 </style>
 <script>(function(){var d=document.documentElement;if(window.matchMedia&&matchMedia("(prefers-reduced-motion:reduce)").matches)d.className+=" rm"})();</script>
 </head>

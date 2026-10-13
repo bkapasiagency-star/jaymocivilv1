@@ -12,8 +12,8 @@
 <meta property="og:title" content="Jaymo Civil | Excavation and Civil Contractors, Sydney">
 <meta property="og:description" content="Bulk and detail excavation, shoring, service trenches and remediation across Sydney. Experts committed to excellence.">
 <meta property="og:type" content="website">
-<link rel="preload" as="image" href="img/first-hero.webp" media="(min-width:700px)" fetchpriority="high">
-<link rel="preload" as="image" href="img/first-hero_m.webp" media="(max-width:699px)" fetchpriority="high">
+<link rel="preload" as="image" href="img/v/hero_d.webp" media="(min-width:700px)" fetchpriority="high">
+<link rel="preload" as="image" href="img/v/hero_m.webp" media="(max-width:699px)" fetchpriority="high">
 <link rel="preload" as="font" type="font/woff2" href="fonts/archivo.woff2" crossorigin>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"GeneralContractor","name":"Jaymo Civil","legalName":"Jaymo Civil Pty Ltd","telephone":"+61450503180","email":"info@jaymocivil.com.au","areaServed":"Sydney NSW","slogan":"Experts Committed to Excellence","sameAs":["https://www.instagram.com/jaymocivil/"]}</script>
 <style>
@@ -282,9 +282,7 @@ footer .slog{margin-top:16px;font:500 .64rem var(--m);letter-spacing:.14em;text-
 .tag{font-size:.74rem}
 nav a{font-size:.72rem;color:#fff}
 .scrub{display:block;background:#1c1c1a center/cover no-repeat}
-canvas[data-q="hero"]{background-image:url(img/first-hero.webp)}
 canvas[data-q="shore"]{background-image:url(img/first-shore.webp)}
-@media (max-width:699px){canvas[data-q="hero"]{background-image:url(img/first-hero_m.webp)}}
 
 .hero-film:after{background:linear-gradient(180deg,rgba(11,11,10,.5),rgba(11,11,10,0) 20%,rgba(11,11,10,0) 42%,rgba(11,11,10,.55) 66%,rgba(11,11,10,.9))}
 .hero-t .tag{color:#fff}
@@ -955,6 +953,10 @@ form.busy #fbt:after{content:"";display:inline-block;width:1.2em;text-align:left
   .rc figcaption span,.rc figcaption i{font-size:.56rem}
 }
 @media (max-width:939px){.os{padding-top:28px}}
+
+/* hero film: one looping clip, the right size for the screen; the poster shows until it plays */
+.hero-v{position:absolute;inset:0;width:100%;height:100%;max-width:none;object-fit:cover;object-position:62% 50%;background:#1c1c1a center/cover no-repeat url(img/v/hero_d.webp)}
+@media (max-width:699px){.hero-v{object-position:50% 50%;background-image:url(img/v/hero_m.webp)}}
 </style>
 <script>(function(){var d=document.documentElement;if(window.matchMedia&&matchMedia("(prefers-reduced-motion:reduce)").matches)d.className+=" rm"})();</script>
 </head>
@@ -988,7 +990,7 @@ form.busy #fbt:after{content:"";display:inline-block;width:1.2em;text-align:left
 <div class="pin hero" id="hero">
   <div class="stick">
     <div class="hero-film" id="hfilm">
-      <canvas class="scrub" data-q="hero" data-still role="img" aria-label="Excavator working on a cleared site, seen from above"></canvas>
+      <video class="hero-v" id="hv" muted loop playsinline preload="auto" aria-hidden="true"></video><span class="hero-alt" role="img" aria-label="Excavators digging on a site at sunset"></span>
     </div>
     <div class="hero-iris" id="iris"><img decoding="async" src="img/markk.png" alt="" aria-hidden="true" width="210" height="210"><p class="h iris-l" id="irl"><span class="lm"><span>Experts committed</span></span><span class="lm"><span>to excellence.</span></span></p></div>
     <div class="hero-t" id="herot">
@@ -1290,7 +1292,7 @@ form.busy #fbt:after{content:"";display:inline-block;width:1.2em;text-align:left
   <a class="btn btn-o" href="#contact">Get a Quote</a>
 </div>
 
-<script>var SQ={"hero":[0,42138,78648,118052,158312,198346,233564,273868,312100,349848,383146,419872,462150,503098,543600,583220,620728,658430,691776,729590,769120,810198,852126,894884,937194,978262,1019456,1059896,1099266,1140560,1179278,1217924,1256406,1292176,1325698,1359332,1396066,1433754,1472900,1511802,1552030,1593582,1636028,1677028,1718710,1760450,1803370,1843722,1885340,1924906,1965666,2006966,2047410,2086340,2127162,2166294,2206866,2244924,2283086,2321140,2360232],"hero_m":[0,30356,56058,84722,112888,141320,166926,195514,223484,250398,274814,302518,332706,360942,390848,419524,446470,474178,498628,526590,555710,585470,616368,645472,674502,703822,733592,763418,791914,821400,849458,877346,906092,932244,957206,981822,1009038,1037118,1065798,1094784,1124366,1154260,1185264,1214494,1243762,1273208,1302748,1330706,1359688,1388640,1417944,1447662,1476602,1505506,1535258,1563680,1592898,1620248,1647516,1674828,1703386],"shore":[0,32510,66864,86430,122180,146996,188386,215792,237166,265856,304578,335168,361528,384158,405058,425992,461798,502890,539376,574852,606884,635078,661588,687028,710312,732688,753882,774120,793728,818980,851162,892068,933410,973804,1011412,1047638,1083402]},SO={"hero":[0,59,16,32,48,8,24,40,56,4,12,20,28,36,44,52,2,6,10,14,18,22,26,30,34,38,42,46,50,54,58,1,3,5,7,9,11,13,15,17,19,21,23,25,27,29,31,33,35,37,39,41,43,45,47,49,51,53,55,57],"hero_m":[0,59,16,32,48,8,24,40,56,4,12,20,28,36,44,52,2,6,10,14,18,22,26,30,34,38,42,46,50,54,58,1,3,5,7,9,11,13,15,17,19,21,23,25,27,29,31,33,35,37,39,41,43,45,47,49,51,53,55,57],"shore":[0,35,16,32,8,24,4,12,20,28,2,6,10,14,18,22,26,30,34,1,3,5,7,9,11,13,15,17,19,21,23,25,27,29,31,33]};</script>
+<script>var SQ={"shore":[0,32510,66864,86430,122180,146996,188386,215792,237166,265856,304578,335168,361528,384158,405058,425992,461798,502890,539376,574852,606884,635078,661588,687028,710312,732688,753882,774120,793728,818980,851162,892068,933410,973804,1011412,1047638,1083402]},SO={"shore":[0,35,16,32,8,24,4,12,20,28,2,6,10,14,18,22,26,30,34,1,3,5,7,9,11,13,15,17,19,21,23,25,27,29,31,33]};</script>
 <script>
 (function(){
   'use strict';
@@ -1370,6 +1372,14 @@ form.busy #fbt:after{content:"";display:inline-block;width:1.2em;text-align:left
     var sub=s.f[i].getAttribute('data-s')||'';s.cap.classList.add('sw');
     clearTimeout(s.tm);s.tm=setTimeout(function(){s.num.textContent=(i<9?'0':'')+(i+1);s.sub.textContent=sub;s.cap.classList.remove('sw')},old<0?0:220)};
 
+  /* ---------- hero film: picks the phone or desktop cut, plays only while the hero is on screen ---------- */
+  (function(){var v=id('hv');if(!v)return;var m=Math.min(screen.width,innerWidth)<700?'m':'d',mp4=v.canPlayType('video/mp4; codecs="avc1.640028"');
+    v.poster='img/v/hero_'+m+'.webp';v.src='img/v/hero_'+m+(mp4?'.mp4':'.webm');
+    if(RM){v.removeAttribute('loop');return}
+    function play(){var p=v.play();if(p&&p.catch)p.catch(function(){})}
+    var on=true;if('IntersectionObserver' in window)new IntersectionObserver(function(en){on=en[0].isIntersecting;if(on)play();else v.pause()}).observe(id('hfilm'));
+    play();d.addEventListener('visibilitychange',function(){if(d.hidden)v.pause();else if(on)play()})})();
+
   /* ---------- scroll engine ---------- */
   var hd=id('hd'),prog=id('prog'),mb=id('mb'),hero=id('hero'),hfilm=id('hfilm'),
       chs=$('[data-ch]').map(function(el){var cv=el.querySelector('canvas'),sd=el.querySelector('.sld');return {el:el,film:el.querySelector('.ch-film'),inn:el.querySelector('.ch-in'),bar:el.querySelector('.ch-bar i'),seq:cv?bySeq[cv.getAttribute('data-q')]:null,sl:sd?new Slides(sd):null}}),
@@ -1388,8 +1398,7 @@ form.busy #fbt:after{content:"";display:inline-block;width:1.2em;text-align:left
     hd.classList.toggle('s',y>M.hero.h-vh*1.08);prog.style.transform='scaleX('+(maxY?clamp(y/maxY,0,1):0).toFixed(4)+')';mb.classList.toggle('show',y>M.hero.h-vh*.6);
     /* hero: camera pulls back, then the film settles into a frame on white */
     if(y<M.hero.t+M.hero.h){
-      var hs=bySeq.hero,p=pr(M.hero,y);
-      hs.tg=clamp(p/.74,0,1)*(hs.n-1);
+      var p=pr(M.hero,y);
       /* the two headline lines slide apart, then a white circle opens on the logo mark */
       var sp2=io2(clamp((p-.43)/.2,0,1));
       hs1.style.transform='translate3d('+(-sp2*110).toFixed(2)+'vw,0,0)';hs2.style.transform='translate3d('+(sp2*110).toFixed(2)+'vw,0,0)';
@@ -1446,9 +1455,6 @@ form.busy #fbt:after{content:"";display:inline-block;width:1.2em;text-align:left
   else{
     /* the hero footage is fetched on the first sign of a visitor, so it never competes with first paint */
     /* fetched quietly once the intro has lifted, so it is ready before the first scroll; only a few frames are decoded until then */
-    var hgo=function(){if(hgo.d)return;hgo.d=1;bySeq.hero.win=10;bySeq.hero.load();req()};
-    bySeq.hero.win=3;setTimeout(function(){(window.requestIdleCallback||setTimeout)(function(){bySeq.hero.load();req()},{timeout:1500})},Math.max(600,2900-performance.now()));
-    ['pointerdown','pointermove','touchstart','wheel','keydown','scroll'].forEach(function(t){addEventListener(t,hgo,{passive:true,once:true})});
     if(FINE)addEventListener('wheel',function(e){
       if(e.ctrlKey||window.__lock)return;var t=e.target;if(t&&t.closest&&t.closest('textarea,select'))return;
       /* trackpads already scroll smoothly in small steps: leave them to the browser, only glide real wheel notches */

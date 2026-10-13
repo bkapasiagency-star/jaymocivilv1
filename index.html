@@ -1647,7 +1647,7 @@ form.busy #fbt:after{content:"";display:inline-block;width:1.2em;text-align:left
   (function(){var w=id('wall'),wb=id('wb'),wl=id('wl');if(!w)return;
     function fill(){$('.wt-e',w).forEach(function(e){e.remove()});var cols=getComputedStyle(wb).gridTemplateColumns.split(' ').length,n=$('.wt',wb).length,ex=(cols-n%cols)%cols;
       for(var k=0;k<ex;k++){var e=d.createElement('li');e.className='wt wt-e';e.setAttribute('aria-hidden','true');wb.appendChild(e)}
-      wl.innerHTML=wb.innerHTML.replace(/ alt="[^"]*"/g,' alt=""').replace(/ loading="lazy"/g,'')}
+      wl.innerHTML=wb.innerHTML.replace(/ alt="[^"]*"/g,' alt=""')}
     fill();var rt=0;addEventListener('resize',function(){clearTimeout(rt);rt=setTimeout(fill,200)});
     if(RM){w.style.setProperty('--mx','50%');w.style.setProperty('--my','50%');return}
     var fine=FINE,tx=.3,ty=.4,x=.3,y=.4,last=-1e9,t0=performance.now(),vis=false,raf=0;

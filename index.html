@@ -296,7 +296,7 @@ footer .slog{margin-top:16px;font:500 .64rem var(--m);letter-spacing:.14em;text-
 .tag{font-size:.74rem}
 nav a{font-size:.72rem;color:#fff}
 .scrub{display:block;background:#1c1c1a center/cover no-repeat}
-canvas[data-q="shore"]{background-image:url(img/first-shore.webp)}
+
 
 .hero-film:after{background:linear-gradient(180deg,rgba(11,11,10,.5),rgba(11,11,10,0) 20%,rgba(11,11,10,0) 42%,rgba(11,11,10,.55) 66%,rgba(11,11,10,.9))}
 .hero-t .tag{color:#fff}
@@ -942,8 +942,9 @@ form.busy #fbt:after{content:"";display:inline-block;width:1.2em;text-align:left
 @media (min-width:940px){
   .os{padding:140px 0 130px}
   .os-vp{overflow:visible;max-width:1360px;margin:56px auto 0;padding:0 var(--pad)}
-  .os-g{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;width:auto;padding:0}
-  .os-t{width:auto}
+  .os-g{display:grid;grid-template-columns:repeat(6,1fr);gap:16px;width:auto;padding:0}
+  .os-t{width:auto;grid-column:span 2}
+  .os-t:nth-child(4){grid-column:2/span 2}
   .os-b{aspect-ratio:4/3.4}
 }
 /* full-size player */
@@ -1086,14 +1087,14 @@ form.busy #fbt:after{content:"";display:inline-block;width:1.2em;text-align:left
     </div>
   </div>
 
-  <div class="pin ch flip" data-ch>
+  <div class="pin ch ph flip" data-ch>
     <div class="stick">
-      <div class="ch-film"><div class="ch-in"><canvas class="scrub" data-q="shore" aria-hidden="true"></canvas><div class="ch-bar"><i></i></div></div></div>
+      <div class="ch-film"><div class="ch-in"><div class="sld" data-sld="shoring" role="button" tabindex="0" aria-label="View shoring photos"><figure class="sl on cur" data-s="Piling / capping beam"><div class="kb"><img decoding="async" data-src="img/sv_shore_1.webp" alt="Soldier piles with a capping beam" width="1400" height="1050" loading="lazy"></div></figure><figure class="sl" data-s="Piling / capping beam"><div class="kb"><img decoding="async" data-src="img/sv_shore_2.webp" alt="Piled basement wall with capping beam" width="1400" height="1050"></div></figure><figure class="sl" data-s="Piling / capping beam"><div class="kb"><img decoding="async" data-src="img/sv_shore_3.webp" alt="Capping beam steel fixed along a piled cut" width="1400" height="1050"></div></figure><figure class="sl" data-s="Piling / capping beam"><div class="kb"><img decoding="async" data-src="img/sv_shore_4.webp" alt="Excavator working inside a capped pile wall" width="1400" height="1050"></div></figure><figure class="sl" data-s="Shotcrete"><div class="kb"><img decoding="async" data-src="img/sv_shore_5.webp" alt="Mesh fixed between piles ready for shotcrete" width="1400" height="1050"></div></figure><figure class="sl" data-s="Shotcrete"><div class="kb"><img decoding="async" data-src="img/sv_shore_6.webp" alt="Mesh pinned along a piled wall before spraying" width="1400" height="1050"></div></figure><figure class="sl" data-s="Shotcrete"><div class="kb"><img decoding="async" data-src="img/sv_shore_7.webp" alt="Shotcrete sprayed on a batter" width="1400" height="1050"></div></figure><figure class="sl" data-s="Shotcrete"><div class="kb"><img decoding="async" data-src="img/sv_shore_8.webp" alt="Finished shotcrete basement walls" width="1400" height="1050"></div></figure></div><div class="ch-bar"><i></i></div><div class="sl-seg" aria-hidden="true"><i><b></b></i><i><b></b></i><i><b></b></i><i><b></b></i><i><b></b></i><i><b></b></i><i><b></b></i><i><b></b></i></div><div class="sl-cap" aria-hidden="true"><span class="sl-i"><b>01</b>/ 08</span><span class="sl-s">Piling / capping beam</span></div><span class="sl-x" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 4h6v6M10 20H4v-6M20 4l-7 7M4 20l7-7"/></svg></span></div></div>
       <div class="ch-t rv-l">
         <p class="ch-n"><b>03</b>/ 05</p>
         <h2 class="h"><span class="lm"><span>Shoring</span></span></h2>
         <p class="p rv" style="--d:200ms">Temporary shoring systems that hold the cut, protect the neighbours and keep the site safe.</p>
-        <div class="ch-s rv" style="--d:300ms"><b>Temporary shoring</b></div>
+        <div class="ch-s rv" style="--d:300ms"><b>Temporary shoring</b><span>Piling / capping beams / shotcrete</span></div>
       </div>
     </div>
   </div>
@@ -1141,7 +1142,7 @@ form.busy #fbt:after{content:"";display:inline-block;width:1.2em;text-align:left
     <div><p class="tag rv">Real footage</p><h2 class="h rv-l" id="osh"><span class="lm"><span>On <span class="y">site.</span></span></span></h2></div>
     <p class="p rv">Real Jaymo Civil crews on real Sydney jobs.</p>
   </div>
-  <div class="os-vp"><ul class="os-g"><li class="os-t" style="--n:0"><button class="os-b" type="button" data-src="img/v/v_piers.mp4" aria-label="Play video: Pier holes drilled to the drawings"><video data-v="v_piers" muted loop playsinline preload="none" aria-hidden="true"></video><span class="os-c"><em>01</em><span><b>Pier holes drilled to the drawings</b><i>Detail excavation</i></span></span><span class="os-x" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 4h6v6M10 20H4v-6M20 4l-7 7M4 20l7-7"/></svg></span></button></li><li class="os-t" style="--n:1"><button class="os-b" type="button" data-src="img/v/v_aerial.mp4" aria-label="Play video: From pier holes to a full footing grid"><video data-v="v_aerial" muted loop playsinline preload="none" aria-hidden="true"></video><span class="os-c"><em>02</em><span><b>From pier holes to a full footing grid</b><i>Detail excavation</i></span></span><span class="os-x" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 4h6v6M10 20H4v-6M20 4l-7 7M4 20l7-7"/></svg></span></button></li><li class="os-t" style="--n:2"><button class="os-b" type="button" data-src="img/v/v_grid.mp4" aria-label="Play video: A finished footing grid from above"><video data-v="v_grid" muted loop playsinline preload="none" aria-hidden="true"></video><span class="os-c"><em>03</em><span><b>A finished footing grid from above</b><i>Detail excavation</i></span></span><span class="os-x" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 4h6v6M10 20H4v-6M20 4l-7 7M4 20l7-7"/></svg></span></button></li></ul></div>
+  <div class="os-vp"><ul class="os-g"><li class="os-t" style="--n:0"><button class="os-b" type="button" data-src="img/v/v_piers.mp4" aria-label="Play video: Pier holes drilled to the drawings"><video data-v="v_piers" muted loop playsinline preload="none" aria-hidden="true"></video><span class="os-c"><em>01</em><span><b>Pier holes drilled to the drawings</b><i>Detail excavation</i></span></span><span class="os-x" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 4h6v6M10 20H4v-6M20 4l-7 7M4 20l7-7"/></svg></span></button></li><li class="os-t" style="--n:1"><button class="os-b" type="button" data-src="img/v/v_aerial.mp4" aria-label="Play video: From pier holes to a full footing grid"><video data-v="v_aerial" muted loop playsinline preload="none" aria-hidden="true"></video><span class="os-c"><em>02</em><span><b>From pier holes to a full footing grid</b><i>Detail excavation</i></span></span><span class="os-x" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 4h6v6M10 20H4v-6M20 4l-7 7M4 20l7-7"/></svg></span></button></li><li class="os-t" style="--n:2"><button class="os-b" type="button" data-src="img/v/v_grid.mp4" aria-label="Play video: A finished footing grid from above"><video data-v="v_grid" muted loop playsinline preload="none" aria-hidden="true"></video><span class="os-c"><em>03</em><span><b>A finished footing grid from above</b><i>Detail excavation</i></span></span><span class="os-x" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 4h6v6M10 20H4v-6M20 4l-7 7M4 20l7-7"/></svg></span></button></li><li class="os-t os-w" style="--n:3"><button class="os-b" type="button" data-src="img/v/v_capping.mp4" aria-label="Play video: Piled walls capped and ready to dig"><video data-v="v_capping" muted loop playsinline preload="none" aria-hidden="true"></video><span class="os-c"><em>04</em><span><b>Piled walls capped and ready to dig</b><i>Shoring / Capping beam</i></span></span><span class="os-x" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 4h6v6M10 20H4v-6M20 4l-7 7M4 20l7-7"/></svg></span></button></li><li class="os-t os-w" style="--n:4"><button class="os-b" type="button" data-src="img/v/v_shotcrete.mp4" aria-label="Play video: Shotcrete walls with footings going in"><video data-v="v_shotcrete" muted loop playsinline preload="none" aria-hidden="true"></video><span class="os-c"><em>05</em><span><b>Shotcrete walls with footings going in</b><i>Shoring / Shotcrete</i></span></span><span class="os-x" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 4h6v6M10 20H4v-6M20 4l-7 7M4 20l7-7"/></svg></span></button></li></ul></div>
 </section>
 <div class="osv" id="osv" role="dialog" aria-modal="true" aria-label="Video player" aria-hidden="true"><button class="osv-x" id="osvx" type="button" aria-label="Close video"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 5l14 14M19 5L5 19"/></svg></button><video id="osvv" muted loop playsinline controls></video></div>
 <section class="work pin" id="work">
@@ -1153,16 +1154,16 @@ form.busy #fbt:after{content:"";display:inline-block;width:1.2em;text-align:left
     <div class="ringwrap" id="ringwrap"><div class="ring" id="ring">
       <figure class="rc" data-full="img/g/bulk_03.webp"><img decoding="async" src="img/r_belmore.webp" data-m="" alt="Basement with detailed footing trenches, Belmore" loading="lazy"><figcaption><b>Belmore</b><span>Bulk / Detail / Stormwater</span><i>For Imperium Build</i></figcaption></figure>
       <figure class="rc" data-full="img/g/detail_11.webp"><img decoding="async" src="img/r_marayong.webp" data-m="" alt="Aerial view of a footing grid, Marayong" loading="lazy"><figcaption><b>Marayong</b><span>160 piers / 600m of footings / 4 days</span><i>For Stanford Constructions</i></figcaption></figure>
+      <figure class="rc" data-full="img/g/shore_01.webp"><img decoding="async" src="img/r_capping.webp" data-m="" alt="Piled basement wall with a capping beam" loading="lazy"><figcaption><b>Capped pile wall</b><span>Piling / Capping beam</span><i>Shoring</i></figcaption></figure>
       <figure class="rc" data-full="img/g/bulk_09.webp"><img decoding="async" src="img/r_roseville.webp" data-m="" alt="Duplex basement with footings, Roseville" loading="lazy"><figcaption><b>Roseville</b><span>Shoring / Bulk / Detail / Stormwater</span><i>Duplex basement</i></figcaption></figure>
       <figure class="rc" data-full="img/g/remed_12.webp"><img decoding="async" src="img/r_glebe.webp" data-m="" alt="Underpinning works beneath a terrace, Glebe" loading="lazy"><figcaption><b>Glebe</b><span>Remediation / Underpinning</span></figcaption></figure>
       <figure class="rc" data-full="img/p_willoughby.webp"><img decoding="async" src="img/p_willoughby.webp" alt="Aerial view of detailed excavation, Willoughby" loading="lazy"><figcaption><b>Willoughby</b><span>102 piers / 13 RLs / 350m of footings</span><i>For DC Projects Group</i></figcaption></figure>
+      <figure class="rc" data-full="img/g/shore_09.webp"><img decoding="async" src="img/r_mesh.webp" data-m="" alt="Crew fixing mesh between piles before shotcrete" loading="lazy"><figcaption><b>Mesh before spraying</b><span>Shotcrete</span><i>Shoring</i></figcaption></figure>
       <figure class="rc" data-full="img/g/bulk_08.webp"><img decoding="async" src="img/r_oatlands.webp" data-m="" alt="Bulk and detail excavation, Oatlands" loading="lazy"><figcaption><b>Oatlands</b><span>Bulk / Detail</span></figcaption></figure>
       <figure class="rc" data-full="img/g/detail_13.webp"><img decoding="async" src="img/r_panania.webp" data-m="" alt="Aerial view of footings, Panania" loading="lazy"><figcaption><b>Panania</b><span>97 piers / 250m of footings</span><i>For Estero Building Group</i></figcaption></figure>
       <figure class="rc" data-full="img/g/bulk_14.webp"><img decoding="async" src="img/r_kogarah.webp" data-m="" alt="Basement excavation, Kogarah Bay" loading="lazy"><figcaption><b>Kogarah Bay</b><span>Shoring / Bulk / Detail</span><i>For Buildline Projects</i></figcaption></figure>
+      <figure class="rc" data-full="img/g/shore_08.webp"><img decoding="async" src="img/r_shotcrete.webp" data-m="" alt="Finished shotcrete basement walls" loading="lazy"><figcaption><b>Shotcrete walls</b><span>Shotcrete</span><i>Shoring</i></figcaption></figure>
       <figure class="rc" data-full="img/g/detail_05.webp"><img decoding="async" src="img/r_greenacre.webp" data-m="" alt="Aerial view of detailed footings, Greenacre" loading="lazy"><figcaption><b>Greenacre</b><span>Detail excavation</span></figcaption></figure>
-      <figure class="rc" data-full="img/p_lanecove.webp"><img decoding="async" src="img/p_lanecove.webp" alt="Completed basement, Lane Cove" loading="lazy"><figcaption><b>Lane Cove</b><span>Bulk / Detail / Stormwater</span><i>For Primrose Projects</i></figcaption></figure>
-      <figure class="rc" data-full="img/p_castlehill.webp"><img decoding="async" src="img/p_castlehill.webp" alt="Crew working in a basement, Castle Hill" loading="lazy"><figcaption><b>Castle Hill</b><span>Basement detail excavation</span></figcaption></figure>
-      <figure class="rc" data-full="img/p_concord.webp"><img decoding="async" src="img/p_concord.webp" alt="Bulk excavated basement, Concord West" loading="lazy"><figcaption><b>Concord West</b><span>1,600m&sup3; bulk excavation</span></figcaption></figure>
     </div></div>
     <div class="work-foot"><button class="gal-open" id="galOpen" type="button"><span class="go-k">View all projects</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button><span class="wcount" id="wcount">01 / 12</span><div class="work-prog"><i id="workp"></i></div></div>
   </div>
@@ -1309,7 +1310,7 @@ form.busy #fbt:after{content:"";display:inline-block;width:1.2em;text-align:left
   <a class="btn btn-o" href="#contact">Get a Quote</a>
 </div>
 
-<script>var SQ={"shore":[0,32510,66864,86430,122180,146996,188386,215792,237166,265856,304578,335168,361528,384158,405058,425992,461798,502890,539376,574852,606884,635078,661588,687028,710312,732688,753882,774120,793728,818980,851162,892068,933410,973804,1011412,1047638,1083402]},SO={"shore":[0,35,16,32,8,24,4,12,20,28,2,6,10,14,18,22,26,30,34,1,3,5,7,9,11,13,15,17,19,21,23,25,27,29,31,33]};</script>
+<script>var SQ={},SO={};</script>
 <script>
 (function(){
   'use strict';
@@ -1701,7 +1702,7 @@ form.busy #fbt:after{content:"";display:inline-block;width:1.2em;text-align:left
 
   /* ---------- view all projects: filterable archive of every job photo ---------- */
   (function(){var g=id('gal'),grid=id('galG'),bar=id('galF'),end=id('galEnd'),btn=id('galOpen'),P=null,cur='all',back=null,tm=0;
-    var CATS=[['all','All work'],['bulk','Bulk excavation'],['detail','Detail excavation'],['remed','Remediation'],['trench','Service trenches']],NAME={};CATS.forEach(function(c){NAME[c[0]]=c[1]});
+    var CATS=[['all','All work'],['bulk','Bulk excavation'],['detail','Detail excavation'],['shore','Shoring'],['remed','Remediation'],['trench','Service trenches']],NAME={};CATS.forEach(function(c){NAME[c[0]]=c[1]});
     function esc(v){return String(v==null?'':v).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
     var MIX=null;
     /* "All work" deals the services out in turn, so the grid reads as a mix of jobs rather than blocks of one kind */
@@ -1711,7 +1712,7 @@ form.busy #fbt:after{content:"";display:inline-block;width:1.2em;text-align:left
     function chips(){bar.innerHTML=CATS.map(function(c){var n=c[0]==='all'?P.length:P.filter(function(x){return x.c===c[0]}).length;
       return '<button class="gf" type="button" data-c="'+c[0]+'" aria-pressed="'+(c[0]===cur)+'">'+c[1]+'<i>'+(n<10?'0':'')+n+'</i></button>'}).join('')}
     function render(){var L=list();
-      grid.innerHTML=L.map(function(x,i){return '<button class="gt" type="button" data-i="'+i+'" style="--d:'+Math.min(i*45,700)+'ms" aria-label="Open photo: '+esc(NAME[x.c]+(x.s?', '+x.s:''))+'"><img src="'+x.t+'" alt="'+esc(NAME[x.c]+(x.s?', '+x.s:''))+'" width="'+x.w+'" height="'+x.h+'" loading="'+(i<12?'eager':'lazy')+'" decoding="async"><span class="gt-c"><span><b>'+esc(x.s||NAME[x.c])+'</b><span>'+esc(NAME[x.c])+'</span></span><em>'+(i<9?'0':'')+(i+1)+'</em></span></button>'}).join('');
+      grid.innerHTML=L.map(function(x,i){return '<button class="gt" type="button" data-i="'+i+'" style="--d:'+Math.min(i*45,700)+'ms" aria-label="Open photo: '+esc(NAME[x.c]+(x.g?', '+x.g:'')+(x.s?', '+x.s:''))+'"><img src="'+x.t+'" alt="'+esc(NAME[x.c]+(x.g?', '+x.g:'')+(x.s?', '+x.s:''))+'" width="'+x.w+'" height="'+x.h+'" loading="'+(i<12?'eager':'lazy')+'" decoding="async"><span class="gt-c"><span><b>'+esc(x.s||NAME[x.c])+'</b><span>'+esc(x.g||NAME[x.c])+'</span></span><em>'+(i<9?'0':'')+(i+1)+'</em></span></button>'}).join('');
       end.textContent=L.length+' photos from real Jaymo Civil jobs across Sydney';
       requestAnimationFrame(function(){requestAnimationFrame(function(){$('.gt',grid).forEach(function(t){t.classList.add('in')})})})}
     function filter(c){if(c===cur)return;cur=c;$('.gf',bar).forEach(function(b){b.setAttribute('aria-pressed',String(b.getAttribute('data-c')===c))});
@@ -1723,7 +1724,7 @@ form.busy #fbt:after{content:"";display:inline-block;width:1.2em;text-align:left
     btn.addEventListener('click',open);id('galX').addEventListener('click',close);
     bar.addEventListener('click',function(e){var b=e.target.closest('.gf');if(b)filter(b.getAttribute('data-c'))});
     grid.addEventListener('click',function(e){var t=e.target.closest('.gt');if(!t||!window.__lbx)return;var L=list();
-      window.__lbx(L.map(function(x){return {src:x.f,alt:NAME[x.c]+(x.s?', '+x.s:''),t:x.s||NAME[x.c],sub:x.s?NAME[x.c]:''}}),+t.getAttribute('data-i'))});
+      window.__lbx(L.map(function(x){return {src:x.f,alt:NAME[x.c]+(x.g?', '+x.g:'')+(x.s?', '+x.s:''),t:x.s||NAME[x.c],sub:x.g||(x.s?NAME[x.c]:'')}}),+t.getAttribute('data-i'))});
     addEventListener('keydown',function(e){if(e.defaultPrevented||!g.classList.contains('open')||id('lbx').classList.contains('open'))return;
       if(e.key==='Escape')close();else if(e.key==='Tab'){var f=$('button',g),a=f[0],z=f[f.length-1];if(e.shiftKey&&d.activeElement===a){e.preventDefault();z.focus()}else if(!e.shiftKey&&d.activeElement===z){e.preventDefault();a.focus()}}});
     /* warm the list in the background once the projects section is near */

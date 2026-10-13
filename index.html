@@ -701,6 +701,12 @@ form.busy #fbt:after{content:"";display:inline-block;width:1.2em;text-align:left
 @media (min-width:700px){.gt-c{left:16px;right:16px;bottom:14px}.gt-c b{font-size:1rem}.gt-c span,.gt-c em{font-size:.6rem}}
 .gal-end{padding:0 0 60px;text-align:center;font:500 .66rem var(--m);letter-spacing:.16em;text-transform:uppercase;color:#7b7872}
 .rm .gal,.rm .gt{transition:none}.rm .gt{opacity:1;transform:none}
+
+.tst-stage{grid-template-columns:minmax(0,1fr)}
+.tq blockquote p+p{margin-top:.7em}
+.tq.tq-mid blockquote{font-size:clamp(1.1rem,1.75vw,1.6rem)}
+.tq.tq-long blockquote{font-size:clamp(1rem,1.3vw,1.22rem);line-height:1.5;font-weight:400;font-stretch:100%}
+.tq.tq-long blockquote p:first-child{font-size:1.35em;font-weight:500;font-stretch:112%;line-height:1.3}
 </style>
 <script>(function(){var d=document.documentElement;if(window.matchMedia&&matchMedia("(prefers-reduced-motion:reduce)").matches)d.className+=" rm"})();</script>
 </head>
@@ -940,10 +946,10 @@ form.busy #fbt:after{content:"";display:inline-block;width:1.2em;text-align:left
     </div>
     <div class="tst-stage rv" id="tst" style="--d:120ms">
       <span class="tst-q" aria-hidden="true">&ldquo;</span>
-      <figure class="tq"><div class="stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</div><blockquote>Sample review. The basement was dug to level and handed over clean, two days ahead of our programme. The crew set out carefully and nothing had to be redone.</blockquote><figcaption><i>CN</i><div><b>Client name</b><span>Site Manager, Builder name</span></div><em>Sample</em></figcaption></figure>
-      <figure class="tq"><div class="stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</div><blockquote>Sample review. Detail excavation was cut exactly to the drawings. Our concreters walked straight in and started work the same morning.</blockquote><figcaption><i>CN</i><div><b>Client name</b><span>Director, Builder name</span></div><em>Sample</em></figcaption></figure>
-      <figure class="tq"><div class="stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</div><blockquote>Sample review. Tight site, hard sandstone and a short window. They turned up when they said they would and finished on time.</blockquote><figcaption><i>CN</i><div><b>Client name</b><span>Project Manager, Builder name</span></div><em>Sample</em></figcaption></figure>
-      <figure class="tq"><div class="stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</div><blockquote>Sample review. Clear pricing up front and no surprises on the invoice. We have used them on every job since.</blockquote><figcaption><i>CN</i><div><b>Client name</b><span>Owner, Builder name</span></div><em>Sample</em></figcaption></figure>
+      <figure class="tq tq-long"><div class="stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</div><blockquote><p>We've worked with Jaymo Civil and couldn't recommend them highly enough.</p><p>The team is reliable, professional and extremely capable, with experienced operators and a strong understanding of civil and excavation works.</p><p>What stood out most was their willingness to work through difficult site conditions, find practical solutions and get the job done properly without cutting corners. Communication was excellent throughout, they were responsive when we needed them, and the quality of their work was consistently high.</p><p>It's hard to find civil contractors who are both dependable and easy to work with, but Jaymo Civil definitely ticks both boxes. We'll continue using them on future projects and would confidently recommend them to builders, developers and anyone needing quality civil works.</p><p>Great company, great team and a pleasure to deal with.</p></blockquote><figcaption><i>JP</i><div><b>John-Paul</b><span>Jaypec</span></div></figcaption></figure>
+      <figure class="tq tq-mid"><div class="stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</div><blockquote><p>John and the team at Jaymo Civil have consistently delivered a high standard of work for Skyjaid. Johnny is highly professional, knowledgeable and reliable, with a strong understanding of the construction industry. We highly value our working relationship and would confidently recommend Jaymo Civil Works to any builder or developer.</p></blockquote><figcaption><i>J</i><div><b>Jermaine</b><span>Skyjaid Constructions</span></div></figcaption></figure>
+      <figure class="tq tq-mid"><div class="stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</div><blockquote><p>Jaymo Civil has been one of my subcontractors for a while and completed multiple projects with Imperium Build. He cares about the site like it’s one of his own and his building experience helps out all the time, very punctual and very efficient</p></blockquote><figcaption><i>J</i><div><b>Jordan</b><span>Imperium Build</span></div></figcaption></figure>
+      <figure class="tq tq-mid"><div class="stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</div><blockquote><p>John from Jaymo Civil was a pleasure to work with, I’ve worked with him on recent projects and he was very professional and accomodating. The effort and willingness to get the job and work together was phenomenal. I will definitely use John again.</p></blockquote><figcaption><i>FS</i><div><b>Fadi Safar</b><span>Director, D&amp;C Projects Group</span></div></figcaption></figure>
       <div class="tst-bar"><i id="tsp"></i></div>
     </div>
   </div>
@@ -1235,7 +1241,7 @@ form.busy #fbt:after{content:"";display:inline-block;width:1.2em;text-align:left
     if('IntersectionObserver' in window)new IntersectionObserver(function(en){play(en[0].isIntersecting)},{threshold:.25}).observe(sec)})();
   /* testimonials: fades between reviews, with arrows, swipe and a timed bar */
   (function(){var q=$('.tq'),k=0,tm=0,vis=false,hold=false,stage=id('tst'),bar=id('tsp'),num=id('tsn'),sx=null;if(!q.length)return;
-    function arm(){clearTimeout(tm);bar.style.animation='none';if(RM||!vis||hold)return;void bar.offsetWidth;bar.style.animation='tsfill 6.5s linear forwards';tm=setTimeout(function(){go(k+1)},6500)}
+    function arm(){clearTimeout(tm);bar.style.animation='none';if(RM||!vis||hold)return;void bar.offsetWidth;var w=(q[k].textContent||'').split(/\s+/).length,t=Math.min(22,Math.max(6.5,w*.24));bar.style.animation='tsfill '+t+'s linear forwards';tm=setTimeout(function(){go(k+1)},t*1000)}
     function go(i){k=(i+q.length)%q.length;q.forEach(function(e,n){e.classList.toggle('on',n===k);e.setAttribute('aria-hidden',n===k?'false':'true')});num.textContent='0'+(k+1)+' / 0'+q.length;arm()}
     id('tsprev').addEventListener('click',function(){go(k-1)});id('tsnext').addEventListener('click',function(){go(k+1)});
     stage.addEventListener('mouseenter',function(){hold=true;arm()});stage.addEventListener('mouseleave',function(){hold=false;arm()});

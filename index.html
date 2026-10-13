@@ -824,6 +824,79 @@ form.busy #fbt:after{content:"";display:inline-block;width:1.2em;text-align:left
 @media (max-width:939px){.bld .wg{grid-template-columns:repeat(5,1fr)}.wall{--r:150px}.wt{height:76px}.wt img{--k:.6}}
 @media (max-width:599px){.wall-p{margin-top:36px;padding:10px}.wall{--r:105px}.wt{height:58px}.wt img{--k:.42;max-width:86%}}
 .rm .wg-lit{-webkit-mask-image:none;mask-image:none}
+
+/* projects footer on phones: counter and progress on one row, a full-width outlined button below */
+@media (max-width:699px){
+  .work .stick{padding-bottom:calc(76px + env(safe-area-inset-bottom))}
+  .work-foot{display:grid;grid-template-columns:auto 1fr;align-items:center;gap:16px 16px;padding-top:16px}
+  .work-foot .wcount{grid-column:1;grid-row:1}
+  .work-foot .work-prog{grid-column:2;grid-row:1;max-width:none}
+  .gal-open{grid-column:1/-1;grid-row:2;width:100%;justify-content:center;min-height:50px;background:transparent;color:var(--ink);border-color:var(--ink)}
+  .gal-open:before{background:var(--ink)}
+  .gal-open:hover,.gal-open:focus-visible{color:var(--y)}
+}
+/* ring: the photo zooms inside the card and the card lifts toward you */
+.rc{transition:box-shadow .6s var(--ease),translate .6s var(--ease)}
+.rc img{transition:transform 1.2s var(--ease),filter .6s ease}
+@media (hover:hover){
+  .rc:hover{translate:0 -10px;box-shadow:0 46px 70px -30px rgba(11,11,10,.6)}
+  .rc:hover img{transform:scale(1.12)}
+  .rc:hover figcaption b{color:var(--y)}
+  .ringwrap.drag .rc:hover{translate:none}.ringwrap.drag .rc:hover img{transform:none}
+}
+.rc figcaption b{transition:color .4s ease}
+
+/* ---------- reviews: logo-led cards ---------- */
+.tst{padding:100px 0 90px}
+.rv-h{display:flex;align-items:flex-end;justify-content:space-between;gap:24px}
+.rv-nav{display:flex;gap:10px;flex:none}
+.rv-nav button{width:52px;height:52px;border-radius:50%;border:1px solid rgba(255,255,255,.3);background:transparent;color:#fff;cursor:pointer;display:grid;place-items:center;transition:background .3s,color .3s,border-color .3s,opacity .3s}
+.rv-nav button svg{width:18px;height:18px}
+.rv-nav button:hover:not(:disabled){background:var(--y);border-color:var(--y);color:var(--ink)}
+.rv-nav button:disabled{opacity:.3;cursor:default}
+.rv-vp{margin-top:44px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-ms-overflow-style:none;outline:0;cursor:grab;scroll-padding-left:max(var(--pad),calc((100vw - 1360px)/2 + var(--pad)))}
+.rv-vp::-webkit-scrollbar{display:none}
+.rv-vp.drag{cursor:grabbing;scroll-snap-type:none;user-select:none}
+.rv-vp.drag *{pointer-events:none}
+.rv-vp:focus-visible{box-shadow:inset 0 0 0 2px var(--y)}
+.rv-tr{display:flex;column-gap:18px;width:max-content;padding:0 max(var(--pad),calc((100vw - 1360px)/2 + var(--pad)))}
+.rv-c{flex:none;width:min(84vw,400px);scroll-snap-align:start;display:flex;flex-direction:column;background:var(--bone);color:var(--ink);padding:26px 24px 22px;border-top:3px solid var(--y);position:relative;opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .9s var(--ease),box-shadow .5s ease;transition-delay:calc(var(--n)*90ms)}
+.tst.in-v .rv-c{opacity:1;transform:none}
+.rv-c:hover{box-shadow:0 34px 60px -34px rgba(0,0,0,.9)}
+.rv-top{display:flex;align-items:center;justify-content:space-between;gap:16px;height:60px}
+.rv-logo{display:block;width:calc(var(--w)*.95px);height:calc(var(--h)*.95px);max-width:62%;max-height:58px;object-fit:contain;object-position:left center}
+.rv-st{color:var(--y);font-size:.85rem;letter-spacing:.14em;flex:none;text-shadow:0 0 0 var(--ink)}
+.rv-c .rv-st{-webkit-text-stroke:.4px rgba(11,11,10,.35)}
+.rv-k{margin-top:22px;font:600 clamp(1.25rem,1.7vw,1.5rem)/1.2 var(--f);font-stretch:115%;letter-spacing:-.01em}
+.rv-b{margin-top:14px;font-size:.92rem;line-height:1.6;color:#4a4842;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:4;overflow:hidden}
+.rv-b p+p{margin-top:.6em}
+.rv-f{margin-top:auto;padding-top:20px;display:flex;align-items:center;justify-content:space-between;gap:14px;border-top:1px solid rgba(11,11,10,.12)}
+.rv-b{margin-bottom:22px}
+.rv-w b{display:block;font-stretch:125%;font-weight:600;text-transform:uppercase;font-size:.86rem;line-height:1.3}
+.rv-w span{display:block;margin-top:2px;font:500 .62rem var(--m);letter-spacing:.12em;text-transform:uppercase;color:#6d6a64}
+.rv-more{display:inline-flex;align-items:center;gap:8px;flex:none;border:0;background:none;padding:8px 0;cursor:pointer;color:var(--ink);font:500 .62rem var(--m);letter-spacing:.14em;text-transform:uppercase;border-bottom:1px solid var(--y)}
+.rv-more svg{width:14px;height:14px;transition:transform .4s var(--ease)}
+.rv-more:hover svg{transform:translateX(3px)}
+.rv-more[hidden]{display:none}
+.rv-pg{position:relative;margin-top:30px;height:2px;background:rgba(255,255,255,.12);overflow:hidden}
+.rv-pg i{position:absolute;left:0;top:0;bottom:0;width:30%;background:var(--y);transition:transform .25s ease-out}
+@media (min-width:940px){.tst{padding:150px 0 120px}.rv-c{width:calc((min(100vw,1360px) - 2*var(--pad) - 36px)/3);padding:32px 30px 26px}.rv-vp{margin-top:56px}}
+@media (min-width:700px) and (max-width:939px){.rv-c{width:calc((100vw - 2*var(--pad) - 18px)/2)}}
+@media (max-width:699px){.rv-nav{display:none}.rv-c{padding:22px 20px 18px}.rv-top{height:50px}.rv-logo{max-height:46px;width:calc(var(--w)*.8px);height:calc(var(--h)*.8px)}.rv-b{-webkit-line-clamp:3}}
+/* review dialog */
+.rvd{position:fixed;inset:0;z-index:210;display:grid;place-items:center;padding:20px;background:rgba(8,8,7,.82);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);opacity:0;visibility:hidden;transition:opacity .4s ease,visibility 0s linear .4s}
+.rvd.open{opacity:1;visibility:visible;transition:opacity .4s ease}
+.rvd-in{position:relative;width:min(640px,100%);max-height:calc(100vh - 40px);overflow-y:auto;background:var(--bone);color:var(--ink);border-top:3px solid var(--y);padding:34px 30px 28px;transform:translateY(20px);transition:transform .5s var(--ease)}
+.rvd.open .rvd-in{transform:none}
+.rvd-in .rv-logo{max-height:60px}
+.rvd-in .rv-st{margin-top:16px;display:block}
+.rvd-b{margin-top:14px;font-size:1rem;line-height:1.7;color:#2b2a27}
+.rvd-b p+p{margin-top:.75em}
+.rvd-in .rv-w{margin-top:22px;padding-top:16px;border-top:1px solid rgba(11,11,10,.12)}
+.rvd-x{position:absolute;right:14px;top:14px;width:44px;height:44px;display:grid;place-items:center;border:1px solid rgba(11,11,10,.2);background:transparent;cursor:pointer;color:var(--ink);transition:background .3s,border-color .3s}
+.rvd-x:hover,.rvd-x:focus-visible{background:var(--y);border-color:var(--y);outline:0}
+.rvd-x svg{width:16px;height:16px}
+.rm .rv-c{opacity:1;transform:none;transition:none}
 </style>
 <script>(function(){var d=document.documentElement;if(window.matchMedia&&matchMedia("(prefers-reduced-motion:reduce)").matches)d.className+=" rm"})();</script>
 </head>
@@ -1006,7 +1079,7 @@ form.busy #fbt:after{content:"";display:inline-block;width:1.2em;text-align:left
       <figure class="rc" data-full="img/p_castlehill.webp"><img decoding="async" src="img/p_castlehill.webp" alt="Crew working in a basement, Castle Hill" loading="lazy"><figcaption><b>Castle Hill</b><span>Basement detail excavation</span></figcaption></figure>
       <figure class="rc" data-full="img/p_concord.webp"><img decoding="async" src="img/p_concord.webp" alt="Bulk excavated basement, Concord West" loading="lazy"><figcaption><b>Concord West</b><span>1,600m&sup3; bulk excavation</span></figcaption></figure>
     </div></div>
-    <div class="work-foot"><button class="gal-open" id="galOpen" type="button"><span class="go-k">View all projects</span><span class="go-n">69 photos</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button><span class="wcount" id="wcount">01 / 12</span><div class="work-prog"><i id="workp"></i></div></div>
+    <div class="work-foot"><button class="gal-open" id="galOpen" type="button"><span class="go-k">View all projects</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button><span class="wcount" id="wcount">01 / 12</span><div class="work-prog"><i id="workp"></i></div></div>
   </div>
 </section>
 
@@ -1060,23 +1133,17 @@ form.busy #fbt:after{content:"";display:inline-block;width:1.2em;text-align:left
 
 <!-- TESTIMONIALS (placeholder copy, to be replaced with real client reviews) -->
 <section class="tst" id="reviews">
-  <div class="wrap tst-g">
-    <div>
-      <p class="tag rv">Testimonials</p>
-      <h2 class="h rv-l"><span class="lm"><span>What Our</span></span><span class="lm"><span style="--d:80ms">Clients <span class="y">Say.</span></span></span></h2>
-      <div class="tst-nav rv"><button type="button" id="tsprev" aria-label="Previous review"><svg class="ar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></button><span id="tsn">01 / 05</span><button type="button" id="tsnext" aria-label="Next review"><svg class="ar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></button></div>
-    </div>
-    <div class="tst-stage rv" id="tst" style="--d:120ms">
-      <span class="tst-q" aria-hidden="true">&ldquo;</span>
-      <figure class="tq tq-long"><div class="stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</div><blockquote><p>We've worked with Jaymo Civil and couldn't recommend them highly enough.</p><p>The team is reliable, professional and extremely capable, with experienced operators and a strong understanding of civil and excavation works.</p><p>What stood out most was their willingness to work through difficult site conditions, find practical solutions and get the job done properly without cutting corners. Communication was excellent throughout, they were responsive when we needed them, and the quality of their work was consistently high.</p><p>It's hard to find civil contractors who are both dependable and easy to work with, but Jaymo Civil definitely ticks both boxes. We'll continue using them on future projects and would confidently recommend them to builders, developers and anyone needing quality civil works.</p><p>Great company, great team and a pleasure to deal with.</p></blockquote><figcaption><i>JP</i><div><b>John-Paul</b><span>Jaypec</span></div></figcaption></figure>
-      <figure class="tq tq-mid"><div class="stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</div><blockquote><p>John and the team at Jaymo Civil have consistently delivered a high standard of work for Skyjaid. Johnny is highly professional, knowledgeable and reliable, with a strong understanding of the construction industry. We highly value our working relationship and would confidently recommend Jaymo Civil Works to any builder or developer.</p></blockquote><figcaption><i>J</i><div><b>Jermaine</b><span>Skyjaid Constructions</span></div></figcaption></figure>
-      <figure class="tq tq-mid"><div class="stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</div><blockquote><p>Jaymo Civil has been one of my subcontractors for a while and completed multiple projects with Imperium Build. He cares about the site like it’s one of his own and his building experience helps out all the time, very punctual and very efficient</p></blockquote><figcaption><i>J</i><div><b>Jordan</b><span>Imperium Build</span></div></figcaption></figure>
-      <figure class="tq tq-mid"><div class="stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</div><blockquote><p>John from Jaymo Civil was a pleasure to work with, I’ve worked with him on recent projects and he was very professional and accomodating. The effort and willingness to get the job and work together was phenomenal. I will definitely use John again.</p></blockquote><figcaption><i>FS</i><div><b>Fadi Safar</b><span>Director, DC Projects Group</span></div></figcaption></figure>
-      <figure class="tq tq-long"><div class="stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</div><blockquote><p>As a construction company, we deal with countless subcontractors, and we can confidently say that Jaymo Civil is in a league of its own!</p><p>They are our trusted contractor for all excavation and civil works, and their professionalism, reliability, workmanship and commitment are second to none.</p><p>In an industry where finding dependable subcontractors can be challenging, Jaymo Civil is a breath of fresh air. Nothing is ever too difficult, challenges are met with solutions rather than excuses, and their willingness to go above and beyond is truly commendable.</p><p>An exceptional team, an absolute pleasure to work with, and a company we cannot recommend highly enough!</p></blockquote><figcaption><i>EG</i><div><b>Encorp Group</b></div></figcaption></figure>
-      <div class="tst-bar"><i id="tsp"></i></div>
+  <div class="wrap">
+    <div class="rv-h">
+      <div><p class="tag rv">Testimonials</p>
+      <h2 class="h rv-l"><span class="lm"><span>What Our</span></span><span class="lm"><span style="--d:80ms">Clients <span class="y">Say.</span></span></span></h2></div>
+      <div class="rv-nav rv"><button type="button" id="rvp" aria-label="Previous reviews"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 12H5M11 6l-6 6 6 6"/></svg></button><button type="button" id="rvn" aria-label="Next reviews"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></button></div>
     </div>
   </div>
+  <div class="rv-vp" id="rvv" tabindex="0" aria-label="Builder reviews, scroll sideways for more"><div class="rv-tr"><article class="rv-c" style="--n:0"><div class="rv-top"><img class="rv-logo" src="img/l_encorp.webp" alt="Encorp Group" style="--w:150;--h:26.8" loading="lazy" decoding="async"><span class="rv-st" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span></div><p class="rv-k">&ldquo;In a league of its own.&rdquo;</p><div class="rv-b"><p>As a construction company, we deal with countless subcontractors, and we can confidently say that Jaymo Civil is in a league of its own!</p><p>They are our trusted contractor for all excavation and civil works, and their professionalism, reliability, workmanship and commitment are second to none.</p><p>In an industry where finding dependable subcontractors can be challenging, Jaymo Civil is a breath of fresh air. Nothing is ever too difficult, challenges are met with solutions rather than excuses, and their willingness to go above and beyond is truly commendable.</p><p>An exceptional team, an absolute pleasure to work with, and a company we cannot recommend highly enough!</p></div><div class="rv-f"><p class="rv-w"><b>Encorp Group</b></p><button class="rv-more" type="button" hidden>Read full review<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div></article><article class="rv-c" style="--n:1"><div class="rv-top"><img class="rv-logo" src="img/l_jaypec.webp" alt="Jaypec" style="--w:150;--h:32.2" loading="lazy" decoding="async"><span class="rv-st" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span></div><p class="rv-k">&ldquo;The team is reliable, professional and extremely capable.&rdquo;</p><div class="rv-b"><p>We've worked with Jaymo Civil and couldn't recommend them highly enough.</p><p>The team is reliable, professional and extremely capable, with experienced operators and a strong understanding of civil and excavation works.</p><p>What stood out most was their willingness to work through difficult site conditions, find practical solutions and get the job done properly without cutting corners. Communication was excellent throughout, they were responsive when we needed them, and the quality of their work was consistently high.</p><p>It's hard to find civil contractors who are both dependable and easy to work with, but Jaymo Civil definitely ticks both boxes. We'll continue using them on future projects and would confidently recommend them to builders, developers and anyone needing quality civil works.</p><p>Great company, great team and a pleasure to deal with.</p></div><div class="rv-f"><p class="rv-w"><b>John-Paul<span>Jaypec</span></b></p><button class="rv-more" type="button" hidden>Read full review<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div></article><article class="rv-c" style="--n:2"><div class="rv-top"><img class="rv-logo" src="img/l_imperium.webp" alt="Imperium Build" style="--w:93.0;--h:55.9" loading="lazy" decoding="async"><span class="rv-st" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span></div><p class="rv-k">&ldquo;He cares about the site like it’s one of his own.&rdquo;</p><div class="rv-b"><p>Jaymo Civil has been one of my subcontractors for a while and completed multiple projects with Imperium Build. He cares about the site like it’s one of his own and his building experience helps out all the time, very punctual and very efficient</p></div><div class="rv-f"><p class="rv-w"><b>Jordan<span>Imperium Build</span></b></p><button class="rv-more" type="button" hidden>Read full review<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div></article><article class="rv-c" style="--n:3"><div class="rv-top"><img class="rv-logo" src="img/l_skyjaid.webp" alt="Skyjaid Constructions" style="--w:150;--h:31.1" loading="lazy" decoding="async"><span class="rv-st" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span></div><p class="rv-k">&ldquo;Consistently delivered a high standard of work.&rdquo;</p><div class="rv-b"><p>John and the team at Jaymo Civil have consistently delivered a high standard of work for Skyjaid. Johnny is highly professional, knowledgeable and reliable, with a strong understanding of the construction industry. We highly value our working relationship and would confidently recommend Jaymo Civil Works to any builder or developer.</p></div><div class="rv-f"><p class="rv-w"><b>Jermaine<span>Skyjaid Constructions</span></b></p><button class="rv-more" type="button" hidden>Read full review<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div></article><article class="rv-c" style="--n:4"><div class="rv-top"><img class="rv-logo" src="img/l_dc.webp" alt="Director, DC Projects Group" style="--w:92.9;--h:56.0" loading="lazy" decoding="async"><span class="rv-st" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span></div><p class="rv-k">&ldquo;I will definitely use John again.&rdquo;</p><div class="rv-b"><p>John from Jaymo Civil was a pleasure to work with, I’ve worked with him on recent projects and he was very professional and accomodating. The effort and willingness to get the job and work together was phenomenal. I will definitely use John again.</p></div><div class="rv-f"><p class="rv-w"><b>Fadi Safar<span>Director, DC Projects Group</span></b></p><button class="rv-more" type="button" hidden>Read full review<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div></article></div></div>
+  <div class="wrap"><div class="rv-pg" aria-hidden="true"><i id="rvbar"></i></div></div>
 </section>
+<div class="rvd" id="rvd" role="dialog" aria-modal="true" aria-labelledby="rvdt" aria-hidden="true"><div class="rvd-in"><button class="rvd-x" id="rvdx" type="button" aria-label="Close review"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 5l14 14M19 5L5 19"/></svg></button><div id="rvdc"></div></div></div>
 
 <!-- CONTACT -->
 <section class="light ct" id="contact">
@@ -1363,17 +1430,31 @@ form.busy #fbt:after{content:"";display:inline-block;width:1.2em;text-align:left
     bind();window.__steps=bind;
     if('IntersectionObserver' in window)new IntersectionObserver(function(en){play(en[0].isIntersecting)},{threshold:.25}).observe(sec)})();
   /* testimonials: fades between reviews, with arrows, swipe and a timed bar */
-  (function(){var q=$('.tq'),k=0,tm=0,vis=false,hold=false,stage=id('tst'),bar=id('tsp'),num=id('tsn'),sx=null;if(!q.length)return;
-    function arm(){clearTimeout(tm);bar.style.animation='none';if(RM||!vis||hold)return;void bar.offsetWidth;var w=(q[k].textContent||'').split(/\s+/).length,t=Math.min(22,Math.max(6.5,w*.24));bar.style.animation='tsfill '+t+'s linear forwards';tm=setTimeout(function(){go(k+1)},t*1000)}
-    function go(i){k=(i+q.length)%q.length;q.forEach(function(e,n){e.classList.toggle('on',n===k);e.setAttribute('aria-hidden',n===k?'false':'true')});num.textContent='0'+(k+1)+' / 0'+q.length;arm()}
-    id('tsprev').addEventListener('click',function(){go(k-1)});id('tsnext').addEventListener('click',function(){go(k+1)});
-    stage.addEventListener('mouseenter',function(){hold=true;arm()});stage.addEventListener('mouseleave',function(){hold=false;arm()});
-    stage.addEventListener('pointerdown',function(e){sx=e.clientX});
-    stage.addEventListener('pointerup',function(e){if(sx===null)return;var dx=e.clientX-sx;sx=null;if(Math.abs(dx)>40)go(k+(dx<0?1:-1))});
-    stage.addEventListener('pointercancel',function(){sx=null});
-    if('IntersectionObserver' in window)new IntersectionObserver(function(en){vis=en[0].isIntersecting;arm()},{threshold:.3}).observe(stage);else vis=true;
-    window.__tq=function(){q=$('.tq');k=0;go(0)};
-    go(0)})();
+  /* ---------- reviews: logo-led cards that swipe sideways; long reviews open in full ---------- */
+  (function(){var vp=id('rvv');if(!vp)return;(function(){var sec=id('reviews');if(RM||!('IntersectionObserver' in window)){sec.classList.add('in-v');return}var o=new IntersectionObserver(function(en){if(en[0].isIntersecting){o.disconnect();sec.classList.add('in-v')}},{threshold:.2});o.observe(sec)})();var cards=$('.rv-c',vp),bar=id('rvbar'),dlg=id('rvd'),dc=id('rvdc'),back=null;
+    function step(){var c=cards[0],g=parseFloat(getComputedStyle(vp.firstElementChild).columnGap)||0;return c.offsetWidth+g}
+    id('rvp').addEventListener('click',function(){vp.scrollBy({left:-step(),behavior:RM?'auto':'smooth'})});
+    id('rvn').addEventListener('click',function(){vp.scrollBy({left:step(),behavior:RM?'auto':'smooth'})});
+    function prog(){var m=vp.scrollWidth-vp.clientWidth,f=m>0?vp.scrollLeft/m:1,vis=vp.clientWidth/vp.scrollWidth;
+      bar.style.width=(Math.max(vis,.08)*100).toFixed(2)+'%';bar.style.transform='translateX('+(f*(1/Math.max(vis,.08)-1)*100).toFixed(2)+'%)';
+      id('rvp').disabled=vp.scrollLeft<4;id('rvn').disabled=vp.scrollLeft>m-4}
+    vp.addEventListener('scroll',prog,{passive:true});addEventListener('resize',function(){prog();clamp2()});
+    /* desktop: drag the row with the mouse */
+    var dg=null;vp.addEventListener('pointerdown',function(e){if(e.pointerType!=='mouse'||e.button||e.target.closest('button'))return;dg={x:e.clientX,s:vp.scrollLeft,m:false}});
+    addEventListener('pointermove',function(e){if(!dg)return;var dx=e.clientX-dg.x;if(!dg.m&&Math.abs(dx)>6){dg.m=true;vp.classList.add('drag')}if(dg.m)vp.scrollLeft=dg.s-dx});
+    addEventListener('pointerup',function(){if(!dg)return;var m=dg.m;dg=null;vp.classList.remove('drag');if(m){var st=step(),k=Math.round(vp.scrollLeft/st);vp.scrollTo({left:k*st,behavior:'smooth'})}});
+    /* only long reviews get the full-review link */
+    function clamp2(){cards.forEach(function(c){var b=c.querySelector('.rv-b'),btn=c.querySelector('.rv-more');btn.hidden=!(b.scrollHeight>b.clientHeight+4)})}
+    clamp2();if(d.fonts&&d.fonts.ready)d.fonts.ready.then(clamp2);
+    function open(c){back=d.activeElement;var logo=c.querySelector('.rv-logo').cloneNode(true);logo.removeAttribute('loading');
+      dc.innerHTML='';dc.appendChild(logo);dc.insertAdjacentHTML('beforeend','<p class="rv-st">&#9733;&#9733;&#9733;&#9733;&#9733;</p><div class="rvd-b">'+c.querySelector('.rv-b').innerHTML+'</div><p class="rv-w" id="rvdt">'+c.querySelector('.rv-w').innerHTML+'</p>');
+      dlg.classList.add('open');dlg.setAttribute('aria-hidden','false');window.__lock=true;gliding=false;d.body.style.overflow='hidden';setTimeout(function(){id('rvdx').focus({preventScroll:true})},60)}
+    function close(){if(!dlg.classList.contains('open'))return;dlg.classList.remove('open');dlg.setAttribute('aria-hidden','true');window.__lock=false;d.body.style.overflow='';if(back&&back.focus)back.focus({preventScroll:true})}
+    cards.forEach(function(c){c.querySelector('.rv-more').addEventListener('click',function(){open(c)})});
+    id('rvdx').addEventListener('click',close);dlg.addEventListener('click',function(e){if(e.target===dlg)close()});
+    addEventListener('keydown',function(e){if(!dlg.classList.contains('open'))return;if(e.key==='Escape')close();else if(e.key==='Tab'){e.preventDefault();id('rvdx').focus()}});
+    vp.addEventListener('keydown',function(e){if(e.key==='ArrowRight'){e.preventDefault();id('rvn').click()}else if(e.key==='ArrowLeft'){e.preventDefault();id('rvp').click()}});
+    prog()})();
   /* content editor: the page shows its built-in content first, then swaps in whatever has been published in the editor.
      Anything missing or unreachable simply leaves the built-in content in place. */
   (function(){if(!window.fetch)return;

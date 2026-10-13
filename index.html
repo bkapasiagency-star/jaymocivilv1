@@ -321,8 +321,9 @@ label{font-size:.7rem}
 footer{background:var(--y);border:0;padding:14px 12px calc(84px + env(safe-area-inset-bottom));color:#c4c1ba}
 .fcard{position:relative;overflow:hidden;background:#000;border-radius:22px;padding:54px 24px 26px}
 .fbig{position:relative;font-stretch:125%;font-weight:900;text-transform:uppercase;font-size:clamp(1rem,4.4vw,6rem);line-height:.98;letter-spacing:-.02em;color:#fff;white-space:nowrap}
-.fbig em{font-style:normal;color:var(--y);display:block}
-@media (max-width:699px){.fbig{white-space:normal;font-size:clamp(1.5rem,7.6vw,2.4rem);line-height:1}}
+.fbig em{font-style:normal;color:var(--y)}
+.fbig .fb2{display:block}
+@media (max-width:699px){.fbig{white-space:normal;font-size:clamp(1.3rem,6.5vw,2.4rem);line-height:1}.fbig .fb2{white-space:nowrap}}
 .fmark{position:absolute;right:-50px;top:-50px;width:240px;opacity:.16;animation:fturn 70s linear infinite}
 .fmark img{width:100%}
 @keyframes fturn{to{transform:rotate(360deg)}}
@@ -1080,7 +1081,7 @@ form.busy #fbt:after{content:"";display:inline-block;width:1.2em;text-align:left
 <footer>
   <div class="fcard">
     <div class="fmark" aria-hidden="true"><img decoding="async" src="img/marky.png" alt="" width="210" height="210" loading="lazy"></div>
-    <p class="fbig">Experts committed to <em>excellence.</em></p>
+    <p class="fbig">Experts committed <span class="fb2">to <em>excellence.</em></span></p>
     <div class="fg">
       <div><img decoding="async" class="logo2" src="img/logo.png" alt="Jaymo Civil" width="150" height="30"><p class="fdesc">Excavation and civil contractors working across Sydney, NSW.</p></div>
       <div class="fl"><h3>Explore</h3><a href="#about">About</a><a href="#services">Services</a><a href="#work">Projects</a><a href="#contact">Contact</a></div>
